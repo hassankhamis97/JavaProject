@@ -8,7 +8,14 @@ package clientapp;
 import SignIn.LoginUI;
 import SignUp.SignUpUI;
 import Stack.NavigationStack;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,6 +31,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
@@ -37,8 +46,9 @@ public class SignUp extends SignUpUI {
     boolean flage = false;
     ResultSet rs;
     PreparedStatement stmt;
-    File file;
-    FileChooser chooser;
+    File file;   
+    
+    
 
     SignUp() {
         Platform.runLater(new Runnable() {
@@ -86,19 +96,14 @@ public class SignUp extends SignUpUI {
         });
         ///////////////////////////////
         signUp_btn.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
-
-                /*       file=chooser.showOpenDialog(Main.myStage);
-                 if (file != null) {
-                 imageView.setImage(new Image(file.toURI().toString(), 100, 150, true, true));
-
-                 }*/
                 String uname = userName.getText();
                 String mail = email.getText();
                 String pass = password.getText();
-                String repass = repassword.getText();
+                String repass = repassword.getText();   
+                pass = "123456789aA&";
+                repass = "123456789aA&";
                 String email_regex = "^[a-z0-9]+(_{1}|.{1})+[a-z0-9]{1,}@{1}[a-z]{2,}[.][a-z]{2,5}$";
                 String pass_regex = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*_-])[a-zA-Z0-9!@#$%^&*_-]{6,12}$";
 
@@ -123,22 +128,26 @@ public class SignUp extends SignUpUI {
                             try {
 
                                 Class.forName("com.mysql.jdbc.Driver"); // stablish the connection
-                                SharedData.con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/javaproject", "root", "root");
+                                SharedData.con = DriverManager.getConnection("jdbc:mysql://192.168.1.7:3306/javaproject", "root", "root");
                             } catch (ClassNotFoundException ex) {
                                 Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
                             } catch (SQLException ex) {
                                 Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             /////////
-                            stmt = SharedData.con.prepareStatement("INSERT INTO Player ( Name , Email, Password ,IsOnline,IsRequest,StatID)VALUES(?,?,?,?,?,?)");
+                            stmt = SharedData.con.prepareStatement("INSERT INTO Player ( Name , Email, Password ,IsOnline,IsRequest,StatID,Photo)VALUES(?,?,?,?,?,?,?)");
                             stmt.setString(1, uname);
                             stmt.setString(2, mail);
                             stmt.setString(3, pass);
                             stmt.setInt(4, 1);
                             stmt.setInt(5, 0);
                             stmt.setInt(6, 1);
-
+                            stmt.setString(7, file != null ? file.getName() : "");
                             stmt.executeUpdate();
+                            
+                            if (file != null) {
+                               transferImageToServer(file);
+                            }
                             showAlert(" YOUR ACCOUNT HAS BEEN CREATED SUCCESSFULLY ... ");
 
                             //Main.showNewScene(loginScene,"/SignIn/login.css");
@@ -154,7 +163,26 @@ public class SignUp extends SignUpUI {
 
                 }
             }
-        });
+        });   
+        
+   imageView0.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+     @Override
+     public void handle(MouseEvent event) {    
+        FileChooser fileChooser = new FileChooser();
+
+            file = fileChooser.showOpenDialog(null);
+            
+            if (file != null) { 
+                try{
+                   imageView.setImage(new Image(file.toURI().toURL().toExternalForm()));
+                }
+                catch(Exception ex) 
+                {}
+            }
+            event.consume();
+           }
+});
 
         NavigationStack nsObj = new NavigationStack();
         nsObj.root = this;
@@ -183,6 +211,17 @@ public class SignUp extends SignUpUI {
         } else {
             System.out.println("canceled");
         }
-    }
-
+    }     
+    
+    private void transferImageToServer(File file)
+    {  
+        try{          
+            Files.copy(file.toPath(),
+        (new File("\\\\DESKTOP-MFT4NF6\\Resources\\", file.getName())).toPath(), StandardCopyOption.REPLACE_EXISTING); 
+        }  
+        catch(IOException ex)
+        {
+            showAlert("An error occured");
+        }
+    }    
 }
