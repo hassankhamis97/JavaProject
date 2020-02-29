@@ -38,8 +38,7 @@ public class Store extends StoreUI {
     int myCoins = 0;
     boolean highPrice = false;
     boolean done = false;
-    PreparedStatement stmt;
-    ResultSet rs;
+  
 Database db;
     public Store() {
       db = new Database();
@@ -65,12 +64,13 @@ Database db;
                  back.setStyle("-fx-background-color: transparent;");
                  
                    // update coins 
-                               coinsText.setText("" + myCoins);
+                               coinsText.setText("" + SharedData.Coins);
 
             }
         });
-
-         getCoins();
+   Connection con = db.openConnection();
+         db.getCoins(con);
+         db.closeConnection(con);
         //******************************//
         NavigationStack nsObj = new NavigationStack();
         nsObj.root = this;
@@ -191,14 +191,16 @@ Database db;
     }//end
 
     private void buyEmoji(boolean high_price, String emojiName) {
- Connection con = db.openConnection();
-        if (high_price && myCoins >= 15 ) {
-            myCoins -= 15;
+    Connection con = db.openConnection();
+        if (high_price && SharedData.Coins >= 15 ) {
+            SharedData.Coins -= 15;
            
           
-          db.addNewEmoji( con,emojiName , SharedData.playerID);
+          db.addNewEmoji( con,emojiName );
           ///  updatePlayerCoins();
-          db.updatePlayerCoins(done);
+          db.updatePlayerCoins(con,done);
+            db.onButtonAlert(" Operation done Successfully ^_^", done);
+          
 //           try {
 //               stmt = SharedData.con.prepareStatement("INSERT INTO statistics (ID,COINS) VALUES(?,?) Player where id = ?");
 //               stmt.setInt(1, SharedData.playerID);
@@ -211,10 +213,10 @@ Database db;
 //           } catch (SQLException ex) {
 //               Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
 //           }
-        } else if ( !(high_price) &&  myCoins >= 5) {
-            myCoins -= 5;
-       //*****     addNewEmoji(emojiName);
-            updatePlayerCoins();
+        } else if ( !(high_price) &&  SharedData.Coins >= 5) {
+            SharedData.Coins -= 5;
+         db.addNewEmoji( con,emojiName );
+          db.updatePlayerCoins(con, done);
 //           try {
 //               stmt = SharedData.con.prepareStatement("INSERT INTO statistics (ID,COINS) VALUES(?,?) Player where id = ?");
 //               stmt.setInt(1, SharedData.playerID);
@@ -232,7 +234,7 @@ Database db;
         } else {
 
             done = false;
-            onButtonAlert("Sorry you dont have enough Coins", done);
+            db.onButtonAlert("Sorry you dont have enough Coins", done);
         }
         
         db.closeConnection(con);
@@ -256,7 +258,7 @@ Database db;
     }*/
 
     
-    void updatePlayerCoins() {
+  /*  void updatePlayerCoins() {
 
         try {
             stmt = SharedData.con.prepareStatement("UPDATE PLAYER SET COINS =?  where id = ?");
@@ -264,17 +266,17 @@ Database db;
             stmt.setInt(2, SharedData.playerID);
             /* example override value *///
 
-            stmt.executeUpdate();
-            done = true;
-            onButtonAlert("the Emoji has been added successfully to your store", done);
-            SharedData.con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//            stmt.executeUpdate();
+//            done = true;
+//            onButtonAlert("the Emoji has been added successfully to your store", done);
+//            SharedData.con.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
-    }
+   // }
 
-    void onButtonAlert(String context, boolean done1) {
+  /*  void onButtonAlert(String context, boolean done1) {
 
         Alert alertConfirmation = new Alert(AlertType.CONFIRMATION);
         alertConfirmation.setTitle("Buy Emoji");
@@ -286,7 +288,7 @@ Database db;
             // auto back to  main sreeen 
         }
 
-    }
+    }*/
 
     void showRejectedAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -297,13 +299,13 @@ Database db;
         alert.showAndWait();
     }
 
-    private void getCoins() {
+  /*  private void getCoins() {
         try {
             Class.forName("com.mysql.jdbc.Driver"); // stablish the connection
             SharedData.con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/javaproject", "root", "root");
             stmt = SharedData.con.prepareStatement(" SELECT Coins FROM statistics where id = ? ");
         //    stmt.setInt(1, SharedData.playerID);
-            /* example override value */ stmt.setInt(1, 13);
+            /* example override value *//* stmt.setInt(1, 13);
 
             rs = stmt.executeQuery();
             if (rs.next()) {
@@ -318,6 +320,6 @@ Database db;
             Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }
+    }*/
 
 }
