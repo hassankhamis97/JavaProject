@@ -22,7 +22,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -117,10 +120,9 @@ public class Main extends Application {
         }
         if (myOldRoot instanceof BorderPane) {
             oldRoot = (BorderPane) myOldRoot;
-        }
-//        else if (myOldRoot instanceof StackPane) {
-//            oldRoot = (StackPane) root;
-//        } 
+        } //        else if (myOldRoot instanceof StackPane) {
+        //            oldRoot = (StackPane) root;
+        //        } 
         else if (myOldRoot instanceof AnchorPane) {
             oldRoot = (AnchorPane) myOldRoot;
         }
@@ -196,4 +198,18 @@ public class Main extends Application {
 
     }
 
+    @FXML
+    public void exitApplication(ActionEvent event) {
+        Platform.exit();
+    }
+
+    @Override
+    public void stop() {
+        try {
+
+            SharedData.con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
