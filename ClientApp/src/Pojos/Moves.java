@@ -16,4 +16,9 @@ public class Moves {
     public long delayTimeSec;
     public String moveType;
     public String blockNo;
+
+    public String getMoveType() {
+        return moveType;
+    }
+    
 }
