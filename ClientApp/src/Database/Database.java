@@ -243,7 +243,7 @@ public int getSavedGames(Connection con) {
     }
       
       
-       boolean updatePlayerCoins( boolean done) {
+   public   boolean updatePlayerCoins( boolean done) {
  PreparedStatement stmt;
             ResultSet rs;
             
