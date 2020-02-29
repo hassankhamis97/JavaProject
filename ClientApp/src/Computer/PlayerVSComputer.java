@@ -344,8 +344,8 @@ public class PlayerVSComputer extends GameUI{
                 setPrefHeight(SharedData.nsList.get(0).root.getHeight());
                 setPrefWidth(SharedData.nsList.get(0).root.getWidth());
                 setStyle("-fx-background-color:linear-gradient(#8ad9dc, #409cc7),\n" +
-                "            linear-gradient(#d6e2f9 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),\n" +
-                "            linear-gradient(#c6bef6, #4d94e6);\n" +
+                "  linear-gradient(#d6e2f9 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),\n" +
+                "   linear-gradient(#c6bef6, #4d94e6);\n" +
                 "    -fx-background-size: 100% 100%;");
                 button.setStyle("-fx-background-color:transparent;");
                 button0.setStyle("-fx-background-color:transparent;");
