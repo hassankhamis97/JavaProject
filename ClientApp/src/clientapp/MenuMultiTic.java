@@ -6,6 +6,7 @@
 package clientapp;
 
 import Connect4.Connect4Menu;
+import Database.Database;
 import Main.MainBase;
 import Main.MenuMultiTicUI;
 import Stack.NavigationStack;
@@ -13,6 +14,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,6 +33,7 @@ import javafx.scene.layout.AnchorPane;
 import static javafx.scene.layout.AnchorPane.setRightAnchor;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 
 /**
@@ -43,11 +46,13 @@ public class MenuMultiTic extends MenuMultiTicUI {
     boolean isFriendOpen = false;
     Thread waitForIncomingReqThread;
     boolean threadFinish = false;
+    int count = 0;
+
     public MenuMultiTic() {
         loadCustomDesign();
         //Main.showNewScene(getScene(), "/Main/main.css");
 //        
-NavigationStack nsObj = new NavigationStack();
+        NavigationStack nsObj = new NavigationStack();
         nsObj.root = this;
         nsObj.pageName = "MenuMultiTic";
         nsObj.cssStyle = "/Main/main.css";
@@ -59,82 +64,87 @@ NavigationStack nsObj = new NavigationStack();
             if (isFriendOpen) {
                 setLeft(anchor_friendList);
                 getFriendsOnline();
- 
-                
+
             } else {
                 setLeft(null);
             }
         });
-             
-        btnStore.setOnAction((ActionEvent event)-> {
-              SharedData.nsList.remove(SharedData.nsList.size() - 1);  
-               SharedData.nsList.remove(SharedData.nsList.size() - 1); 
-            new MainMenu();
-            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+
+        backBtn.setOnAction((ActionEvent event) -> {
+
+            Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
+            SharedData.nsList.remove(SharedData.nsList.size() - 1);
+            SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
+            Main.showNewScene(myOldRoot);
         });
-        
+
         try {
-            
+
             dos = new DataOutputStream(SharedData.client.getOutputStream());
         } catch (IOException ex) {
 //            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-           button.setOnAction((ActionEvent event) -> {
+            button.setOnAction((ActionEvent event) -> {
                 new GameStartMultiOffline();
-            });     
+            });
             button1.setOnAction((ActionEvent event) -> {
                 try {
                     dos.writeUTF("tic-random");
+                    if (count > 0) {
+                        runThread();
+                    }
+                    count++;
                     //dos.close();
-//                    new OnlineWait(); // before friends
+                    //    new OnlineWait(); // before friends
 //                    Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size()-2).root);
                 } catch (IOException ex) {
                     Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
-            
+            runThread();
             anchorPane3.getChildren().add(friendOpen_btn);
         }
+
+    }
+
+    private void runThread() {
         waitForIncomingReqThread = new Thread(() -> {
             //while (true) {                
             try {
 //            wait();
-           DataInputStream dis = new DataInputStream(SharedData.client.getInputStream());
-            String s = dis.readUTF();
+                DataInputStream dis = new DataInputStream(SharedData.client.getInputStream());
+                String s = dis.readUTF();
 //                    dis.close();
-            String[] strArr = s.split("-");
-            switch (strArr[0]) {
-                case "Playwith": 
-                    if(Integer.parseInt(strArr[1]) == SharedData.playerID)
-                    {
+                String[] strArr = s.split("-");
+                switch (strArr[0]) {
+                    case "Playwith":
+                        if (Integer.parseInt(strArr[1]) == SharedData.playerID) {
 //                        threadFinish = true;
-                        Platform.runLater(() -> {
-                       new OnlineWait();
-                                    Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);            
+                            Platform.runLater(() -> {
+                                new OnlineWait();
+                                //  Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);            
 
-                        });
-                        
-                    }
-                    else
-                    {
-                        MenuMultiTic.this.showRequestMsg(strArr[1]);
+                            });
+
+                        } else {
+                            MenuMultiTic.this.showRequestMsg(strArr[1]);
 //                        threadFinish = true;
-                        
-                    }
+
+                        }
 //                     wait();
-                     break;
-                case "PlayRandom": 
-                    Platform.runLater(() -> {
-                      new OnlineWait();
-                          Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);            
+                        break;
+                    case "PlayRandom":
+                        Platform.runLater(() -> {
+                            new OnlineWait();
+                            //    Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);            
 
                         });
-                    break;
-                
+                        break;
+
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (IOException ex) {
-            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-        } 
 
             //}
         });
@@ -143,30 +153,11 @@ NavigationStack nsObj = new NavigationStack();
 
     private void getFriendsOnline() {
         try {
-            SharedData.con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/javaproject", "root", "root");
-            PreparedStatement stmt = SharedData.con.prepareStatement("SELECT p.Name , p.IsRequest \n"
-                    + ",case\n"
-                    + "when f1.player1ID = ? then f1.player2ID\n"
-                    + "when f1.player2ID = ? then f1.player1ID \n"
-                    + "when f2.player1ID = ? then f2.player2ID\n"
-                    + "when f2.player2ID = ? then f2.player1ID\n"
-                    + "else null end as ID\n"
-                    + " FROM player p\n"
-                    + " left join friend f1\n"
-                    + " on p.ID = f1.player1ID\n"
-                    + " left join friend f2\n"
-                    + " on p.ID = f2.player2ID\n"
-                    + " where p.IsOnline = ? and p.ID <> ? and \n"
-                    + " (f1.player1ID = ? OR f1.player2ID = ? OR f2.player1ID = ? OR f2.player2ID = ?);");
-            for (int i = 1; i <= 10; i++) {
-                if (i != 5) {
-                    stmt.setInt(i, SharedData.playerID);
-                } else {
-                    stmt.setInt(i, 1);
-                }
-            }
+            Database db = new Database();
+            Connection con = db.openConnection();
             //stmt.setInt(2, SharedData.playerID);
-            ResultSet rs = stmt.executeQuery();
+            ResultSet rs = db.getOnlineFriends(con);
+            db.closeConnection(con);
 //            int count = 0;
             while (rs.next() == true) {
                 String playerOnlineID = rs.getString("ID");
@@ -235,8 +226,7 @@ NavigationStack nsObj = new NavigationStack();
                     int player2ID = Integer.parseInt(stArr[1]);
                     try {
                         dos.writeUTF("tic-" + player2ID);
-                        
-                        
+
                     } catch (IOException ex) {
                         Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -277,13 +267,13 @@ NavigationStack nsObj = new NavigationStack();
             requestHead_anchor.setId("requestHead_anchor");
             requestHead_anchor.setPrefHeight(480.0);
             requestHead_anchor.setPrefWidth(157.0);
-            
+
             requestMsg_anchor.setId("requestMsg_anchor");
             requestMsg_anchor.setLayoutX(-2.0);
             requestMsg_anchor.setLayoutY(96.0);
             requestMsg_anchor.setPrefHeight(95.0);
             requestMsg_anchor.setPrefWidth(151.0);
-            
+
             Msg_Lbl.setAlignment(javafx.geometry.Pos.CENTER);
             Msg_Lbl.setId("Msg_Lbl");
             Msg_Lbl.setLayoutX(-1.0);
@@ -292,7 +282,7 @@ NavigationStack nsObj = new NavigationStack();
             Msg_Lbl.setPrefWidth(151.0);
             Msg_Lbl.setText("Player " + playerName + " wants to play with you?");
             Msg_Lbl.setFont(new Font(14.0));
-            
+
             okRequest_btn.setId("okRequest_btn");
             okRequest_btn.setLayoutX(0.0);
             okRequest_btn.setLayoutY(66.0);
@@ -306,7 +296,7 @@ NavigationStack nsObj = new NavigationStack();
                     MenuMultiTic.this.dos.writeUTF("OK-RequestAnswer");
                     Platform.runLater(() -> {
                         new OnlineWait();
-                        });
+                    });
 //                        PreparedStatement stmt = SharedData.con.prepareStatement("update requests \n"
 //                                + "set Status = 1,\n"
 //                                + "RequestedPlayerID = 2\n"
@@ -342,7 +332,7 @@ NavigationStack nsObj = new NavigationStack();
                 }
             });
             MenuMultiTic.this.setRight(requestHead_anchor);
-            
+
             requestMsg_anchor.getChildren().add(Msg_Lbl);
             requestMsg_anchor.getChildren().add(okRequest_btn);
             requestMsg_anchor.getChildren().add(noRequest_btn);
@@ -351,7 +341,7 @@ NavigationStack nsObj = new NavigationStack();
     }
 
     synchronized private void threadFn() {
-        
+
     }
 
     private void loadCustomDesign() {
@@ -360,10 +350,10 @@ NavigationStack nsObj = new NavigationStack();
             public void run() {
                 setPrefHeight(SharedData.nsList.get(0).root.getHeight());
                 setPrefWidth(SharedData.nsList.get(0).root.getWidth());
-                setStyle("-fx-background-color:linear-gradient(#8ad9dc, #409cc7),\n" +
-"            linear-gradient(#d6e2f9 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),\n" +
-"            linear-gradient(#c6bef6, #4d94e6);\n" +
-"    -fx-background-size: 100% 100%;");
+                setStyle("-fx-background-color:linear-gradient(#8ad9dc, #409cc7),\n"
+                        + "            linear-gradient(#d6e2f9 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),\n"
+                        + "            linear-gradient(#c6bef6, #4d94e6);\n"
+                        + "    -fx-background-size: 100% 100%;");
                 button.setStyle("-background-color:\n"
                         + "            #ffffff,\n"
                         + "            rgba(0,0,0,0.05),\n"
@@ -396,9 +386,9 @@ NavigationStack nsObj = new NavigationStack();
                         + "    -fx-font-size: 18px;\n"
                         + "    -fx-text-fill: #311c09;\n"
                         + "    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);");
-                
+
                 flow_parent_friendList.setStyle("-fx-background-color:#ddd;");
-                
+
             }
         });
     }

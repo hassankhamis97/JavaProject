@@ -5,9 +5,11 @@
  */
 package clientapp;
 
+import Database.Database;
 import Main.MainBase;
 import Stack.NavigationStack;
 import Store.StoreUI;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,6 +26,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 /**
  *
@@ -37,9 +40,9 @@ public class Store extends StoreUI {
     boolean done = false;
     PreparedStatement stmt;
     ResultSet rs;
-
+Database db;
     public Store() {
-
+      db = new Database();
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -75,7 +78,7 @@ public class Store extends StoreUI {
         nsObj.cssStyle = "/Store/store.css";
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
-        Main.showNewScene(this);
+     
         loadStore();
        
 
@@ -179,19 +182,23 @@ public class Store extends StoreUI {
 
         goBack.setOnMouseClicked((MouseEvent event) -> {
             System.out.println("back ------> ");
-            SharedData.nsList.remove(SharedData.nsList.size() - 1);
-          //  new MainMenu();
-            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+             Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
+                SharedData.nsList.remove(SharedData.nsList.size() - 1);
+                SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
+                Main.showNewScene(myOldRoot);
         });
 
     }//end
 
     private void buyEmoji(boolean high_price, String emojiName) {
-
+ Connection con = db.openConnection();
         if (high_price && myCoins >= 15 ) {
             myCoins -= 15;
-            addNewEmoji(emojiName);
-            updatePlayerCoins();
+           
+          
+          db.addNewEmoji( con,emojiName , SharedData.playerID);
+          ///  updatePlayerCoins();
+          db.updatePlayerCoins(done);
 //           try {
 //               stmt = SharedData.con.prepareStatement("INSERT INTO statistics (ID,COINS) VALUES(?,?) Player where id = ?");
 //               stmt.setInt(1, SharedData.playerID);
@@ -206,7 +213,7 @@ public class Store extends StoreUI {
 //           }
         } else if ( !(high_price) &&  myCoins >= 5) {
             myCoins -= 5;
-            addNewEmoji(emojiName);
+       //*****     addNewEmoji(emojiName);
             updatePlayerCoins();
 //           try {
 //               stmt = SharedData.con.prepareStatement("INSERT INTO statistics (ID,COINS) VALUES(?,?) Player where id = ?");
@@ -219,19 +226,24 @@ public class Store extends StoreUI {
 //           } catch (SQLException ex) {
 //               Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
 //           }
+
+
+                 
         } else {
 
             done = false;
             onButtonAlert("Sorry you dont have enough Coins", done);
         }
+        
+        db.closeConnection(con);
 
     }//end of function
 
-    void addNewEmoji(String emojiName) {
+  /*  void addNewEmoji(String emojiName) {
         try {                                           //create player_Emoji table in your database
             stmt = SharedData.con.prepareStatement("INSERT INTO player-Emoji  (ID,emojiName) VALUES(?,?) Player where id = ?");
             stmt.setInt(1, SharedData.playerID);
-            /* example override value *///
+         
             stmt.setString(2, emojiName);
  done = true;
             stmt.executeUpdate();
@@ -241,8 +253,9 @@ public class Store extends StoreUI {
         } catch (SQLException ex) {
             Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }*/
 
+    
     void updatePlayerCoins() {
 
         try {

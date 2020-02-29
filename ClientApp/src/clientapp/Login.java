@@ -5,6 +5,7 @@
  */
 package clientapp;
 
+import Database.Database;
 import Main.MainBase;
 import SignIn.LoginUI;
 import SignUp.SignUpUI;
@@ -31,8 +32,9 @@ import javafx.event.EventHandler;
 public class Login extends LoginUI {
     //Connection con;
 
-    ResultSet rs;
-    PreparedStatement stmt;
+    Database db;
+    Connection con;
+
 
     /*FlowPane flow;
         Button login_btn;
@@ -41,6 +43,7 @@ public class Login extends LoginUI {
         Scene loginScene;
         Label label;*/
     public Login() {
+        db = new Database();
         //LoginUI lui = new LoginUI();
 
         //label.
@@ -58,7 +61,7 @@ public class Login extends LoginUI {
             @Override
             public void handle(ActionEvent event) {
                 new SignUp();
-                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size()-2).root);
+                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
             }
         });
         login_btn.setOnAction(new EventHandler<ActionEvent>() {
@@ -72,19 +75,18 @@ public class Login extends LoginUI {
 //
 //        email_txt.setText("hassankhamis97@hotmail.com");
 //                pass_txt.setText("asd123M@");
-
                 email_txt.setText("ccc@ccc.com");
 //                email_txt.setText("bbb@bbb.com");
 //                email_txt.setText("aaa@aaa.com");
 
 //                                email_txt.setText("hassankhamis97@hotmail.com");
                 pass_txt.setText("123456aA&");
-
+                
                 if (!email_txt.getText().isEmpty() && !pass_txt.getText().isEmpty()) {
                     if (!Pattern.matches("^[a-z0-9]+(_{1}|.{1})+[a-z0-9]{1,}@{1}[a-z]{2,}[.][a-z]{2,5}$", email_txt.getText())) {
                         emailValid = false;
                         System.out.println("Please Enter valid email ex: java@java.com");
-
+                        
                     }
                     if (!Pattern.matches("^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*_-])[a-zA-Z0-9!@#$%^&*_-]{6,12}$", pass_txt.getText())) {
                         passValid = false;
@@ -95,60 +97,17 @@ public class Login extends LoginUI {
                         }
                     }
                     if (emailValid && passValid) {
-                        ///// Check for The DB Jar File Included
-                        ClassLoader cl = ClassLoader.getSystemClassLoader();
-                        URL[] urls = ((URLClassLoader) cl).getURLs();
-                        String urlStr = "";
-                        for (int i = 0; i < urls.length; i++) {
-                            urlStr += urls[i].getFile() + "\n";
+                       
+                        con = db.openConnection();
+                        db.getPlayerID(con, email_txt.getText(), pass_txt.getText());
+                        db.closeConnection(con);
+                        if (SharedData.playerID > 0) {
+                            connectTOServer();
+                        } else {
+                            
+                            System.out.println("email or password donot match any thing in database");
                         }
-                        System.out.println("Classpath:\n" + urlStr);
-                        //// end of Check for The DB Jar File Included
-
-                        try {
-
-                            Class.forName("com.mysql.jdbc.Driver"); // stablish the connection
-                        } catch (ClassNotFoundException ex) {
-                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        try {
-//                                                        SharedData.con = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7320143", "sql7320143", "LS4CgdqGST");
-                            SharedData.con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/javaproject", "root", "root");
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        try {
-                            //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sql7320143", "root", "root"); // local
-                            stmt = SharedData.con.prepareStatement("SELECT ID FROM Player where Email = ? and Password = ?");
-                            stmt.setString(1, email_txt.getText());
-                            stmt.setString(2, pass_txt.getText());
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-
-                        try {
-                            rs = stmt.executeQuery();
-
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        try {
-                            if (rs.first() == true) {
-                                SharedData.playerID = rs.getInt("ID");
-                                connectTOServer();
-                                
-                                //new BeforeConnectTheGame();
-//                                new SignUp();
-//                                new MainMenu();
-//                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
-
-                            } else {
-                                System.out.println("email or password donot match any thing in database");
-                            }
-                            SharedData.con.close();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                        
                     }
                 } else {
                     if (email_txt.getText().isEmpty()) {
@@ -159,9 +118,9 @@ public class Login extends LoginUI {
                     }
                 }
                 new MainMenu();
-                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size()-2).root);
+                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
             }
-         
+            
         });
 
 //                Main.showNewScene(getScene(),"/SignIn/login.css");
@@ -176,23 +135,18 @@ public class Login extends LoginUI {
         /*stage.setScene(scene);
                 stage.show();*/
     }
-
+    
     void connectTOServer() {
         try {
             int port;
-            SharedData.client = new Socket("127.0.0.1", 5000);
-            
+            SharedData.client = new Socket("192.168.1.6", 5000);
+            con = db.openConnection();
             port = SharedData.client.getLocalPort();
             
-            SharedData.con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/javaproject", "root", "root");
-            PreparedStatement stmt = SharedData.con.prepareStatement("update player set PortID = ? where ID = ?");
-            stmt.setInt(1, port);
-            stmt.setInt(2, SharedData.playerID);
-            stmt.executeUpdate();
+            db.updatePortID(con, port);
+            db.closeConnection(con);
             
         } catch (IOException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
