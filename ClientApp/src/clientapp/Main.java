@@ -184,11 +184,6 @@ public class Main extends Application {
 
     }
 
-    @FXML
-    public void exitApplication(ActionEvent event) {
-        Platform.exit();
-    }
-
     @Override
     public void stop() {
         try {
