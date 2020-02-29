@@ -30,7 +30,7 @@ public class Database {
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://192.168.1.6:3306/javaproject", "root", "root");
+            con = DriverManager.getConnection("jdbc:mysql://192.168.1.10:3306/javaproject", "root", "root");
         } catch (ClassNotFoundException ex) {
             con = null;
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -49,7 +49,6 @@ public class Database {
         }
     }
 
-
     public void updatePortID(Connection con, int port) {
 
         try {
@@ -61,11 +60,11 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public ResultSet getOnlineFriends(Connection con)
-    {
+
+    public ResultSet getOnlineFriends(Connection con) {
         ResultSet rs;
         try {
-        PreparedStatement stmt = SharedData.con.prepareStatement("SELECT p.Name , p.IsRequest \n"
+            PreparedStatement stmt = SharedData.con.prepareStatement("SELECT p.Name , p.IsRequest \n"
                     + ",case\n"
                     + "when f1.player1ID = ? then f1.player2ID\n"
                     + "when f1.player2ID = ? then f1.player1ID \n"
@@ -93,9 +92,9 @@ public class Database {
         }
         return rs;
     }
-public int getSavedGames(Connection con) {
 
- 
+    public int getSavedGames(Connection con) {
+
         ArrayList<SavedGame> savedGamesLst = new ArrayList<>();
 
         int playerID = 0;
@@ -123,8 +122,6 @@ public int getSavedGames(Connection con) {
 //                    playerID = rs.getInt("ID");
 //                    
 //                }
-
-
                 SavedGame saveGameObj = null;
                 int oldID = 0;
                 int currentID = rs.getInt("gm.GameID");
@@ -138,7 +135,7 @@ public int getSavedGames(Connection con) {
                     saveGameObj.player2ID = rs.getInt("Player2ID");
                     saveGameObj.player2Name = rs.getString("Player2Name");
                     saveGameObj.player2Image = rs.getString("Player2Photo");
-                    
+
                 }
                 Moves moveObj = new Moves();
                 moveObj.playerID = rs.getInt("gm.PlayerID");
@@ -147,7 +144,6 @@ public int getSavedGames(Connection con) {
                 moveObj.moveType = rs.getString("gm.MoveType");
                 saveGameObj.moveLst.add(moveObj);
                 savedGamesLst.add(saveGameObj);
-                
 
             }
             con.close();
@@ -174,61 +170,51 @@ public int getSavedGames(Connection con) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-     public  boolean addNewEmoji(Connection con, String emojiName , int player_Id){
-         boolean done = false ;
-             try {     
-                 
-                  PreparedStatement stmt;
+
+    public boolean addNewEmoji(Connection con, String emojiName) {
+        boolean done = false;
+        try {
+            PreparedStatement stmt;
             ResultSet rs;
-         
+
 //create player_Emoji table in your database
-            stmt = con.prepareStatement("INSERT INTO player-Emoji  (ID,emojiName) VALUES(?,?) Player where id = ?");
+                stmt = con.prepareStatement("INSERT INTO player_emoji (Player_ID,Emoji_ID) VALUES(?,?)");
             stmt.setInt(1, SharedData.playerID);
-            /* example override value *///
             stmt.setString(2, emojiName);
-             done = true;
+         
+            done = true;
             stmt.executeUpdate();
-           
-        
+
             onButtonAlert("the Emoji has been added successfully to your store", done);
         } catch (SQLException ex) {
             Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
         }
-             return done;
+        return done;
     }
-     
-     
-       private void getCoins() {
-           
-              PreparedStatement stmt;
-            ResultSet rs;
-        try {
-            Class.forName("com.mysql.jdbc.Driver"); // stablish the connection
-            SharedData.con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/javaproject", "root", "root");
-            stmt = SharedData.con.prepareStatement(" SELECT Coins FROM statistics where id = ? ");
-        //    stmt.setInt(1, SharedData.playerID);
-            /* example override value */ stmt.setInt(1, 13);
 
+    public void getCoins(Connection con) {
+
+        PreparedStatement stmt;
+        ResultSet rs;
+
+        try {
+
+            stmt = con.prepareStatement(" SELECT Coins FROM statistics  where ID =(select StatID from player where ID =?)");
+            stmt.setInt(1, SharedData.playerID);
             rs = stmt.executeQuery();
             if (rs.next()) {
                 SharedData.Coins = rs.getInt(1);
-               // coinsText.setText("" + myCoins);
-                System.out.println("my coins --> " +   SharedData.Coins );
+                // coinsText.setText("" + myCoins);
+                System.out.println("my coins --> " + SharedData.Coins);
             }
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-     
-     
-     
-      void onButtonAlert(String context, boolean done1) {
+
+    public void onButtonAlert(String context, boolean done1) {
 
         Alert alertConfirmation = new Alert(Alert.AlertType.CONFIRMATION);
         alertConfirmation.setTitle("Buy Emoji");
@@ -241,14 +227,13 @@ public int getSavedGames(Connection con) {
         }
 
     }
-      
-      
-   public   boolean updatePlayerCoins( boolean done) {
- PreparedStatement stmt;
-            ResultSet rs;
-            
+
+    public boolean updatePlayerCoins( Connection con,boolean done) {
+        PreparedStatement stmt;
+        ResultSet rs;
+
         try {
-            stmt = SharedData.con.prepareStatement("UPDATE PLAYER SET COINS =?  where id = ?");
+            stmt = con.prepareStatement("UPDATE statistics  SET Coins =?  where ID =(select StatID from player where ID =?");
             stmt.setInt(1, SharedData.Coins);
             stmt.setInt(2, SharedData.playerID);
             /* example override value *///
@@ -260,7 +245,7 @@ public int getSavedGames(Connection con) {
         } catch (SQLException ex) {
             Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return done;
+        return done;
     }
-      
+
 }

@@ -160,6 +160,12 @@ public class MainMenu extends MainBase {
             
         });
         
+        savedGames.setOnAction((event) -> {
+             new SignUp();
+                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+        });
+        
+        
         try {
             
             dos = new DataOutputStream(SharedData.client.getOutputStream());
