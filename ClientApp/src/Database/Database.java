@@ -47,8 +47,7 @@ public class Database {
     int getSavedGames(Connection con) {
         int playerID = 0;
         try {
-            PreparedStatement stmt = con.prepareStatement("USE javaproject;\n"
-                    + "select gm.GameID,gm.PlayerID,gm.TimeToPlay,gm.MoveType,gm.CellNo, \n"
+            PreparedStatement stmt = con.prepareStatement("select gm.GameID,gm.PlayerID,gm.TimeToPlay,gm.MoveType,gm.CellNo, \n"
                     + "p1.ID AS Player1ID, p1.Name AS Player1Name,p1.Photo AS Player1Photo,\n"
                     + "p2.ID AS Player2ID ,p2.Name AS Player2Name ,p2.Photo AS Player2Photo\n"
                     + "from gamemove gm\n"
