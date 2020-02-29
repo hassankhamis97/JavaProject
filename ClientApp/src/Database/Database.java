@@ -5,6 +5,8 @@
  */
 package Database;
 
+import Pojos.Moves;
+import Pojos.SavedGame;
 import clientapp.SharedData;
 import clientapp.Store;
 import java.sql.Connection;
@@ -12,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Alert;
@@ -45,6 +48,7 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
     public void updatePortID(Connection con, int port) {
 
@@ -90,6 +94,10 @@ public class Database {
         return rs;
     }
 public int getSavedGames(Connection con) {
+
+ 
+        ArrayList<SavedGame> savedGamesLst = new ArrayList<>();
+
         int playerID = 0;
         try {
             PreparedStatement stmt = con.prepareStatement("select gm.GameID,gm.PlayerID,gm.TimeToPlay,gm.MoveType,gm.CellNo, \n"
@@ -108,12 +116,38 @@ public int getSavedGames(Connection con) {
             ResultSet rs;
             rs = stmt.executeQuery();
             while (rs.next()) {
+
 //                while(rs.getInt("ID"))
 //                {
 //                    playerID = rs.getInt("ID");
 //                    playerID = rs.getInt("ID");
 //                    
 //                }
+
+
+                SavedGame saveGameObj = null;
+                int oldID = 0;
+                int currentID = rs.getInt("gm.GameID");
+                if (currentID != oldID) {
+                    oldID = rs.getInt("gm.GameID");
+                    saveGameObj = new SavedGame();
+                    saveGameObj.id = rs.getInt("gm.GameID");
+                    saveGameObj.player1ID = rs.getInt("Player1ID");
+                    saveGameObj.player1Name = rs.getString("Player1Name");
+                    saveGameObj.player1Image = rs.getString("Player1Photo");
+                    saveGameObj.player2ID = rs.getInt("Player2ID");
+                    saveGameObj.player2Name = rs.getString("Player2Name");
+                    saveGameObj.player2Image = rs.getString("Player2Photo");
+                    
+                }
+                Moves moveObj = new Moves();
+                moveObj.playerID = rs.getInt("gm.PlayerID");
+                moveObj.delayTimeSec = rs.getLong("gm.TimeToPlay");
+                moveObj.blockNo = rs.getString("gm.CellNo");
+                moveObj.moveType = rs.getString("gm.MoveType");
+                saveGameObj.moveLst.add(moveObj);
+                savedGamesLst.add(saveGameObj);
+                
 
             }
             con.close();
