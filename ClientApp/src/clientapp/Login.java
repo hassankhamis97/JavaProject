@@ -21,20 +21,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Orientation;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.effect.Glow;
-import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
 
 /**
  *
@@ -78,9 +66,11 @@ public class Login extends LoginUI {
             public void handle(ActionEvent t) {
                 boolean emailValid = true;
                 boolean passValid = true;
-                email_txt.setText("aaa@aaa.com");
-//                                email_txt.setText("hassankhamis97@hotmail.com");
-                pass_txt.setText("123456aA&");
+//                email_txt.setText("mahmoud93@gmail.com");
+////              '
+//
+//        email_txt.setText("hassankhamis97@hotmail.com");
+//                pass_txt.setText("asd123M@");
                 if (!email_txt.getText().isEmpty() && !pass_txt.getText().isEmpty()) {
                     if (!Pattern.matches("^[a-z0-9]+(_{1}|.{1})+[a-z0-9]{1,}@{1}[a-z]{2,}[.][a-z]{2,5}$", email_txt.getText())) {
                         emailValid = false;

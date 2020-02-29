@@ -5,44 +5,22 @@
  */
 package clientapp;
 
-import Main.MainBase;
 import Stack.NavigationStack;
-import java.awt.Rectangle;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 /**
@@ -87,9 +65,10 @@ public class Main extends Application {
         //Scene scene = new Login().showPage();
         //showNewScene(scene);
         new Login();
+     
 //       new MainMenu();
 
-    }
+   }
 
 //    public static void showNewScene(Scene scene, String cssFile) {
 ////            getCSS(scene);
@@ -106,7 +85,7 @@ public class Main extends Application {
     public static void showNewScene(Pane myOldRoot) {
 
         NavigationStack ns = SharedData.nsList.get(SharedData.nsList.size() - 1);
-
+       
         Pane root = SharedData.nsList.stream().filter(f -> f.pageName == ns.pageName).map(m -> m.root).findFirst().get();
         if (root instanceof BorderPane) {
             newRoot = (BorderPane) root;
@@ -166,7 +145,7 @@ public class Main extends Application {
 //                        SharedData.nsList.get(SharedData.nsList.size() - 1).root.gifImage.setFitHeight(SharedData.nsList.get(0).root.getHeight());
 //                    }
                 }
-            });
+            });         
 
 //            
 //            System.out.println("Height: " + myStage.getHeight() + " Width: " + myStage.getWidth());

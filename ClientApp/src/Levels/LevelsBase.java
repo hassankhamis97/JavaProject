@@ -1,44 +1,42 @@
-package OnlineWaiting;
+package Levels;
 
 import java.lang.*;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 
-public class OnlineWaitUI extends BorderPane {
+public abstract class LevelsBase extends BorderPane {
 
-    Scene currentScene;
     protected final AnchorPane anchorPane;
     protected final BorderPane borderPane;
     protected final AnchorPane anchorPane0;
-    protected final ImageView imageView;
-    protected final ImageView imageView0;
     protected final Label label;
-    protected final Label label0;
-    protected final Button cancel;
+    protected final Button button;
+    protected final Button button0;
+    protected final Button button1;
     protected final AnchorPane anchorPane1;
     protected final AnchorPane anchorPane2;
     protected final AnchorPane anchorPane3;
+    protected final Button back;
 
-    public OnlineWaitUI() {
+    public LevelsBase() {
+
         anchorPane = new AnchorPane();
         borderPane = new BorderPane();
         anchorPane0 = new AnchorPane();
-        imageView = new ImageView();
-        imageView0 = new ImageView();
         label = new Label();
-        label0 = new Label();
-        cancel = new Button();
+        button = new Button();
+        button0 = new Button();
+        button1 = new Button();
         anchorPane1 = new AnchorPane();
         anchorPane2 = new AnchorPane();
         anchorPane3 = new AnchorPane();
+        back = new Button();
 
         setMaxHeight(USE_PREF_SIZE);
         setMaxWidth(USE_PREF_SIZE);
@@ -46,7 +44,6 @@ public class OnlineWaitUI extends BorderPane {
         setMinWidth(USE_PREF_SIZE);
         setPrefHeight(400.0);
         setPrefWidth(600.0);
-        setId("pane");
 
         BorderPane.setAlignment(anchorPane, javafx.geometry.Pos.CENTER);
         anchorPane.setPrefHeight(90.0);
@@ -63,40 +60,45 @@ public class OnlineWaitUI extends BorderPane {
         anchorPane0.setPrefHeight(200.0);
         anchorPane0.setPrefWidth(200.0);
 
-        imageView.setFitHeight(86.99990000000253);
-        imageView.setFitWidth(102.0);
-        imageView.setId("pic-user-1.png");
-        imageView.setLayoutX(5.0);
-        imageView.setLayoutY(7.0);
-        imageView.setImage(new Image(OnlineWaitUI.class.getResource("pic-user-1.png").toExternalForm()));
-        // imageView.setImage(new Image(getClass().getResource("Style/pic-user-1.png").toExternalForm()));
+        label.setId("level");
+        label.setLayoutX(51.0);
+        label.setLayoutY(-55.0);
+        label.setPrefHeight(94.0);
+        label.setPrefWidth(225.0);
+        label.setText("Levels");
+        label.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        label.setTextFill(javafx.scene.paint.Color.valueOf("#dfdfdf"));
+        label.setFont(new Font("System Bold Italic", 70.0));
 
-        imageView0.setFitHeight(86.999892370608);
-        imageView0.setFitWidth(119.0);
-        imageView0.setId("wait-user.png");
-        imageView0.setLayoutX(184.0);
-        imageView0.setLayoutY(7.0);
-        imageView0.setImage(new Image(OnlineWaitUI.class.getResource("wait-user.png").toExternalForm()));
-        //  imageView0.setImage(new Image(getClass().getResource("Style/wait-user.png").toExternalForm()));
+        button.setLayoutX(-33.0);
+        button.setLayoutY(77.0);
+        button.setMnemonicParsing(false);
+        button.setPrefHeight(52.0);
+        button.setPrefWidth(366.0);
+        button.setText("Easy");
+        button.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        button.setFont(new Font(20.0));
 
-        label.setLayoutX(135.0);
-        label.setLayoutY(32.0);
-        label.setText("VS");
-        label.setFont(new Font("System Bold Italic", 33.0));
+      //  button0.setFont(javafx.scene.text.Font.$x1);
+        button0.setLayoutX(-33.0);
+        button0.setLayoutY(153.0);
+        button0.setMnemonicParsing(false);
+        button0.setPrefHeight(55.0);
+        button0.setPrefWidth(366.0);
+        button0.setText("Medium");
+        button0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
 
-        // label0.setFont(javafx.scene.text.Font.$x1);
-        label0.setFont(new Font("System Bold Italic", 33.0));
-        label0.setLayoutX(0.0);
-        label0.setLayoutY(132.0);
-        label0.setText("Searching for player");
-
-        cancel.setLayoutX(100.0);
-        cancel.setLayoutY(207.0);
-        cancel.setMnemonicParsing(false);
-        cancel.setPrefHeight(27.0);
-        cancel.setPrefWidth(84.0);
-        cancel.setText("Cancel");
-        cancel.setId("btn");
+        button1.setDisable(false);
+        button1.setFocusTraversable(true);
+      //  button1.setFont(javafx.scene.text.Font.$x1);
+        button1.setLayoutX(-33.0);
+        button1.setLayoutY(231.0);
+        button1.setMnemonicParsing(false);
+        button1.setPrefHeight(55.0);
+        button1.setPrefWidth(366.0);
+        button1.setText("Hard");
+        button1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        button1.setVisible(true);
         borderPane.setCenter(anchorPane0);
         setCenter(borderPane);
 
@@ -113,22 +115,19 @@ public class OnlineWaitUI extends BorderPane {
         BorderPane.setAlignment(anchorPane3, javafx.geometry.Pos.CENTER);
         anchorPane3.setPrefHeight(52.0);
         anchorPane3.setPrefWidth(600.0);
+
+        back.setLayoutX(14.0);
+        back.setLayoutY(38.0);
+        back.setMnemonicParsing(false);
+        back.setText("Back");
+        back.setTextFill(javafx.scene.paint.Color.valueOf("#202020"));
         setTop(anchorPane3);
 
-        anchorPane0.getChildren().add(imageView);
-        anchorPane0.getChildren().add(imageView0);
         anchorPane0.getChildren().add(label);
-        anchorPane0.getChildren().add(label0);
-        anchorPane0.getChildren().add(cancel);
-        currentScene = new Scene(this);
-    }
+        anchorPane0.getChildren().add(button);
+        anchorPane0.getChildren().add(button0);
+        anchorPane0.getChildren().add(button1);
+        anchorPane3.getChildren().add(back);
 
-    BorderPane getParentNode() {
-        return this;
-    }
-
-    Scene retScene() {
-
-        return currentScene;
     }
 }

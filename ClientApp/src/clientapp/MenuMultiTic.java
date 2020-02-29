@@ -26,6 +26,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import static javafx.scene.layout.AnchorPane.setRightAnchor;
 import javafx.scene.layout.BorderPane;
@@ -41,7 +42,7 @@ public class MenuMultiTic extends MenuMultiTicUI {
     DataOutputStream dos;
     boolean isFriendOpen = false;
     Thread waitForIncomingReqThread;
-boolean threadFinish = false;
+    boolean threadFinish = false;
     public MenuMultiTic() {
         loadCustomDesign();
         //Main.showNewScene(getScene(), "/Main/main.css");
@@ -58,21 +59,29 @@ NavigationStack nsObj = new NavigationStack();
             if (isFriendOpen) {
                 setLeft(anchor_friendList);
                 getFriendsOnline();
+ 
                 
-
             } else {
                 setLeft(null);
             }
         });
+             
+        btnStore.setOnAction((ActionEvent event)-> {
+              SharedData.nsList.remove(SharedData.nsList.size() - 1);  
+               SharedData.nsList.remove(SharedData.nsList.size() - 1); 
+            new MainMenu();
+            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+        });
+        
         try {
             
             dos = new DataOutputStream(SharedData.client.getOutputStream());
         } catch (IOException ex) {
 //            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            button.setOnAction((ActionEvent event) -> {
+           button.setOnAction((ActionEvent event) -> {
                 new GameStartMultiOffline();
-            });
+            });     
             button1.setOnAction((ActionEvent event) -> {
                 try {
                     dos.writeUTF("tic-random");
@@ -100,7 +109,9 @@ NavigationStack nsObj = new NavigationStack();
                     {
 //                        threadFinish = true;
                         Platform.runLater(() -> {
-                        new OnlineWait();
+                       new OnlineWait();
+                                    Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);            
+
                         });
                         
                     }
@@ -114,7 +125,9 @@ NavigationStack nsObj = new NavigationStack();
                      break;
                 case "PlayRandom": 
                     Platform.runLater(() -> {
-                        new OnlineWait();
+                      new OnlineWait();
+                          Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);            
+
                         });
                     break;
                 
@@ -385,7 +398,7 @@ NavigationStack nsObj = new NavigationStack();
                         + "    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);");
                 
                 flow_parent_friendList.setStyle("-fx-background-color:#ddd;");
-
+                
             }
         });
     }

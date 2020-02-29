@@ -156,7 +156,7 @@ public  class LoginUI extends StackPane {
         anchorPane0.getChildren().add(login_btn);
         anchorPane0.getChildren().add(btnReg);
         anchorPane3.getChildren().add(imageView1);
-        getChildren().add(borderPane);
+            getChildren().add(borderPane);
                 currentScene = new Scene(this);
 
 

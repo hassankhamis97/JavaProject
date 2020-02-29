@@ -219,8 +219,8 @@ friendOpen_btn = new Button();
         btnStore.setMnemonicParsing(false);
         btnStore.setPrefHeight(39.0);
         btnStore.setPrefWidth(47.0);
-        btnStore.setText("");
-        btnStore.setVisible(false);
+        btnStore.setText("Back");
+//        btnStore.setVisible(true);
 
         AnchorPane.setLeftAnchor(imageView0, 20.0);
         AnchorPane.setTopAnchor(imageView0, 12.0);
@@ -284,8 +284,9 @@ friendOpen_btn.setLayoutX(90.0);
         anchorPane0.getChildren().add(button1);
         
         anchorPane0.getChildren().add(imageView);
+                //anchorPane3.getChildren().add(imageView0);
+
         anchorPane3.getChildren().add(btnStore);
-        anchorPane3.getChildren().add(imageView0);
         anchorPane3.getChildren().add(btnSetting);
         anchorPane3.getChildren().add(imageView1);
         anchorPane3.getChildren().add(btnHelp);

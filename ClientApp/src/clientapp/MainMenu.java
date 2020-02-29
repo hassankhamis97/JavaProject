@@ -37,12 +37,12 @@ import javafx.scene.text.Font;
  * @author Hassan Khamis
  */
 public class MainMenu extends MainBase {
-
+    
     DataOutputStream dos;
     boolean isFriendOpen = false;
     Thread waitForIncomingReqThread;
     boolean threadFinish = false;
-
+    
     public MainMenu() {
 //        Main.showNewScene(getScene(), "/Main/main.css");
 
@@ -52,9 +52,16 @@ public class MainMenu extends MainBase {
         nsObj.cssStyle = "/Main/main.css";
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
-        Platform.runLater(new Runnable() {
+        
+        btnStore.setOnAction((ActionEvent event) -> {
+            new Store();
+            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);            
+        });
+        
+        Platform.runLater(new Runnable() {      
             @Override
             public void run() {
+                btnStore.setStyle("-fx-background-color:transparent;");
                 setPrefHeight(SharedData.nsList.get(0).root.getHeight());
                 setPrefWidth(SharedData.nsList.get(0).root.getWidth());
                 setStyle("-fx-background-color:linear-gradient(#8ad9dc, #409cc7),\n"
@@ -126,7 +133,6 @@ public class MainMenu extends MainBase {
                         + "    -fx-text-fill: #311c09;\n"
                         + "    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);");
                 flow_parent_friendList.setStyle("-fx-background-color:#ddd;");
-
             }
         });
 //      Main.showNewScene(SharedData.);
@@ -140,32 +146,32 @@ public class MainMenu extends MainBase {
                 setLeft(null);
             }
         });
-
+        
         onePlayer.setOnAction((ActionEvent event) -> {
-
+            
         });
-
+        
         twoPlayer.setOnAction((ActionEvent event) -> {
-
+            
         });
-
+        
         moreGames.setOnAction((ActionEvent event) -> {
-
+            
         });
-
+        
         try {
-
+            
             dos = new DataOutputStream(SharedData.client.getOutputStream());
         } catch (IOException ex) {
 //            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             twoPlayer.setOnAction((ActionEvent event) -> {
                 new MenuMultiTic();
-                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size()-2).root);
+                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
             });
             moreGames.setOnAction((ActionEvent event) -> {
                 new MoreGamesMenu();
-                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size()-2).root);
+                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
             });
             anchorPane3.getChildren().add(friendOpen_btn);
         }
@@ -205,6 +211,5 @@ public class MainMenu extends MainBase {
 //        });
 //        waitForIncomingReqThread.start();
     }
-
-  
+    
 }

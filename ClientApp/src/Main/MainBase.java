@@ -42,9 +42,9 @@ protected final FlowPane flow_parent_friendList;
     protected final Button btnSetting;
     protected final ImageView imageView1;
     protected final Button btnHelp;
-    protected final ImageView imageView2;
+    protected final ImageView imageView2;   
     Scene currentScene;
-
+    
     public MainBase() {
         
         anchor_friendList = new AnchorPane();
@@ -75,7 +75,7 @@ protected final FlowPane flow_parent_friendList;
         imageView1 = new ImageView();
         btnHelp = new Button();
         imageView2 = new ImageView();
-friendOpen_btn = new Button();
+        friendOpen_btn = new Button();
         imageView3 = new ImageView();
         setMaxHeight(USE_PREF_SIZE);
         setMaxWidth(USE_PREF_SIZE);
@@ -253,7 +253,7 @@ friendOpen_btn = new Button();
         btnStore.setPrefHeight(39.0);
         btnStore.setPrefWidth(47.0);
         btnStore.setText("");
-        btnStore.setVisible(false);
+        
 
         AnchorPane.setLeftAnchor(imageView0, 20.0);
         AnchorPane.setTopAnchor(imageView0, 12.0);
@@ -318,8 +318,9 @@ friendOpen_btn.setLayoutX(90.0);
         anchorPane0.getChildren().add(onePlayer);
         anchorPane0.getChildren().add(moreGames);
         anchorPane0.getChildren().add(imageView);
-        anchorPane3.getChildren().add(btnStore);
         anchorPane3.getChildren().add(imageView0);
+        anchorPane3.getChildren().add(btnStore);
+        
         anchorPane3.getChildren().add(btnSetting);
         anchorPane3.getChildren().add(imageView1);
         anchorPane3.getChildren().add(btnHelp);
