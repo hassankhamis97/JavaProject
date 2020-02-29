@@ -243,11 +243,11 @@ public class TicTacTeo {
         b.add(new Move("", 1));
         b.add(new Move("", 2));
         b.add(new Move("", 3));
-        b.add(new Move("", 4));
+        b.add(new Move("x", 4));
         b.add(new Move("", 5));
         b.add(new Move("", 6));
         b.add(new Move("", 7));
-        b.add(new Move("", 8));
+        b.add(new Move("o", 8));
         Scanner scan = new Scanner(System.in);
         boolean f = true;
         System.out.print("Enter 1 for Easy ,3 for Hard:");
