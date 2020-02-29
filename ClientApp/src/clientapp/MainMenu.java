@@ -39,6 +39,7 @@ import javafx.scene.text.Font;
 public class MainMenu extends MainBase {
     
     DataOutputStream dos;
+//    DataInputStream dis;
     boolean isFriendOpen = false;
     Thread waitForIncomingReqThread;
     boolean threadFinish = false;
@@ -162,9 +163,18 @@ public class MainMenu extends MainBase {
         try {
             
             dos = new DataOutputStream(SharedData.client.getOutputStream());
+            dos.writeUTF(SharedData.playerID + "-ID");
+            
+//            dis = new DataInputStream(SharedData.client.getInputStream());
+            
         } catch (IOException ex) {
 //            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+//            try {
+//                SharedData.client.shutdownOutput();
+//            } catch (IOException ex) {
+//                Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+//            }
             twoPlayer.setOnAction((ActionEvent event) -> {
                 new MenuMultiTic();
                 Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);

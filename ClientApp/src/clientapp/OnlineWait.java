@@ -9,12 +9,18 @@ import OnlineWaiting.OnlineWaitUI;
 import Stack.NavigationStack;
 import guesstheword.GuessTheWord;
 import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+
+import javafx.scene.image.Image;
+
 
 /**
  *
@@ -38,11 +44,24 @@ public class OnlineWait extends OnlineWaitUI {
         nsObj.pageName = "OnlineWait";
         nsObj.cssStyle = "/OnlineWaiting/on.css";
         nsObj.isNew = true;
+
         SharedData.nsList.add(nsObj);    
         Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root); 
         
 // hna 3lshan el readutf byw2fo w mbykmlsh hnak
 //   Main.showNewScene(this);
+
+        SharedData.nsList.add(nsObj);   
+        
+        try{
+            File imageFile = new File("\\\\DESKTOP-MFT4NF6\\Resources\\Lighthouse.jpg");  
+            imageView.setImage(new Image(imageFile.toURI().toURL().toExternalForm()));
+        }  
+        catch(Exception ex)
+        {}                
+        Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root); // hna 3lshan el readutf byw2fo w mbykmlsh hnak
+//        Main.showNewScene(this);
+
 //        try {
 //        
         Thread th = new Thread(new Runnable() {

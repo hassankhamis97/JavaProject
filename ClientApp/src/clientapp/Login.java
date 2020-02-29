@@ -66,11 +66,20 @@ public class Login extends LoginUI {
             public void handle(ActionEvent t) {
                 boolean emailValid = true;
                 boolean passValid = true;
+
 //                email_txt.setText("mahmoud93@gmail.com");
 ////              '
 //
 //        email_txt.setText("hassankhamis97@hotmail.com");
 //                pass_txt.setText("asd123M@");
+
+                email_txt.setText("ccc@ccc.com");
+//                email_txt.setText("bbb@bbb.com");
+//                email_txt.setText("aaa@aaa.com");
+
+//                                email_txt.setText("hassankhamis97@hotmail.com");
+                pass_txt.setText("123456aA&");
+
                 if (!email_txt.getText().isEmpty() && !pass_txt.getText().isEmpty()) {
                     if (!Pattern.matches("^[a-z0-9]+(_{1}|.{1})+[a-z0-9]{1,}@{1}[a-z]{2,}[.][a-z]{2,5}$", email_txt.getText())) {
                         emailValid = false;
@@ -127,6 +136,7 @@ public class Login extends LoginUI {
                             if (rs.first() == true) {
                                 SharedData.playerID = rs.getInt("ID");
                                 connectTOServer();
+                                
                                 //new BeforeConnectTheGame();
 //                                new SignUp();
 //                                new MainMenu();
@@ -171,12 +181,15 @@ public class Login extends LoginUI {
         try {
             int port;
             SharedData.client = new Socket("127.0.0.1", 5000);
+            
             port = SharedData.client.getLocalPort();
+            
             SharedData.con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/javaproject", "root", "root");
             PreparedStatement stmt = SharedData.con.prepareStatement("update player set PortID = ? where ID = ?");
             stmt.setInt(1, port);
             stmt.setInt(2, SharedData.playerID);
             stmt.executeUpdate();
+            
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
