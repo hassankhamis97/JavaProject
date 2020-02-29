@@ -9,6 +9,7 @@ import OnlineWaiting.OnlineWaitUI;
 import Stack.NavigationStack;
 import guesstheword.GuessTheWord;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,7 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import javafx.scene.image.Image;
-
+import javafx.scene.layout.Pane;
 
 /**
  *
@@ -30,36 +31,33 @@ public class OnlineWait extends OnlineWaitUI {
 
     public OnlineWait() {
         //Main.showNewScene(getScene(),"/OnlineWaiting/on.css");
-        cancel.setOnAction((ActionEvent event)-> {
-    
-        SharedData.nsList.remove(SharedData.nsList.size() - 1);  
-                 // SharedData.nsList.remove(SharedData.nsList.size() - 1);  
-             //     new MainMenu();
-        //     new MenuMultiTic();
-            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
-            
-        });          
+        cancel.setOnAction((ActionEvent event) -> {
+            try {
+                DataOutputStream dos = new DataOutputStream(SharedData.client.getOutputStream());
+                dos.writeUTF("back-IWantToBack");
+            } catch (IOException ex) {
+                Logger.getLogger(OnlineWait.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         NavigationStack nsObj = new NavigationStack();
         nsObj.root = this;
         nsObj.pageName = "OnlineWait";
         nsObj.cssStyle = "/OnlineWaiting/on.css";
         nsObj.isNew = true;
 
-        SharedData.nsList.add(nsObj);    
-        Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root); 
-        
+        SharedData.nsList.add(nsObj);
+        Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+
 // hna 3lshan el readutf byw2fo w mbykmlsh hnak
 //   Main.showNewScene(this);
-
-        SharedData.nsList.add(nsObj);   
-        
-        try{
-            File imageFile = new File("\\\\DESKTOP-MFT4NF6\\Resources\\Lighthouse.jpg");  
+//        SharedData.nsList.add(nsObj);   
+        try {
+            File imageFile = new File("\\\\DESKTOP-MFT4NF6\\Resources\\Lighthouse.jpg");
             imageView.setImage(new Image(imageFile.toURI().toURL().toExternalForm()));
-        }  
-        catch(Exception ex)
-        {}                
-        Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root); // hna 3lshan el readutf byw2fo w mbykmlsh hnak
+        } catch (Exception ex) {
+        }
+        // Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+        // hna 3lshan el readutf byw2fo w mbykmlsh hnak
 //        Main.showNewScene(this);
 
 //        try {
@@ -71,20 +69,45 @@ public class OnlineWait extends OnlineWaitUI {
 
                     DataInputStream dis = new DataInputStream(SharedData.client.getInputStream());
                     String msg = dis.readUTF();
+
                     if (msg.equals("startGame-tic")) {
                         new GameStart(SharedData.client);
-                    } else if (msg.equals("startGame-connect")) {
-                        new Connect4.ConnectFour(SharedData.client);
-                    }
-                    else if (msg.equals("startGame-GuesTheWord")) {
-                        new GuessTheWord(SharedData.client);
-                    }
-                    Platform.runLater(new Runnable() {
+                        Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
                             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
                         }
                     });
+                    } else if (msg.equals("startGame-connect")) {
+                        new Connect4.ConnectFour(SharedData.client);
+                        Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+                        }
+                    });
+                    } else if (msg.equals("startGame-GuesTheWord")) {
+                        new GuessTheWord(SharedData.client);
+                        Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+                        }
+                    });
+                    } else if (msg.equals("backNow")) {
+                        Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
+//                        SharedData.nsList.remove(SharedData.nsList.size() - 1);
+                        SharedData.nsList.remove(SharedData.nsList.size() - 1);
+                        SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
+//                        SharedData.nsList.get(SharedData.nsList.size() - 1).
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                Main.showNewScene(myOldRoot);
+                            }
+                        });
+                    }
+                    
 
                 } catch (IOException ex) {
                     Logger.getLogger(OnlineWait.class.getName()).log(Level.SEVERE, null, ex);

@@ -240,6 +240,7 @@ public class TicTacTeo {
     }
 
     public static void main(String[] args) {
+
         ArrayList<GamePositionAIModel> b = new ArrayList<>();
         b.add(new GamePositionAIModel("o", 0));
         b.add(new GamePositionAIModel("o", 1));
@@ -250,6 +251,7 @@ public class TicTacTeo {
         b.add(new GamePositionAIModel("x", 6));
         b.add(new GamePositionAIModel("", 7));
         b.add(new GamePositionAIModel("o", 8));
+
         Scanner scan = new Scanner(System.in);
         boolean f = true;
         System.out.print("Enter 1 for Easy ,3 for Hard:");

@@ -6,21 +6,15 @@
 package clientapp;
 
 import Stack.NavigationStack;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-
-import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.animation.FadeTransition;
-
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -75,10 +69,9 @@ public class Main extends Application {
         //Scene scene = new Login().showPage();
         //showNewScene(scene);
         new Login();
-     
-//       new MainMenu();
 
-   }
+//       new MainMenu();
+    }
 
 //    public static void showNewScene(Scene scene, String cssFile) {
 ////            getCSS(scene);
@@ -95,7 +88,7 @@ public class Main extends Application {
     public static void showNewScene(Pane myOldRoot) {
 
         NavigationStack ns = SharedData.nsList.get(SharedData.nsList.size() - 1);
-       
+
         Pane root = SharedData.nsList.stream().filter(f -> f.pageName == ns.pageName).map(m -> m.root).findFirst().get();
         if (root instanceof BorderPane) {
             newRoot = (BorderPane) root;
@@ -106,9 +99,10 @@ public class Main extends Application {
         }
         if (myOldRoot instanceof BorderPane) {
             oldRoot = (BorderPane) myOldRoot;
-        } //        else if (myOldRoot instanceof StackPane) {
-        //            oldRoot = (StackPane) root;
-        //        } 
+        } 
+//        else if (myOldRoot instanceof StackPane) {
+//            oldRoot = (StackPane) root;
+//        } 
         else if (myOldRoot instanceof AnchorPane) {
             oldRoot = (AnchorPane) myOldRoot;
         }
@@ -129,7 +123,7 @@ public class Main extends Application {
             SharedData.nsList.get(0).root.getChildren().add(newRoot);
         }
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(newRoot.translateYProperty(), 0, Interpolator.EASE_OUT);
+         KeyValue kv = new KeyValue(newRoot.translateYProperty(), 0, Interpolator.EASE_OUT);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> {
@@ -154,7 +148,7 @@ public class Main extends Application {
 //                        SharedData.nsList.get(SharedData.nsList.size() - 1).root.gifImage.setFitHeight(SharedData.nsList.get(0).root.getHeight());
 //                    }
                 }
-            });         
+            });
 
 //            
 //            System.out.println("Height: " + myStage.getHeight() + " Width: " + myStage.getWidth());
@@ -186,11 +180,12 @@ public class Main extends Application {
 
     @Override
     public void stop() {
+  
         try {
-
-            SharedData.con.close();
-        } catch (SQLException ex) {
+            SharedData.client.close();
+        } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 }

@@ -53,7 +53,7 @@ public class GameStart extends GameUI {
     int chatTxtPosY = 21;
 
     public GameStart() {
-
+        
     }
 
     public GameStart(Socket player2SocketID) {
