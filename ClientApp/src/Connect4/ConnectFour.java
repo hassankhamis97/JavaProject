@@ -25,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -36,7 +37,7 @@ import javafx.util.Duration;
 /**
  * @author Awad
  */
-public class ConnectFour {
+public class ConnectFour extends AnchorPane{
 
     Scene currentScene;
     private static final int DISC_SIZE = 80;
@@ -54,14 +55,14 @@ public class ConnectFour {
     Socket client;
     private Pane discRoot = new Pane();
 
-    public ConnectFour(Socket client) {
-//        Main.showNewScene(retScene(), "/Connect4/main.css");
-//        NavigationStack nsObj = new NavigationStack();
-//        nsObj.root = this;
-//        nsObj.pageName = "Connect4Menu";
-//        nsObj.cssStyle = "/Connect4/main.css";
-//        nsObj.isNew = true;
-//        SharedData.nsList.add(nsObj);
+    public ConnectFour() {
+        Main.showNewScene(retScene(), "/Connect4/main.css");
+        NavigationStack nsObj = new NavigationStack();
+        nsObj.root = this;
+        nsObj.pageName = "Connect4Menu";
+        nsObj.cssStyle = "/Connect4/main.css";
+        nsObj.isNew = true;
+        SharedData.nsList.add(nsObj);
 //        Main.showNewScene(this);
     }
 

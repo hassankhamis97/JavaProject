@@ -25,15 +25,15 @@ import javafx.event.EventHandler;
 public class Connect4Menu extends GuessTheWordMenuUI {
 
     public Connect4Menu() {
-//        Main.showNewScene(retScene(), "/Connect4/main.css");
-        NavigationStack nsObj = new NavigationStack();
-        nsObj.root = this;
-        nsObj.pageName = "Connect4Menu";
-        nsObj.cssStyle = "/Connect4/main.css";
-        nsObj.isNew = true;
-        SharedData.nsList.add(nsObj);
-        Main.showNewScene(this);
-        button0.setOnAction((ActionEvent event) -> {
+        Main.showNewScene(retScene(), "/Connect4/main.css");
+//        NavigationStack nsObj = new NavigationStack();
+//        nsObj.root = this;
+//        nsObj.pageName = "Connect4Menu";
+//        nsObj.cssStyle = "/Connect4/main.css";
+//        nsObj.isNew = true;
+//        SharedData.nsList.add(nsObj);
+//        Main.showNewScene(this);
+        playOnlineBtn.setOnAction((ActionEvent event) -> {
 //            new ConnectFour();
             try {
                 DataOutputStream dos;
