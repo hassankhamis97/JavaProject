@@ -24,6 +24,8 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -34,7 +36,7 @@ public class Login extends LoginUI {
 
     Database db;
     Connection con;
-
+    Label errorLabel;
 
     /*FlowPane flow;
         Button login_btn;
@@ -44,6 +46,12 @@ public class Login extends LoginUI {
         Label label;*/
     public Login() {
         db = new Database();
+        errorLabel = new Label();
+        errorLabel.setLayoutX(110.0);
+        errorLabel.setLayoutY(310.0);
+        errorLabel.setText("");
+        errorLabel.setTextFill(Color.RED);
+        anchorPane0.getChildren().add(errorLabel);
         //LoginUI lui = new LoginUI();
 
         //label.
@@ -77,23 +85,24 @@ public class Login extends LoginUI {
 //                pass_txt.setText("asd123M@");
 //                email_txt.setText("ccc@ccc.com");
 //                email_txt.setText("bbb@bbb.com");
-                email_txt.setText("aaa@aaa.com");
+//                email_txt.setText("aaa@aaa.com");
 
-//                                email_txt.setText("hassankhamis97@hotmail.com");
-                pass_txt.setText("123456aA&");
+                               // email_txt.setText("hassankhamis97@hotmail.com");
+              //  pass_txt.setText("123456aA&");
 
                 if (!email_txt.getText().isEmpty() && !pass_txt.getText().isEmpty()) {
                     if (!Pattern.matches("^[a-z0-9]+(_{1}|.{1})+[a-z0-9]{1,}@{1}[a-z]{2,}[.][a-z]{2,5}$", email_txt.getText())) {
                         emailValid = false;
-                        System.out.println("Please Enter valid email ex: java@java.com");
+                        errorLabel.setText("Please Enter valid email ex: java@java.com");
 
                     }
                     if (!Pattern.matches("^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*_-])[a-zA-Z0-9!@#$%^&*_-]{6,12}$", pass_txt.getText())) {
                         passValid = false;
                         if (pass_txt.getText().length() < 6 && pass_txt.getText().length() > 20) {
-                            System.out.println("password length must be between 6-20 char");
+                            errorLabel.setText("password length must be between 6-20 char");
+                           
                         } else {
-                            System.out.println("password must contains at least one capital and small letters and special characters");
+                            errorLabel.setText("password must contains at least one capital and small letters and special characters");
                         }
                     }
                     if (emailValid && passValid) {
@@ -103,22 +112,27 @@ public class Login extends LoginUI {
                         db.closeConnection(con);
                         if (SharedData.playerID > 0) {
                             connectTOServer();
+                            new MainMenu();
+                            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
                         } else {
-
-                            System.out.println("email or password donot match any thing in database");
+                             errorLabel.setText("email or password donot match any thing in database");
+                            //System.out.println("email or password donot match any thing in database");
                         }
 
                     }
                 } else {
                     if (email_txt.getText().isEmpty()) {
-                        System.out.println("email is required");
+                        errorLabel.setText("email is required");
+                       // System.out.println("email is required");
                     }
                     if (pass_txt.getText().isEmpty()) {
-                        System.out.println("password is required");
+                        errorLabel.setText("password is required");
+                      //  System.out.println("password is required");
                     }
                 }
-                new MainMenu();
-                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+                
+                
+                
             }
 
         });

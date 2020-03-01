@@ -10,15 +10,19 @@ import Pojos.PlayerProfile;
 import Pojos.SavedGame;
 import clientapp.SharedData;
 import clientapp.Store;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -26,7 +30,7 @@ import javafx.scene.control.Alert;
  */
 public class Database {
 
-    public Connection openConnection() {
+    public static Connection openConnection() {
         Connection con;
         try {
 
@@ -43,12 +47,40 @@ public class Database {
         return con;
     }
 
-    public void closeConnection(Connection con) {
+    public static void closeConnection(Connection con) {
         try {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static int insertPlayer(Connection con,String uname,String mail,String pass,File file,Label label){
+        int stmtInserted = 0;
+        PreparedStatement stmt;
+        try {
+            stmt = con.prepareStatement("SELECT ID FROM Player where Email = ?");
+            stmt.setString(1, mail);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.first() == true){
+               
+              label.setText("Try Different Mail");
+              label.setTextFill(Color.RED);
+            }else{
+                stmt = con.prepareStatement("INSERT INTO Player ( Name , Email, Password ,IsOnline,IsRequest,StatID,Photo)VALUES(?,?,?,?,?,?,?)");
+                stmt.setString(1, uname);
+                stmt.setString(2, mail);
+                stmt.setString(3, pass);
+                stmt.setInt(4, 1);
+                stmt.setInt(5, 0);
+                stmt.setInt(6, 1);
+                stmt.setString(7, file != null ? file.getName() : "");
+                stmtInserted = stmt.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return stmtInserted;
     }
 
     public PlayerProfile getPlayerData(Connection con) {

@@ -16,6 +16,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,6 +37,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
+import Database.Database;
+import javafx.scene.control.Label;
 
 /**
  *
@@ -47,6 +50,7 @@ public class SignUp extends SignUpUI {
     ResultSet rs;
     PreparedStatement stmt;
     File file;
+    protected Label errorLabel;
 
     SignUp() {
         Platform.runLater(new Runnable() {
@@ -121,38 +125,26 @@ public class SignUp extends SignUpUI {
 
                     /*validation*/ if (Pattern.matches(email_regex, mail) && Pattern.matches(pass_regex, pass)) {
 
-                        try {
-                            ////////
-                            try {
-
-                                Class.forName("com.mysql.jdbc.Driver"); // stablish the connection
-                                SharedData.con = DriverManager.getConnection("jdbc:mysql://192.168.1.7:3306/javaproject", "root", "root");
-                            } catch (ClassNotFoundException ex) {
-                                Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
-                            } catch (SQLException ex) {
-                                Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                       
                             /////////
-                            stmt = SharedData.con.prepareStatement("INSERT INTO Player ( Name , Email, Password ,IsOnline,IsRequest,StatID,Photo)VALUES(?,?,?,?,?,?,?)");
-                            stmt.setString(1, uname);
-                            stmt.setString(2, mail);
-                            stmt.setString(3, pass);
-                            stmt.setInt(4, 1);
-                            stmt.setInt(5, 0);
-                            stmt.setInt(6, 1);
-                            stmt.setString(7, file != null ? file.getName() : "");
-                            stmt.executeUpdate();
+                            errorLabel = new Label();
+                            errorLabel.setLayoutX(110.0);
+                            errorLabel.setLayoutY(310.0);
+                            errorLabel.setText("");
+                            Connection con = Database.openConnection();
+                            int x = Database.insertPlayer(con, uname, mail, pass, file,errorLabel);
+                            Database.closeConnection(con);
+                            anchorPane0.getChildren().add(errorLabel);
 
                             if (file != null) {
                                 transferImageToServer(file);
                             }
-                            showAlert(" YOUR ACCOUNT HAS BEEN CREATED SUCCESSFULLY ... ");
-
+                            if(x != 0){
+                                showAlert(" YOUR ACCOUNT HAS BEEN CREATED SUCCESSFULLY ... ");
+                            }
                             //Main.showNewScene(loginScene,"/SignIn/login.css");
-                        }//end of validation
-                        catch (SQLException ex) {
-                            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                        //end of validation
+                       
 
                     }
 
