@@ -190,6 +190,7 @@ public class Store extends StoreUI {
 
     }//end
 
+    
     private void buyEmoji(boolean high_price, String emojiName) {
         Connection con = db.openConnection();
         if (high_price && SharedData.Coins >= 15) {
