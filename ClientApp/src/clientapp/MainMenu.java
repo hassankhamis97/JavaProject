@@ -8,6 +8,8 @@ package clientapp;
 import Connect4.Connect4Menu;
 import Main.MainBase;
 import MoreGamesMenu.MoreGamesMenu;
+import Pojos.SavedGame;
+import SavedGames.SavedGamePage;
 import Stack.NavigationStack;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -37,7 +39,7 @@ import javafx.scene.text.Font;
  * @author Hassan Khamis
  */
 public class MainMenu extends MainBase {
-    
+    SavedGame sv ;
     DataOutputStream dos;
 //    DataInputStream dis;
     boolean isFriendOpen = false;
@@ -46,7 +48,7 @@ public class MainMenu extends MainBase {
     
     public MainMenu() {
 //        Main.showNewScene(getScene(), "/Main/main.css");
-
+ sv = new SavedGame();
         NavigationStack nsObj = new NavigationStack();
         nsObj.root = this;
         nsObj.pageName = "MainMenu";
@@ -149,7 +151,8 @@ public class MainMenu extends MainBase {
         });
         
         onePlayer.setOnAction((ActionEvent event) -> {
-            
+               new Levels();
+                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
         });
         
         twoPlayer.setOnAction((ActionEvent event) -> {
@@ -157,11 +160,13 @@ public class MainMenu extends MainBase {
         });
         
         moreGames.setOnAction((ActionEvent event) -> {
-            
+            new MoreGamesMenu();
+                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
         });
         
         savedGames.setOnAction((event) -> {
-             new SignUp();
+            System.out.println("save ---> ");
+           new SavedGamePage(sv);
                 Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
         });
         

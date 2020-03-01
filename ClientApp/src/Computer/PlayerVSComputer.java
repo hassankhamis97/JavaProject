@@ -6,22 +6,27 @@
 package Computer;
 
 import Game.GameUI;
+
+import Stack.NavigationStack;
+import clientapp.SharedData;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 
 /**
  *
  * @author hassan
  */
-public class PlayerVSComputer extends GameUI {
 
+public class PlayerVSComputer extends GameUI{
     Scene gameStartScene;
     ArrayList<GamePositionAIModel> positionLst;
     boolean isWaitAIResponse = false;
+
     String checkLevel;
     //Change static methods in TicTacToe and use object
     TicTacTeo gameAI;
@@ -33,7 +38,13 @@ public class PlayerVSComputer extends GameUI {
         positionLst = new ArrayList<>();
 //          GameBase gb = new GameBase();
         gameStartScene = getScene();
-
+loadCustomDesign();
+        NavigationStack nsObj = new NavigationStack();
+        nsObj.root = this;
+        nsObj.pageName = "PlayerVSComputer";
+        nsObj.cssStyle = "/Computer/game.css";
+        nsObj.isNew = true;
+        SharedData.nsList.add(nsObj);
         for (int i = 0; i < 9; i++) {
             GamePositionAIModel positionAIObj = new GamePositionAIModel();
             positionAIObj.setPositionIndex(i);
@@ -344,5 +355,38 @@ public class PlayerVSComputer extends GameUI {
                 button7.setDisable(true);
                 break;
         }
+ 
+    public  PlayerVSComputer()
+    {
+        
+        
+   
+       }
+    
+    
+        private void loadCustomDesign() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                setPrefHeight(SharedData.nsList.get(0).root.getHeight());
+                setPrefWidth(SharedData.nsList.get(0).root.getWidth());
+                setStyle("-fx-background-color:linear-gradient(#8ad9dc, #409cc7),\n" +
+                "  linear-gradient(#d6e2f9 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),\n" +
+                "   linear-gradient(#c6bef6, #4d94e6);\n" +
+                "    -fx-background-size: 100% 100%;");
+                button.setStyle("-fx-background-color:transparent;");
+                button0.setStyle("-fx-background-color:transparent;");
+                button1.setStyle("-fx-background-color:transparent;");
+                button2.setStyle("-fx-background-color:transparent;");
+                button3.setStyle("-fx-background-color:transparent;");
+                button4.setStyle("-fx-background-color:transparent;");
+                button5.setStyle("-fx-background-color:transparent;");
+                button6.setStyle("-fx-background-color:transparent;");
+                button7.setStyle("-fx-background-color:transparent;");
+                chatBtn.setStyle("-fx-background-color:transparent;");
+                chatAnch.setStyle(" -fx-background-color:#ddd;");
+
+            }
+        });
     }
 }
