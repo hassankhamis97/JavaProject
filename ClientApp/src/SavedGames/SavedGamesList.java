@@ -11,6 +11,7 @@ import Stack.NavigationStack;
 import clientapp.SharedData;
 import java.sql.Connection;
 import java.util.ArrayList;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -36,14 +37,19 @@ public class SavedGamesList extends WatchSavedGamesUI {
         db.getSavedGames(con);
         db.closeConnection(con);
         for (int i = 0; i < saveGameLst.size(); i++) {
+            Label opponentName_Lbl;
+            opponentName_Lbl = new Label();
+            opponentName_Lbl.setLayoutX(20.0);
+            opponentName_Lbl.setLayoutY(17.0);
+            opponentName_Lbl.setText("Opponent Player");
+            MainItem_anchor.getChildren().add(opponentName_Lbl);
+
             opponentName_Lbl.setText(saveGameLst.get(i).player2Name);
-            opponentName_Lbl.setText(saveGameLst.get(i).player2Name);
-            
+//            opponentName_Lbl.setText(saveGameLst.get(i).player2Name);
+
 //            MainItem_anchor.
-            
 //            ListContainer_anchor.
         }
     }
-    
 
 }
