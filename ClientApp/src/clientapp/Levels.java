@@ -39,16 +39,16 @@ public class Levels extends LevelsUI {
              
              
              easyBtn.setOnAction((event) -> {
-                new PlayerVSComputer();
+                new PlayerVSComputer("easy");
             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);    
              });
              
              mediumBtn.setOnAction((event) -> {
-                   new PlayerVSComputer();
+                   new PlayerVSComputer("medium");
             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root); 
              });
              hardBtn.setOnAction((event) -> {
-                   new PlayerVSComputer();
+                   new PlayerVSComputer("hard");
             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root); 
              });
              

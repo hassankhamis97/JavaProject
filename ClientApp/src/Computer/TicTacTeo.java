@@ -14,35 +14,56 @@ import java.util.Scanner;
  */
 public class TicTacTeo {
 
-    private static Move findRandomMove(ArrayList<Move> b) {
-        Move v = null;
-        ArrayList<Move> remainMoves = new ArrayList<>();
-        for(int i = 0; i<9; i++){
-            if(b.get(i).PositionTxt.isEmpty()){
+    static GamePositionAIModel findRandomMove(ArrayList<GamePositionAIModel> b) {
+        ArrayList<GamePositionAIModel> remainMoves = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            if (b.get(i).PositionTxt.isEmpty()) {
                 remainMoves.add(b.get(i));
             }
-                
+
         }
-        int i = (int)(Math.random() * remainMoves.size());
+        int i = (int) (Math.random() * remainMoves.size());
         return remainMoves.get(i);
     }
+    /*
+     static class Move {
 
-    static class Move {
+     public String PositionTxt;
+     public int PositionIndex;
 
-        public String PositionTxt;
-        public int PositionIndex;
+     public Move(String x, int y) {
+     PositionIndex = y;
+     PositionTxt = x;
+     }
 
-        public Move(String x, int y) {
-            PositionIndex = y;
-            PositionTxt = x;
+     public Move() {
+
+     }
+     }
+     */
+
+    static GamePositionAIModel findMidMove(ArrayList<GamePositionAIModel> b) {
+        ArrayList<GamePositionAIModel> remainMoves = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            if (b.get(i).PositionTxt.isEmpty()) {
+                remainMoves.add(b.get(i));
+            }
+
         }
 
-        public Move() {
+        if (remainMoves.size() >= 7) {
 
+            return findBestMove(b);
+
+        } else {
+
+            return findRandomMove(b);
         }
+
     }
 
-    static Boolean isMovesLeft(ArrayList<Move> board) {
+    ///
+    static Boolean isMovesLeft(ArrayList<GamePositionAIModel> board) {
         for (int i = 0; i < 9; i++) {
             if (board.get(i).PositionTxt.equals("")) {
                 return true;
@@ -51,7 +72,7 @@ public class TicTacTeo {
         return false;
     }
 
-    static int evaluate(ArrayList<Move> b) {
+    static int evaluate(ArrayList<GamePositionAIModel> b) {
 
         // Checking for Rows for X or O victory. 
         if (b.get(0).PositionTxt.equalsIgnoreCase(b.get(1).PositionTxt)
@@ -134,7 +155,7 @@ public class TicTacTeo {
         return 0;
     }
 
-    static int minimax(ArrayList<Move> board,
+    static int minimax(ArrayList<GamePositionAIModel> board,
             int depth, Boolean isMax) {
         int score = evaluate(board);
 
@@ -199,9 +220,11 @@ public class TicTacTeo {
     // This will return the best possible 
     // move for the player 
 
-    static Move findBestMove(ArrayList<Move> board) {
+    static GamePositionAIModel findBestMove(ArrayList<GamePositionAIModel> board) {
+
+        System.out.println("I am inside best move");
         int bestVal = -1000;
-        Move bestMove = new Move();
+        GamePositionAIModel bestMove = new GamePositionAIModel();
         bestMove.PositionIndex = -1;
         bestMove.PositionTxt = "";
 
@@ -238,37 +261,34 @@ public class TicTacTeo {
     }
 
     public static void main(String[] args) {
-        ArrayList<Move> b = new ArrayList<>();
-        b.add(new Move("o", 0));
-        b.add(new Move("", 1));
-        b.add(new Move("", 2));
-        b.add(new Move("", 3));
-        b.add(new Move("x", 4));
-        b.add(new Move("", 5));
-        b.add(new Move("", 6));
-        b.add(new Move("", 7));
-        b.add(new Move("o", 8));
+
+        ArrayList<GamePositionAIModel> b = new ArrayList<>();
+        b.add(new GamePositionAIModel("", 0));
+        b.add(new GamePositionAIModel("o", 1));
+        b.add(new GamePositionAIModel("x", 2));
+        b.add(new GamePositionAIModel("", 3));
+        b.add(new GamePositionAIModel("x", 4));
+        b.add(new GamePositionAIModel("o", 5));
+        b.add(new GamePositionAIModel("x", 6));
+        b.add(new GamePositionAIModel("", 7));
+        b.add(new GamePositionAIModel("o", 8));
+
         Scanner scan = new Scanner(System.in);
         boolean f = true;
-        System.out.print("Enter 1 for Easy ,3 for Hard:");
+        System.out.print("Enter 1 for Easy, 2 for Medium ,3 for Hard :");
         int x = scan.nextInt();
         if (x == 3) {
-            Move bestMove = findBestMove(b);
+            GamePositionAIModel bestMove = findBestMove(b);
             System.out.println("index= " + bestMove.PositionIndex);
             System.out.println("txt= " + bestMove.PositionTxt);
         } else if (x == 1) {
-            Move bestMove = findRandomMove(b);
+            GamePositionAIModel bestMove = findRandomMove(b);
             System.out.println("index= " + bestMove.PositionIndex);
             System.out.println("txt= " + bestMove.PositionTxt);
-        } else if (x == 2){
-            Move bestMove ;
-            if(f){
-                bestMove = findBestMove(b);
-                f = !f;
-            }else{
-                bestMove = findRandomMove(b);
-                f = !f;
-            }
+        } else if (x == 2) {
+
+            GamePositionAIModel bestMove = findMidMove(b);
+
             System.out.println("index= " + bestMove.PositionIndex);
             System.out.println("txt= " + bestMove.PositionTxt);
         }

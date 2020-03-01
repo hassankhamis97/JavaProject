@@ -35,6 +35,9 @@ public class Profile extends ProfileUI{
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
         Main.showNewScene(this);
+        
+        
+        
     }
     
     

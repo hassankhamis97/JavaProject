@@ -11,9 +11,19 @@ package Computer;
  */
 public class GamePositionAIModel {
     
-    public String PositionTxt;
-    public int PositionIndex;
+   public String PositionTxt;
+   public int PositionIndex;
+
+    public GamePositionAIModel() {
+    }
+
+    public GamePositionAIModel(String PositionTxt, int PositionIndex) {
+        this.PositionTxt = PositionTxt;
+        this.PositionIndex = PositionIndex;
+    }
     
+        
+        
      public void setPositionIndex(int PositionIndex) {
                     this.PositionIndex = PositionIndex;
                 }
