@@ -91,7 +91,7 @@ public class Database {
     public ResultSet getOnlineFriends(Connection con) {
         ResultSet rs;
         try {
-            PreparedStatement stmt = SharedData.con.prepareStatement("SELECT p.Name , p.IsRequest \n"
+            PreparedStatement stmt = con.prepareStatement("SELECT p.Name , p.IsRequest \n"
                     + ",case\n"
                     + "when f1.player1ID = ? then f1.player2ID\n"
                     + "when f1.player2ID = ? then f1.player1ID \n"

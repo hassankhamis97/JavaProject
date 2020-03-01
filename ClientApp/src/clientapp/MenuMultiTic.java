@@ -157,7 +157,6 @@ public class MenuMultiTic extends MenuMultiTicUI {
             Connection con = db.openConnection();
             //stmt.setInt(2, SharedData.playerID);
             ResultSet rs = db.getOnlineFriends(con);
-            db.closeConnection(con);
 //            int count = 0;
             while (rs.next() == true) {
                 String playerOnlineID = rs.getString("ID");
@@ -250,6 +249,8 @@ public class MenuMultiTic extends MenuMultiTicUI {
             }
 //           friendOpen_btn.set
 //            anchorPane3.getChildren().add(friendOpen_btn);
+            db.closeConnection(con);
+
         } catch (SQLException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
