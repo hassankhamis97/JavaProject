@@ -34,7 +34,7 @@ public class PlayerVSComputerv2 extends GameUINew {
     Scene gameStartScene;
     ArrayList<GamePositionAIModel> positionLst;
     boolean isWaitAIResponse = false;
-
+    boolean isFinished = false;
     String checkLevel;
     //Change static methods in TicTacToe and use object
     TicTacTeo gameAI;
@@ -338,7 +338,8 @@ public class PlayerVSComputerv2 extends GameUINew {
 
     private void checkX() {
         if (checkWinningLetter()) {
-
+            isFinished=!isFinished;
+            System.out.println("Winner");
             new Winner();
             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
         }
@@ -347,7 +348,8 @@ public class PlayerVSComputerv2 extends GameUINew {
 
     private void checkO() {
         if (checkWinningLetter()) {
-
+            isFinished=!isFinished;
+            System.err.println("Loser");
             new Loser();
             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
 
@@ -391,6 +393,9 @@ public class PlayerVSComputerv2 extends GameUINew {
     }
 
     private void setPositionTxtByComputer(int computerSelectedIndex) {
+        if (!isFinished) {
+            
+       
         switch (computerSelectedIndex) {
             case 0:
                 button1.setText("O");
@@ -446,6 +451,9 @@ public class PlayerVSComputerv2 extends GameUINew {
                 button9.setDisable(true);
                 checkO();
                 break;
+        } } else {
+            
+            System.out.println("You have a winner already!");
         }
     }
 
