@@ -99,10 +99,9 @@ public class Main extends Application {
         }
         if (myOldRoot instanceof BorderPane) {
             oldRoot = (BorderPane) myOldRoot;
-        } 
-//        else if (myOldRoot instanceof StackPane) {
-//            oldRoot = (StackPane) root;
-//        } 
+        } //        else if (myOldRoot instanceof StackPane) {
+        //            oldRoot = (StackPane) root;
+        //        } 
         else if (myOldRoot instanceof AnchorPane) {
             oldRoot = (AnchorPane) myOldRoot;
         }
@@ -123,7 +122,7 @@ public class Main extends Application {
             SharedData.nsList.get(0).root.getChildren().add(newRoot);
         }
         Timeline timeline = new Timeline();
-         KeyValue kv = new KeyValue(newRoot.translateYProperty(), 0, Interpolator.EASE_OUT);
+        KeyValue kv = new KeyValue(newRoot.translateYProperty(), 0, Interpolator.EASE_OUT);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> {
@@ -180,12 +179,12 @@ public class Main extends Application {
 
     @Override
     public void stop() {
-  
+
         try {
             SharedData.client.close();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 }

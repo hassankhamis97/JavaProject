@@ -61,7 +61,7 @@ public class MoreGamesMenu extends MoreGamesMenuUI {
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
 //        Main.showNewScene(this);
-        
+
         try {
 
             dos = new DataOutputStream(SharedData.client.getOutputStream());
@@ -70,13 +70,13 @@ public class MoreGamesMenu extends MoreGamesMenuUI {
         } finally {
             ConnFourBtn.setOnAction((ActionEvent event) -> {
                 new Connect4Menu();
-                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size()-2).root);
+                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
             });
             checkTheWorldBtn.setOnAction((ActionEvent event) -> {
-                
-                    new GuessTheWordMenu();
-                    Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size()-2).root);
-               
+
+                new GuessTheWordMenu();
+                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+
             });
 
             anchorPane3.getChildren().add(friendOpen_btn);
@@ -119,8 +119,6 @@ public class MoreGamesMenu extends MoreGamesMenuUI {
 //        });
 //        waitForIncomingReqThread.start();
     }
-
-
 
     private void loadCustomDesign() {
         Platform.runLater(new Runnable() {

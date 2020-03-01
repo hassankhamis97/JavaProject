@@ -28,11 +28,12 @@ public class GameBase {
     protected final Button button5;
     protected final Button button6;
     protected final Button button7;
-     protected final Button msg_btn;
-     protected final TextArea msg_txta;
+    protected final Button msg_btn;
+    protected final TextArea msg_txta;
     Scene currentScene;
+
     public GameBase() {
-            
+
         borderPane = new BorderPane();
         gridPane = new GridPane();
         columnConstraints = new ColumnConstraints();
@@ -52,8 +53,7 @@ public class GameBase {
         button7 = new Button();
         msg_btn = new Button();
         msg_txta = new TextArea();
-                
-                
+
         borderPane.setLayoutX(-3.0);
         borderPane.setLayoutY(-3.0);
         borderPane.setPrefHeight(400.0);
@@ -152,11 +152,10 @@ public class GameBase {
         gridPane.getChildren().add(msg_btn);
         gridPane.getChildren().add(msg_txta);
         currentScene = new Scene(borderPane);
-        
 
     }
-    Scene getScene()
-    {
-            return currentScene;
+
+    Scene getScene() {
+        return currentScene;
     }
 }

@@ -25,6 +25,7 @@ public class TicTacTeo {
         int i = (int) (Math.random() * remainMoves.size());
         return remainMoves.get(i);
     }
+
     /*
      static class Move {
 
@@ -41,7 +42,6 @@ public class TicTacTeo {
      }
      }
      */
-
     static GamePositionAIModel findMidMove(ArrayList<GamePositionAIModel> b) {
         ArrayList<GamePositionAIModel> remainMoves = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
@@ -260,37 +260,37 @@ public class TicTacTeo {
         return bestMove;
     }
 
-    public static void main(String[] args) {
-
-        ArrayList<GamePositionAIModel> b = new ArrayList<>();
-        b.add(new GamePositionAIModel("", 0));
-        b.add(new GamePositionAIModel("o", 1));
-        b.add(new GamePositionAIModel("x", 2));
-        b.add(new GamePositionAIModel("", 3));
-        b.add(new GamePositionAIModel("x", 4));
-        b.add(new GamePositionAIModel("o", 5));
-        b.add(new GamePositionAIModel("x", 6));
-        b.add(new GamePositionAIModel("", 7));
-        b.add(new GamePositionAIModel("o", 8));
-
-        Scanner scan = new Scanner(System.in);
-        boolean f = true;
-        System.out.print("Enter 1 for Easy, 2 for Medium ,3 for Hard :");
-        int x = scan.nextInt();
-        if (x == 3) {
-            GamePositionAIModel bestMove = findBestMove(b);
-            System.out.println("index= " + bestMove.PositionIndex);
-            System.out.println("txt= " + bestMove.PositionTxt);
-        } else if (x == 1) {
-            GamePositionAIModel bestMove = findRandomMove(b);
-            System.out.println("index= " + bestMove.PositionIndex);
-            System.out.println("txt= " + bestMove.PositionTxt);
-        } else if (x == 2) {
-
-            GamePositionAIModel bestMove = findMidMove(b);
-
-            System.out.println("index= " + bestMove.PositionIndex);
-            System.out.println("txt= " + bestMove.PositionTxt);
-        }
-    }
+//    public static void main(String[] args) {
+//
+//        ArrayList<GamePositionAIModel> b = new ArrayList<>();
+//        b.add(new GamePositionAIModel("", 0));
+//        b.add(new GamePositionAIModel("o", 1));
+//        b.add(new GamePositionAIModel("x", 2));
+//        b.add(new GamePositionAIModel("", 3));
+//        b.add(new GamePositionAIModel("x", 4));
+//        b.add(new GamePositionAIModel("o", 5));
+//        b.add(new GamePositionAIModel("x", 6));
+//        b.add(new GamePositionAIModel("", 7));
+//        b.add(new GamePositionAIModel("o", 8));
+//
+//        Scanner scan = new Scanner(System.in);
+//        boolean f = true;
+//        System.out.print("Enter 1 for Easy, 2 for Medium ,3 for Hard :");
+//        int x = scan.nextInt();
+//        if (x == 3) {
+//            GamePositionAIModel bestMove = findBestMove(b);
+//            System.out.println("index= " + bestMove.PositionIndex);
+//            System.out.println("txt= " + bestMove.PositionTxt);
+//        } else if (x == 1) {
+//            GamePositionAIModel bestMove = findRandomMove(b);
+//            System.out.println("index= " + bestMove.PositionIndex);
+//            System.out.println("txt= " + bestMove.PositionTxt);
+//        } else if (x == 2) {
+//
+//            GamePositionAIModel bestMove = findMidMove(b);
+//
+//            System.out.println("index= " + bestMove.PositionIndex);
+//            System.out.println("txt= " + bestMove.PositionTxt);
+//        }
+//    }
 }

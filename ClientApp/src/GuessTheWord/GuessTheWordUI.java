@@ -8,7 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 public abstract class GuessTheWordUI extends BorderPane {
-    
+
     Scene currentScene;
     protected final AnchorPane anchorPane;
     protected final ToolBar toolBar;
@@ -327,12 +327,9 @@ public abstract class GuessTheWordUI extends BorderPane {
         anchorPane0.getChildren().add(dashesField);
         currentScene = new Scene(this);
     }
-    protected Scene retScene ()
-    {
+
+    protected Scene retScene() {
         return currentScene;
     }
-
-
-
 
 }

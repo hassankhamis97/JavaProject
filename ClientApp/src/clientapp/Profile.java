@@ -12,10 +12,10 @@ import Stack.NavigationStack;
  *
  * @author Hassan Khamis
  */
-public class Profile extends ProfileUI{
+public class Profile extends ProfileUI {
 
     public Profile(int playerID) {
-        
+
 //        Main.showNewScene(retScene(),"/Profile/pro.css");
         NavigationStack nsObj = new NavigationStack();
         nsObj.root = this;
@@ -28,17 +28,14 @@ public class Profile extends ProfileUI{
 
     public Profile() {
 //         Main.showNewScene(retScene(),"/Profile/pro.css");
-         NavigationStack nsObj = new NavigationStack();
+        NavigationStack nsObj = new NavigationStack();
         nsObj.root = this;
         nsObj.pageName = "Profile";
         nsObj.cssStyle = "/Profile/pro.css";
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
         Main.showNewScene(this);
-        
-        
-        
+
     }
-    
-    
+
 }

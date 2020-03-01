@@ -88,7 +88,7 @@ public abstract class profileBase extends BorderPane {
         label.setText("Total Time");
         label.setFont(new Font("System Bold Italic", 25.0));
 
-       // label0.setFont(javafx.scene.text.Font.$x1);
+        // label0.setFont(javafx.scene.text.Font.$x1);
         label0.setLayoutX(14.0);
         label0.setLayoutY(80.0);
         label0.setText("Total Score");
@@ -198,18 +198,17 @@ public abstract class profileBase extends BorderPane {
         anchorPane0.getChildren().add(coins);
         anchorPane0.getChildren().add(imageView);
         anchorPane3.getChildren().add(button);
-        
-currentScene = new Scene(this);
+
+        currentScene = new Scene(this);
     }
-    public BorderPane getParentNode()
-    {
+
+    public BorderPane getParentNode() {
         return this;
     }
-     protected Scene retScene()
-    {
-        
-            return currentScene;
+
+    protected Scene retScene() {
+
+        return currentScene;
     }
 
-    }
-
+}

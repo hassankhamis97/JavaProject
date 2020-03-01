@@ -15,7 +15,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 
 /**
- * 
+ *
  *
  * @author Ahmed Awad
  */
@@ -45,7 +45,7 @@ public class GuessTheWord extends GuessTheWordUI {
         
          */
         try {
-            
+
             dis = new DataInputStream(SharedData.client.getInputStream());
             dos = new DataOutputStream(SharedData.client.getOutputStream());
         } catch (IOException ex) {
@@ -61,28 +61,28 @@ public class GuessTheWord extends GuessTheWordUI {
                     String data = dis.readUTF();
                     String[] divided = data.split("-");
                     if (divided[0].equals("InitLetter")) {
-                        
+
                         // divided[1];
                         drawDashes(divided[1]);
                         receivedWord = divided[1];
-                        
+
                     } else {
-                    
-                    //Data is like letter-a-123-word-status
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            //
-                            playLetter(data);
-                        }
-                    });
+
+                        //Data is like letter-a-123-word-status
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                //
+                                playLetter(data);
+                            }
+                        });
                     }
                 } catch (IOException ex) {
                     System.out.println("Error in received!");
                 }
             }
         });
-th.start();
+        th.start();
 //       //Once you receive the word from DB
 //        StringBuffer tempoStringBuffer = new StringBuffer();
 //
@@ -265,7 +265,7 @@ th.start();
         t.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                
+
                 buttonClicked("t", receivedWord);
                 t.setDisable(true);
             }
@@ -357,7 +357,7 @@ th.start();
 
             for (Integer indexe : arrayOfLetterIndexes) {
                 if (isUpperCase(wordCharacters[indexe])) {
-                    
+
                     String letterUpper = letter.toUpperCase();
                     charArray[indexe] = letterUpper.charAt(0);
                 } else {

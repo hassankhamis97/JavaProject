@@ -9,7 +9,8 @@ import javafx.scene.layout.*;
 import static javafx.scene.layout.Region.USE_PREF_SIZE;
 import javafx.scene.paint.*;
 
-public  class LoginUI extends StackPane {
+public class LoginUI extends StackPane {
+
     Scene currentScene;
 
     protected final BorderPane borderPane;
@@ -20,7 +21,7 @@ public  class LoginUI extends StackPane {
     protected final ImageView imageView0;
     protected final TextField email_txt;
     protected final PasswordField pass_txt;
-     protected final Button login_btn;
+    protected final Button login_btn;
     protected final Button btnReg;
     protected final AnchorPane anchorPane1;
     protected final AnchorPane anchorPane2;
@@ -30,7 +31,7 @@ public  class LoginUI extends StackPane {
     public LoginUI() {
 
         borderPane = new BorderPane();
-      //  borderPane.setId("pane");
+        //  borderPane.setId("pane");
         anchorPane = new AnchorPane();
         borderPane0 = new BorderPane();
         anchorPane0 = new AnchorPane();
@@ -111,7 +112,6 @@ public  class LoginUI extends StackPane {
 //        checkBox.setMnemonicParsing(false);
 //        checkBox.setText("Remember me");
 //        checkBox.setTextFill(javafx.scene.paint.Color.valueOf("#1000cc"));
-
         login_btn.setId("btnLogin");
         login_btn.setLayoutX(100.0);
         login_btn.setLayoutY(179.0);
@@ -146,7 +146,7 @@ public  class LoginUI extends StackPane {
         AnchorPane.setLeftAnchor(imageView1, 650.0);
         AnchorPane.setRightAnchor(imageView1, 600.0);
         imageView1.setId("logo1.png");
-       imageView1.setImage(new Image(LoginUI.class.getResource("/Resources/logo_1.png").toExternalForm()));
+        imageView1.setImage(new Image(LoginUI.class.getResource("/Resources/logo_1.png").toExternalForm()));
         borderPane.setTop(anchorPane3);
 
         anchorPane0.getChildren().add(imageView);
@@ -156,24 +156,20 @@ public  class LoginUI extends StackPane {
         anchorPane0.getChildren().add(login_btn);
         anchorPane0.getChildren().add(btnReg);
         anchorPane3.getChildren().add(imageView1);
-            getChildren().add(borderPane);
-                currentScene = new Scene(this);
-
+        getChildren().add(borderPane);
+        currentScene = new Scene(this);
 
     }
-    
-    
-public  StackPane getStackPane()
-    {
+
+    public StackPane getStackPane() {
         return this;
     }
-public  BorderPane getParentNode()
-    {
+
+    public BorderPane getParentNode() {
         return borderPane;
     }
-    
 
- public   Scene retScene() {
+    public Scene retScene() {
         return currentScene;
     }
 }

@@ -12,25 +12,24 @@ import java.time.LocalTime;
  *
  * @author hassan
  */
-class Moves
-{
+class Moves {
+
     private String playerID;
     private String moveType;
     private String blockNo;
-    public Moves(String id,String type,String number)
-    {
+
+    public Moves(String id, String type, String number) {
         playerID = id;
         //delayTimeSec = delay;
         moveType = type;
         blockNo = number;
     }
-    
-    public String getMoveType()
-    {
+
+    public String getMoveType() {
         return moveType;
     }
-    public String getBlockNumber()
-    {
+
+    public String getBlockNumber() {
         return blockNo;
     }
 }

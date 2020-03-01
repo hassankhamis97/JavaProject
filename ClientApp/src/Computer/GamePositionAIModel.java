@@ -10,9 +10,9 @@ package Computer;
  * @author hassan
  */
 public class GamePositionAIModel {
-    
-   public String PositionTxt;
-   public int PositionIndex;
+
+    public String PositionTxt = "";
+    public int PositionIndex;
 
     public GamePositionAIModel() {
     }
@@ -21,14 +21,12 @@ public class GamePositionAIModel {
         this.PositionTxt = PositionTxt;
         this.PositionIndex = PositionIndex;
     }
-    
-        
-        
-     public void setPositionIndex(int PositionIndex) {
-                    this.PositionIndex = PositionIndex;
-                }
 
-                public void setPositionTxt(String PositionTxt) {   
-                    this.PositionTxt = PositionTxt;
-                }
+    public void setPositionIndex(int PositionIndex) {
+        this.PositionIndex = PositionIndex;
+    }
+
+    public void setPositionTxt(String PositionTxt) {
+        this.PositionTxt = PositionTxt;
+    }
 }

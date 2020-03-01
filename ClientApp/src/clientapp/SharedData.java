@@ -18,11 +18,12 @@ import java.util.List;
  * @author hassa
  */
 public class SharedData {
-        public static int playerID;
-        public static Connection con;
-        public static Socket client;
-          public static int Coins;
-        public  static List<NavigationStack> nsList=new ArrayList<>();
+
+    public static int playerID;
+    public static Connection con;
+    public static Socket client;
+    public static int Coins;
+    public static List<NavigationStack> nsList = new ArrayList<>();
 //        static DataInputStream dis;
 //        static DataOutputStream dos;
 }

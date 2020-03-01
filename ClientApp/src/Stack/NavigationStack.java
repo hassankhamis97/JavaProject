@@ -12,8 +12,9 @@ import javafx.scene.layout.Pane;
  * @author Kasper
  */
 public class NavigationStack {
+
     public String pageName;
-     public Pane root;
-     public String cssStyle;
-     public boolean isNew;
+    public Pane root;
+    public String cssStyle;
+    public boolean isNew;
 }

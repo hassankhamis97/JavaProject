@@ -12,7 +12,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
 public class GameUITest extends AnchorPane {
- Scene currentScene;
+
+    Scene currentScene;
     protected final BorderPane borderPane;
     protected final GridPane gridPane;
     protected final ColumnConstraints columnConstraints;
@@ -177,10 +178,10 @@ public class GameUITest extends AnchorPane {
         flowPane.getChildren().add(textField);
         flowPane.getChildren().add(button8);
         getChildren().add(borderPane);
-currentScene = new Scene(this);
+        currentScene = new Scene(this);
     }
-    Scene retScene()
-    {
-            return currentScene;
+
+    Scene retScene() {
+        return currentScene;
     }
 }

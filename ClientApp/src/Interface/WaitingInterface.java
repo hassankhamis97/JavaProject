@@ -10,6 +10,7 @@ package Interface;
  * @author Kasper
  */
 public interface WaitingInterface {
-   void callRead() ;
-   
+
+    void callRead();
+
 }

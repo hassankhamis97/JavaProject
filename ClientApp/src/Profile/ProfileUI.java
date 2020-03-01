@@ -13,7 +13,8 @@ import javafx.scene.text.*;
 import javafx.scene.text.Font;
 
 public class ProfileUI extends BorderPane {
-Scene currentScene;
+
+    Scene currentScene;
     protected final AnchorPane anchorPane;
     protected final BorderPane borderPane;
     protected final AnchorPane anchorPane0;
@@ -88,67 +89,67 @@ Scene currentScene;
         label.setText("Total Time");
         label.setFont(new Font("System Bold Italic", 25.0));
 
-    //    label0.setFont(javafx.scene.text.Font.$x1);
+        //    label0.setFont(javafx.scene.text.Font.$x1);
         label0.setLayoutX(14.0);
         label0.setLayoutY(80.0);
         label0.setText("Total Score");
         label0.setFont(new Font("System Bold Italic", 25.0));
 
-    //    label1.setFont(javafx.scene.text.Font.$x1);
+        //    label1.setFont(javafx.scene.text.Font.$x1);
         label1.setLayoutX(14.0);
         label1.setLayoutY(121.0);
         label1.setText("Total Games");
         label1.setFont(new Font("System Bold Italic", 25.0));
 
-    //    label2.setFont(javafx.scene.text.Font.$x1);
+        //    label2.setFont(javafx.scene.text.Font.$x1);
         label2.setLayoutX(14.0);
         label2.setLayoutY(204.0);
         label2.setText("Level");
         label2.setFont(new Font("System Bold Italic", 25.0));
 
-    //    label3.setFont(javafx.scene.text.Font.$x1);
+        //    label3.setFont(javafx.scene.text.Font.$x1);
         label3.setLayoutX(14.0);
         label3.setLayoutY(160.0);
         label3.setText("Number of winner");
         label3.setFont(new Font("System Bold Italic", 25.0));
 
-    //    label4.setFont(javafx.scene.text.Font.$x1);
+        //    label4.setFont(javafx.scene.text.Font.$x1);
         label4.setLayoutX(14.0);
         label4.setLayoutY(242.0);
         label4.setText("Coins");
         label4.setFont(new Font("System Bold Italic", 25.0));
 
-    //    label5.setFont(javafx.scene.text.Font.$x1);
+        //    label5.setFont(javafx.scene.text.Font.$x1);
         label5.setLayoutX(271.0);
         label5.setLayoutY(39.0);
         label5.setText("0");
         label5.setFont(new Font("System Bold Italic", 25.0));
 
-    //    label6.setFont(javafx.scene.text.Font.$x1);
+        //    label6.setFont(javafx.scene.text.Font.$x1);
         label6.setLayoutX(271.0);
         label6.setLayoutY(80.0);
         label6.setText("0");
         label6.setFont(new Font("System Bold Italic", 25.0));
 
-    //    label7.setFont(javafx.scene.text.Font.$x1);
+        //    label7.setFont(javafx.scene.text.Font.$x1);
         label7.setLayoutX(271.0);
         label7.setLayoutY(121.0);
         label7.setText("0");
         label7.setFont(new Font("System Bold Italic", 25.0));
 
-    //    label8.setFont(javafx.scene.text.Font.$x1);
+        //    label8.setFont(javafx.scene.text.Font.$x1);
         label8.setLayoutX(271.0);
         label8.setLayoutY(160.0);
         label8.setText("0");
         label8.setFont(new Font("System Bold Italic", 25.0));
 
-    //    label9.setFont(javafx.scene.text.Font.$x1);
+        //    label9.setFont(javafx.scene.text.Font.$x1);
         label9.setLayoutX(271.0);
         label9.setLayoutY(204.0);
         label9.setText("0");
         label9.setFont(new Font("System Bold Italic", 25.0));
 
-    //    label10.setFont(javafx.scene.text.Font.$x1);
+        //    label10.setFont(javafx.scene.text.Font.$x1);
         label10.setLayoutX(271.0);
         label10.setLayoutY(242.0);
         label10.setText("0");
@@ -160,7 +161,7 @@ Scene currentScene;
         imageView.setLayoutX(120.0);
         imageView.setLayoutY(-24.0);
         imageView.setImage(new Image(ProfileUI.class.getResource("pic-user-1.png").toExternalForm()));
-       // imageView.setImage(new Image(getClass().getResource("Style/pic-user-1.png").toExternalForm()));
+        // imageView.setImage(new Image(getClass().getResource("Style/pic-user-1.png").toExternalForm()));
         borderPane.setCenter(anchorPane0);
         setCenter(borderPane);
 
@@ -192,7 +193,7 @@ Scene currentScene;
         imageView0.setFitWidth(54.999900000002526);
         imageView0.setId("Backward_BTN.png");
         imageView0.setImage(new Image(ProfileUI.class.getResource("Backward_BTN.png").toExternalForm()));
-      //  imageView0.setImage(new Image(getClass().getResource("file:/C:/Users/Marina-Sameh/Downloads/PNG/Rating/Backward_BTN.png").toExternalForm()));
+        //  imageView0.setImage(new Image(getClass().getResource("file:/C:/Users/Marina-Sameh/Downloads/PNG/Rating/Backward_BTN.png").toExternalForm()));
         button.setGraphic(imageView0);
         setTop(anchorPane3);
 
@@ -210,15 +211,15 @@ Scene currentScene;
         anchorPane0.getChildren().add(label10);
         anchorPane0.getChildren().add(imageView);
         anchorPane3.getChildren().add(button);
-currentScene = new Scene(this);
+        currentScene = new Scene(this);
     }
-    public BorderPane getParentNode()
-    {
+
+    public BorderPane getParentNode() {
         return this;
     }
-     protected Scene retScene()
-    {
-        
-            return currentScene;
+
+    protected Scene retScene() {
+
+        return currentScene;
     }
 }

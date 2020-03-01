@@ -74,9 +74,9 @@ public class Winner extends WinnerUI {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-gifImage.setFitHeight(SharedData.nsList.get(0).root.getHeight());
+                gifImage.setFitHeight(SharedData.nsList.get(0).root.getHeight());
                 gifImage.setFitWidth(SharedData.nsList.get(0).root.getWidth());
-                
+
             }
         });
     };

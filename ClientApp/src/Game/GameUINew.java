@@ -439,7 +439,7 @@ public class GameUINew extends BorderPane {
         btnImojiImg.setId("emoji.png");
         btnImojiImg.setX(1.0);
         btnImojiImg.setY(0.0);
-                imageView1.setImage(new Image(GameUINew.class.getResource("emoji.png").toExternalForm()));
+        imageView1.setImage(new Image(GameUINew.class.getResource("emoji.png").toExternalForm()));
 
         btnEmoji.setGraphic(btnImojiImg);
 
@@ -635,8 +635,8 @@ public class GameUINew extends BorderPane {
         anchorPane4.getChildren().add(separator);
 
     }
-     BorderPane getParentNode()
-    {
+
+    BorderPane getParentNode() {
         return this;
     }
 }

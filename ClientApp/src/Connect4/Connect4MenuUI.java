@@ -14,7 +14,8 @@ import javafx.scene.text.*;
 import javafx.scene.text.Font;
 
 class GuessTheWordMenuUI extends BorderPane {
-Scene currentScene;
+
+    Scene currentScene;
     protected final AnchorPane anchorPane;
     protected final BorderPane borderPane;
     protected final AnchorPane anchorPane0;
@@ -71,7 +72,7 @@ Scene currentScene;
         button.setFont(new Font(16.0));
         button.setId("btn");
 
-    //    button0.setFont(javafx.scene.text.Font.$x1);
+        //    button0.setFont(javafx.scene.text.Font.$x1);
         button0.setFont(new Font(16.0));
         button0.setLayoutX(0.0);
         button0.setLayoutY(231.0);
@@ -81,7 +82,7 @@ Scene currentScene;
         button0.setText("Play Online");
         button0.setId("btn");
 
-    //    button1.setFont(javafx.scene.text.Font.$x1);
+        //    button1.setFont(javafx.scene.text.Font.$x1);
         button1.setFont(new Font(16.0));
         button1.setLayoutX(0.0);
         button1.setLayoutY(29.0);
@@ -114,22 +115,22 @@ Scene currentScene;
         imageView.setFitWidth(362.0);
         imageView.setId("connect-4-png-6.png");
         imageView.setImage(new Image(GuessTheWordMenuUI.class.getResource("connect-4-png-6.png").toExternalForm()));
-    //    imageView.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/connect-4-png-6.png").toExternalForm()));
+        //    imageView.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/connect-4-png-6.png").toExternalForm()));
         setTop(anchorPane3);
 
         anchorPane0.getChildren().add(button);
         anchorPane0.getChildren().add(button0);
         anchorPane0.getChildren().add(button1);
         anchorPane3.getChildren().add(imageView);
-currentScene = new Scene(this);
+        currentScene = new Scene(this);
     }
-    BorderPane getParentNode()
-    {
+
+    BorderPane getParentNode() {
         return this;
     }
-    protected Scene retScene()
-    {
-        
-            return currentScene;
+
+    protected Scene retScene() {
+
+        return currentScene;
     }
 }

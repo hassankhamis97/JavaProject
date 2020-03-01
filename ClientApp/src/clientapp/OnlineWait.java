@@ -28,7 +28,9 @@ import javafx.scene.layout.Pane;
  * @author Hassan Khamis
  */
 public class OnlineWait extends OnlineWaitUI {
-DataOutputStream dos ;
+
+    DataOutputStream dos;
+
     public OnlineWait() {
         //Main.showNewScene(getScene(),"/OnlineWaiting/on.css");
         cancel.setOnAction((ActionEvent event) -> {
@@ -71,34 +73,34 @@ DataOutputStream dos ;
 
                     if (msg.equals("startGame-tic")) {
                         dos = new DataOutputStream(SharedData.client.getOutputStream());
-dos.writeUTF("fdsf-startGameNow");
+                        dos.writeUTF("fdsf-startGameNow");
                         new GameStart(SharedData.client);
                         Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
-                        }
-                    });
+                            @Override
+                            public void run() {
+                                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+                            }
+                        });
                     } else if (msg.equals("startGame-connect")) {
 //                        dos.writeUTF("startGameNow");
 
                         new Connect4.ConnectFour(SharedData.client);
                         Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
-                        }
-                    });
+                            @Override
+                            public void run() {
+                                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+                            }
+                        });
                     } else if (msg.equals("startGame-GuesTheWord")) {
 //                        dos.writeUTF("startGameNow");
 
                         new GuessTheWord(SharedData.client);
                         Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
-                        }
-                    });
+                            @Override
+                            public void run() {
+                                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+                            }
+                        });
                     } else if (msg.equals("backNow")) {
                         Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
 //                        SharedData.nsList.remove(SharedData.nsList.size() - 1);
@@ -112,7 +114,6 @@ dos.writeUTF("fdsf-startGameNow");
                             }
                         });
                     }
-                    
 
                 } catch (IOException ex) {
                     Logger.getLogger(OnlineWait.class.getName()).log(Level.SEVERE, null, ex);

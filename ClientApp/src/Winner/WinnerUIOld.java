@@ -13,7 +13,8 @@ import javafx.scene.text.*;
 import javafx.scene.text.Font;
 
 public class WinnerUIOld extends BorderPane {
-Scene currentScene;
+
+    Scene currentScene;
     protected final AnchorPane anchorPane;
     protected final BorderPane borderPane;
     protected final AnchorPane anchorPane0;
@@ -75,9 +76,9 @@ Scene currentScene;
         imageView.setLayoutX(0.0);
         imageView.setLayoutY(113.0);
         imageView.setImage(new Image(WinnerUIOld.class.getResource("Header.png").toExternalForm()));
-      //  imageView.setImage(new Image(getClass().getResource("file:/C:/Users/Marina-Sameh/Downloads/PNG/You_Win/Header.png").toExternalForm()));
+        //  imageView.setImage(new Image(getClass().getResource("file:/C:/Users/Marina-Sameh/Downloads/PNG/You_Win/Header.png").toExternalForm()));
 
-    //    button0.setFont(javafx.scene.text.Font.$x1);
+        //    button0.setFont(javafx.scene.text.Font.$x1);
         button0.setFont(new Font(16.0));
         button0.setLayoutX(279.0);
         button0.setLayoutY(245.0);
@@ -107,14 +108,14 @@ Scene currentScene;
         anchorPane0.getChildren().add(button);
         anchorPane0.getChildren().add(imageView);
         anchorPane0.getChildren().add(button0);
-currentScene = new Scene(this);
+        currentScene = new Scene(this);
     }
-      BorderPane getParentNode()
-    {
+
+    BorderPane getParentNode() {
         return this;
     }
-      protected Scene retScene()
-      {
-          return currentScene; 
-      }
+
+    protected Scene retScene() {
+        return currentScene;
+    }
 }

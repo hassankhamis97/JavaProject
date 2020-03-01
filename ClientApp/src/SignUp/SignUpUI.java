@@ -66,7 +66,6 @@ public class SignUpUI extends BorderPane {
         setPrefHeight(400.0);
         setPrefWidth(600.0);
 //        setId("");
-        
 
         BorderPane.setAlignment(anchorPane, javafx.geometry.Pos.CENTER);
         anchorPane.setPrefHeight(90.0);
@@ -89,14 +88,14 @@ public class SignUpUI extends BorderPane {
         label.setTextFill(javafx.scene.paint.Color.BLACK);
         label.setFont(new Font("System Bold Italic", 16.0));
 
-    //    label0.setFont(javafx.scene.text.Font.$x1);
+        //    label0.setFont(javafx.scene.text.Font.$x1);
         label0.setLayoutX(0.0);
         label0.setLayoutY(127.0);
         label0.setText("Password");
         label0.setFont(new Font("System Bold Italic", 16.0));
         label0.setTextFill(javafx.scene.paint.Color.BLACK);
 
-    //    label1.setFont(javafx.scene.text.Font.$x1);
+        //    label1.setFont(javafx.scene.text.Font.$x1);
         label1.setFont(new Font("System Bold Italic", 16.0));
         label1.setLayoutX(0.0);
         label1.setLayoutY(163.0);
@@ -104,7 +103,7 @@ public class SignUpUI extends BorderPane {
         label1.setText("Confirm Pass.");
         label1.setTextFill(javafx.scene.paint.Color.BLACK);
 
-    //    label2.setFont(javafx.scene.text.Font.$x1);
+        //    label2.setFont(javafx.scene.text.Font.$x1);
         label2.setFont(new Font("System Bold Italic", 16.0));
         label2.setLayoutX(0.0);
         label2.setLayoutY(198.0);
@@ -159,7 +158,7 @@ public class SignUpUI extends BorderPane {
         imageView0.setLayoutX(200.0);
         imageView0.setLayoutY(57.0);
         imageView0.setImage(new Image(SignUpUI.class.getResource("camera.png").toExternalForm()));
-       // imageView0.setImage(new Image(getClass().getResource("Style/camera.png").toExternalForm()));
+        // imageView0.setImage(new Image(getClass().getResource("Style/camera.png").toExternalForm()));
         borderPane.setCenter(anchorPane0);
         setCenter(borderPane);
 
@@ -184,7 +183,7 @@ public class SignUpUI extends BorderPane {
         imageView1.setFitWidth(420.0);
         imageView1.setId("logo.png");
         imageView1.setImage(new Image(SignUpUI.class.getResource("logo.png").toExternalForm()));
-       // imageView1.setImage(new Image(getClass().getResource("Style/logo.png").toExternalForm()));
+        // imageView1.setImage(new Image(getClass().getResource("Style/logo.png").toExternalForm()));
         setTop(anchorPane3);
 
         anchorPane0.getChildren().add(label);
@@ -203,8 +202,8 @@ public class SignUpUI extends BorderPane {
         anchorPane3.getChildren().add(imageView1);
 
     }
-     BorderPane getParentNode()
-    {
+
+    BorderPane getParentNode() {
         return this;
     }
 }

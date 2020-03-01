@@ -120,7 +120,7 @@ public class Database {
         return rs;
     }
 
-    public int getSavedGames(Connection con) {
+    public ArrayList<SavedGame> getSavedGames(Connection con) {
 
         ArrayList<SavedGame> savedGamesLst = new ArrayList<>();
 
@@ -177,7 +177,7 @@ public class Database {
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return playerID;
+        return savedGamesLst;
     }
 
     public void getPlayerID(Connection con, String email, String pass) {

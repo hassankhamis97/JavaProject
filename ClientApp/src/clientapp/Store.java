@@ -38,10 +38,11 @@ public class Store extends StoreUI {
     int myCoins = 0;
     boolean highPrice = false;
     boolean done = false;
-  
-Database db;
+
+    Database db;
+
     public Store() {
-      db = new Database();
+        db = new Database();
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -60,17 +61,17 @@ Database db;
                         + "    -fx-background-radius: 30;\n"
                         + "    -fx-text-fill: #242d35;\n"
                         + "    -fx-font-size: 16px;");
-               
-                 back.setStyle("-fx-background-color: transparent;");
-                 
-                   // update coins 
-                               coinsText.setText("" + SharedData.Coins);
+
+                back.setStyle("-fx-background-color: transparent;");
+
+                // update coins 
+                coinsText.setText("" + SharedData.Coins);
 
             }
         });
-   Connection con = db.openConnection();
-         db.getCoins(con);
-         db.closeConnection(con);
+        Connection con = db.openConnection();
+        db.getCoins(con);
+        db.closeConnection(con);
         //******************************//
         NavigationStack nsObj = new NavigationStack();
         nsObj.root = this;
@@ -78,9 +79,8 @@ Database db;
         nsObj.cssStyle = "/Store/store.css";
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
-     
+
         loadStore();
-       
 
         //  Main.showNewScene(getScene(), "/Store/store.css");
     }
@@ -182,25 +182,24 @@ Database db;
 
         goBack.setOnMouseClicked((MouseEvent event) -> {
             System.out.println("back ------> ");
-             Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
-                SharedData.nsList.remove(SharedData.nsList.size() - 1);
-                SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
-                Main.showNewScene(myOldRoot);
+            Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
+            SharedData.nsList.remove(SharedData.nsList.size() - 1);
+            SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
+            Main.showNewScene(myOldRoot);
         });
 
     }//end
 
     private void buyEmoji(boolean high_price, String emojiName) {
-    Connection con = db.openConnection();
-        if (high_price && SharedData.Coins >= 15 ) {
+        Connection con = db.openConnection();
+        if (high_price && SharedData.Coins >= 15) {
             SharedData.Coins -= 15;
-           
-          
-          db.addNewEmoji( con,emojiName );
-          ///  updatePlayerCoins();
-          db.updatePlayerCoins(con,done);
+
+            db.addNewEmoji(con, emojiName);
+            ///  updatePlayerCoins();
+            db.updatePlayerCoins(con, done);
             db.onButtonAlert(" Operation done Successfully ^_^", done);
-          
+
 //           try {
 //               stmt = SharedData.con.prepareStatement("INSERT INTO statistics (ID,COINS) VALUES(?,?) Player where id = ?");
 //               stmt.setInt(1, SharedData.playerID);
@@ -213,10 +212,10 @@ Database db;
 //           } catch (SQLException ex) {
 //               Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
 //           }
-        } else if ( !(high_price) &&  SharedData.Coins >= 5) {
+        } else if (!(high_price) && SharedData.Coins >= 5) {
             SharedData.Coins -= 5;
-         db.addNewEmoji( con,emojiName );
-          db.updatePlayerCoins(con, done);
+            db.addNewEmoji(con, emojiName);
+            db.updatePlayerCoins(con, done);
 //           try {
 //               stmt = SharedData.con.prepareStatement("INSERT INTO statistics (ID,COINS) VALUES(?,?) Player where id = ?");
 //               stmt.setInt(1, SharedData.playerID);
@@ -229,19 +228,17 @@ Database db;
 //               Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
 //           }
 
-
-                 
         } else {
 
             done = false;
             db.onButtonAlert("Sorry you dont have enough Coins", done);
         }
-        
+
         db.closeConnection(con);
 
     }//end of function
 
-  /*  void addNewEmoji(String emojiName) {
+    /*  void addNewEmoji(String emojiName) {
         try {                                           //create player_Emoji table in your database
             stmt = SharedData.con.prepareStatement("INSERT INTO player-Emoji  (ID,emojiName) VALUES(?,?) Player where id = ?");
             stmt.setInt(1, SharedData.playerID);
@@ -256,16 +253,13 @@ Database db;
             Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
         }
     }*/
-
-    
-  /*  void updatePlayerCoins() {
+ /*  void updatePlayerCoins() {
 
         try {
             stmt = SharedData.con.prepareStatement("UPDATE PLAYER SET COINS =?  where id = ?");
             stmt.setInt(1, myCoins);
             stmt.setInt(2, SharedData.playerID);
             /* example override value *///
-
 //            stmt.executeUpdate();
 //            done = true;
 //            onButtonAlert("the Emoji has been added successfully to your store", done);
@@ -273,10 +267,9 @@ Database db;
 //        } catch (SQLException ex) {
 //            Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+    // }
 
-   // }
-
-  /*  void onButtonAlert(String context, boolean done1) {
+    /*  void onButtonAlert(String context, boolean done1) {
 
         Alert alertConfirmation = new Alert(AlertType.CONFIRMATION);
         alertConfirmation.setTitle("Buy Emoji");
@@ -289,7 +282,6 @@ Database db;
         }
 
     }*/
-
     void showRejectedAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Unfortuantly");
@@ -299,7 +291,7 @@ Database db;
         alert.showAndWait();
     }
 
-  /*  private void getCoins() {
+    /*  private void getCoins() {
         try {
             Class.forName("com.mysql.jdbc.Driver"); // stablish the connection
             SharedData.con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/javaproject", "root", "root");

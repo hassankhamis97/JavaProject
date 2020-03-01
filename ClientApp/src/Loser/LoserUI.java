@@ -13,7 +13,8 @@ import javafx.scene.text.*;
 import javafx.scene.text.Font;
 
 public class LoserUI extends BorderPane {
-Scene currentScene;
+
+    Scene currentScene;
     protected final AnchorPane anchorPane;
     protected final BorderPane borderPane;
     protected final AnchorPane anchorPane0;
@@ -79,7 +80,7 @@ Scene currentScene;
         imageView.setLayoutX(0.0);
         imageView.setLayoutY(102.0);
 //        imageView.setImage(new Image(LoserUI.class.getResource("lose.png").toExternalForm()));
-    //    imageView.setImage(new Image(getClass().getResource("Style/lose.png").toExternalForm()));
+        //    imageView.setImage(new Image(getClass().getResource("Style/lose.png").toExternalForm()));
         borderPane.setCenter(anchorPane0);
         setCenter(borderPane);
 
@@ -101,14 +102,14 @@ Scene currentScene;
         anchorPane0.getChildren().add(button);
         anchorPane0.getChildren().add(button0);
         anchorPane0.getChildren().add(imageView);
-currentScene= new Scene(this);
+        currentScene = new Scene(this);
     }
-      BorderPane getParentNode()
-    {
+
+    BorderPane getParentNode() {
         return this;
     }
-     protected Scene retScene()
-      {
-          return currentScene;
-      }
+
+    protected Scene retScene() {
+        return currentScene;
+    }
 }

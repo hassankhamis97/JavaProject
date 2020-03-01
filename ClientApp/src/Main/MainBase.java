@@ -12,9 +12,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 
-public  class MainBase extends BorderPane {
-protected final AnchorPane anchor_friendList;
-protected final FlowPane flow_parent_friendList;
+public class MainBase extends BorderPane {
+
+    protected final AnchorPane anchor_friendList;
+    protected final FlowPane flow_parent_friendList;
 //    protected final FlowPane flowContainsChilds_friend;
 //    protected final ImageView friend_image;
 //    protected final FlowPane flow_name_status_friend;
@@ -42,11 +43,11 @@ protected final FlowPane flow_parent_friendList;
     protected final Button btnSetting;
     protected final ImageView imageView1;
     protected final Button btnHelp;
-    protected final ImageView imageView2;   
+    protected final ImageView imageView2;
     Scene currentScene;
-    
+
     public MainBase() {
-        
+
         anchor_friendList = new AnchorPane();
         flow_parent_friendList = new FlowPane();
 //        flowContainsChilds_friend = new FlowPane();
@@ -113,7 +114,7 @@ protected final FlowPane flow_parent_friendList;
         twoPlayer.setFont(new Font(16.0));
         twoPlayer.setId("btn");
 
-    //    button0.setFont(javafx.scene.text.Font.$x1);
+        //    button0.setFont(javafx.scene.text.Font.$x1);
 //        button0.setLayoutX(24.0);
 //        button0.setLayoutY(249.0);
 //        button0.setMinHeight(23.0);
@@ -123,8 +124,7 @@ protected final FlowPane flow_parent_friendList;
 //        button0.setText("Play Online");
 //        button0.setFont(new Font(16.0));
 //        button0.setId("btn");
-
-    //    savedGames.setFont(javafx.scene.text.Font.$x1);
+        //    savedGames.setFont(javafx.scene.text.Font.$x1);
         savedGames.setLayoutX(24.0);
         savedGames.setLayoutY(244.0);
         savedGames.setMnemonicParsing(false);
@@ -134,7 +134,7 @@ protected final FlowPane flow_parent_friendList;
         savedGames.setFont(new Font(16.0));
         savedGames.setId("btn");
 
-    //    onePlayer.setFont(javafx.scene.text.Font.$x1);
+        //    onePlayer.setFont(javafx.scene.text.Font.$x1);
         onePlayer.setLayoutX(24.0);
         onePlayer.setLayoutY(86.0);
         onePlayer.setMnemonicParsing(false);
@@ -144,7 +144,7 @@ protected final FlowPane flow_parent_friendList;
         onePlayer.setFont(new Font(16.0));
         onePlayer.setId("btn");
 
-    //    moreGames.setFont(javafx.scene.text.Font.$x1);
+        //    moreGames.setFont(javafx.scene.text.Font.$x1);
         moreGames.setLayoutX(24.0);
         moreGames.setLayoutY(323.0);
         moreGames.setMnemonicParsing(false);
@@ -177,8 +177,7 @@ protected final FlowPane flow_parent_friendList;
         anchorPane3.setMinWidth(728.0);
         anchorPane3.setPrefHeight(48.0);
         anchorPane3.setPrefWidth(728.0);
-        
-        
+
         BorderPane.setAlignment(anchor_friendList, javafx.geometry.Pos.CENTER);
         anchor_friendList.setId("anchor_friendList");
         anchor_friendList.setMinWidth(189.0);
@@ -245,15 +244,13 @@ protected final FlowPane flow_parent_friendList;
 //        btnAdd_image.setLayoutY(14.0);
 //        btnAdd_image.setImage(new Image(MainBase.class.getResource("addbtn.png").toExternalForm()));
 //        setLeft(anchor_friendList);
-
         AnchorPane.setLeftAnchor(btnStore, 20.0);
         AnchorPane.setTopAnchor(btnStore, 12.0);
-    //    btnStore.setFont(javafx.scene.text.Font.$x1);
+        //    btnStore.setFont(javafx.scene.text.Font.$x1);
         btnStore.setMnemonicParsing(false);
         btnStore.setPrefHeight(39.0);
         btnStore.setPrefWidth(47.0);
         btnStore.setText("");
-        
 
         AnchorPane.setLeftAnchor(imageView0, 20.0);
         AnchorPane.setTopAnchor(imageView0, 12.0);
@@ -264,7 +261,7 @@ protected final FlowPane flow_parent_friendList;
         //imageView0.setImage(new Image(getClass().getResource("Style/Shop_BTN.png").toExternalForm()));
 
         AnchorPane.setRightAnchor(btnSetting, 20.0);
-    //    btnSetting.setFont(javafx.scene.text.Font.$x1);
+        //    btnSetting.setFont(javafx.scene.text.Font.$x1);
         btnSetting.setLayoutY(14.0);
         btnSetting.setMnemonicParsing(false);
         btnSetting.setPrefHeight(39.0);
@@ -278,10 +275,10 @@ protected final FlowPane flow_parent_friendList;
         imageView1.setId("Settings_BTN.png");
         imageView1.setLayoutY(14.0);
         imageView1.setImage(new Image(MainBase.class.getResource("Settings_BTN.png").toExternalForm()));
-       // imageView1.setImage(new Image(getClass().getResource("Style/Settings_BTN.png").toExternalForm()));
+        // imageView1.setImage(new Image(getClass().getResource("Style/Settings_BTN.png").toExternalForm()));
 
         AnchorPane.setRightAnchor(btnHelp, 75.0);
-     //   btnHelp.setFont(javafx.scene.text.Font.$x1);
+        //   btnHelp.setFont(javafx.scene.text.Font.$x1);
         btnHelp.setLayoutY(19.0);
         btnHelp.setMinHeight(21.0);
         btnHelp.setMnemonicParsing(false);
@@ -289,7 +286,7 @@ protected final FlowPane flow_parent_friendList;
         btnHelp.setPrefWidth(45.0);
         btnHelp.setText("");
         btnHelp.setVisible(false);
-friendOpen_btn.setLayoutX(90.0);
+        friendOpen_btn.setLayoutX(90.0);
         friendOpen_btn.setLayoutY(24.0);
         friendOpen_btn.setMnemonicParsing(false);
         friendOpen_btn.setPrefHeight(30.0);
@@ -320,12 +317,12 @@ friendOpen_btn.setLayoutX(90.0);
         anchorPane0.getChildren().add(imageView);
         anchorPane3.getChildren().add(imageView0);
         anchorPane3.getChildren().add(btnStore);
-        
+
         anchorPane3.getChildren().add(btnSetting);
         anchorPane3.getChildren().add(imageView1);
         anchorPane3.getChildren().add(btnHelp);
         anchorPane3.getChildren().add(imageView2);
-        
+
 //        setLeft(anchor_friendList);
 //        flowContainsChilds_friend.getChildren().add(friend_image);
 //        flow_name_status_friend.getChildren().add(name_friendLbl);
@@ -337,16 +334,16 @@ friendOpen_btn.setLayoutX(90.0);
 //        flow_parent_friendList.getChildren().add(flowContainsChilds_friend);
         anchor_friendList.getChildren().add(flow_parent_friendList);
         anchorPane3.getChildren().add(imageView3);
-        
-currentScene = new Scene(this);
+
+        currentScene = new Scene(this);
     }
-      BorderPane getParentNode()
-    {
+
+    BorderPane getParentNode() {
         return this;
     }
-      Scene retScene()
-    {
-        
-            return currentScene;
+
+    Scene retScene() {
+
+        return currentScene;
     }
 }

@@ -10,7 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 
-public  class LevelsUI extends BorderPane {
+public class LevelsUI extends BorderPane {
 
     protected final AnchorPane anchorPane;
     protected final BorderPane borderPane;
@@ -80,7 +80,7 @@ public  class LevelsUI extends BorderPane {
         easyBtn.setFont(new Font(20.0));
         easyBtn.setId("btn");
 
-      //  mediumBtn.setFont(javafx.scene.text.Font.$x1);
+        //  mediumBtn.setFont(javafx.scene.text.Font.$x1);
         mediumBtn.setLayoutX(-33.0);
         mediumBtn.setLayoutY(153.0);
         mediumBtn.setMnemonicParsing(false);
@@ -88,10 +88,10 @@ public  class LevelsUI extends BorderPane {
         mediumBtn.setPrefWidth(366.0);
         mediumBtn.setText("Medium");
         mediumBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-          mediumBtn.setId("btn");
+        mediumBtn.setId("btn");
         hardBtn.setDisable(false);
         hardBtn.setFocusTraversable(true);
-      //  hardBtn.setFont(javafx.scene.text.Font.$x1);
+        //  hardBtn.setFont(javafx.scene.text.Font.$x1);
         hardBtn.setLayoutX(-33.0);
         hardBtn.setLayoutY(231.0);
         hardBtn.setMnemonicParsing(false);

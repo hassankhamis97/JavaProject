@@ -10,6 +10,8 @@ import Main.MainBase;
 import MoreGamesMenu.MoreGamesMenu;
 import Pojos.SavedGame;
 import SavedGames.SavedGamePage;
+import SavedGames.SavedGamesList;
+import SavedGames.WatchSavedGamesUI;
 import Stack.NavigationStack;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -39,29 +41,30 @@ import javafx.scene.text.Font;
  * @author Hassan Khamis
  */
 public class MainMenu extends MainBase {
-    SavedGame sv ;
+
+    SavedGame sv;
     DataOutputStream dos;
 //    DataInputStream dis;
     boolean isFriendOpen = false;
     Thread waitForIncomingReqThread;
     boolean threadFinish = false;
-    
+
     public MainMenu() {
 //        Main.showNewScene(getScene(), "/Main/main.css");
- sv = new SavedGame();
+        sv = new SavedGame();
         NavigationStack nsObj = new NavigationStack();
         nsObj.root = this;
         nsObj.pageName = "MainMenu";
         nsObj.cssStyle = "/Main/main.css";
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
-        
+
         btnStore.setOnAction((ActionEvent event) -> {
             new Store();
-            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);            
+            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
         });
-        
-        Platform.runLater(new Runnable() {      
+
+        Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 btnStore.setStyle("-fx-background-color:transparent;");
@@ -149,35 +152,33 @@ public class MainMenu extends MainBase {
                 setLeft(null);
             }
         });
-        
+
         onePlayer.setOnAction((ActionEvent event) -> {
-               new Levels();
-                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+            new Levels();
+            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
         });
-        
+
         twoPlayer.setOnAction((ActionEvent event) -> {
-            
+
         });
-        
+
         moreGames.setOnAction((ActionEvent event) -> {
             new MoreGamesMenu();
-                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
         });
-        
+
         savedGames.setOnAction((event) -> {
             System.out.println("save ---> ");
-           new SavedGamePage(sv);
-                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+            new SavedGamesList();
+            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
         });
-        
-        
+
         try {
-            
+
             dos = new DataOutputStream(SharedData.client.getOutputStream());
             dos.writeUTF(SharedData.playerID + "-ID");
-            
+
 //            dis = new DataInputStream(SharedData.client.getInputStream());
-            
         } catch (IOException ex) {
 //            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -232,5 +233,5 @@ public class MainMenu extends MainBase {
 //        });
 //        waitForIncomingReqThread.start();
     }
-    
+
 }

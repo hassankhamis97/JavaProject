@@ -105,7 +105,7 @@ public class StoreUI extends BorderPane {
         L11.setId("giphy.gif");
         L11.setLayoutX(-28.0);
         L11.setLayoutY(-30.0);
-     //   L11.setImage(new Image(StoreUI.class.getResource("giphy.gif").toExternalForm()));
+        //   L11.setImage(new Image(StoreUI.class.getResource("giphy.gif").toExternalForm()));
         //   L11.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/giphy.gif").toExternalForm()));
 
         l12.setFitHeight(62.0);
@@ -113,7 +113,7 @@ public class StoreUI extends BorderPane {
         l12.setId("party_face_256_1.gif");
         l12.setLayoutX(76.0);
         l12.setLayoutY(-16.0);
-     //   l12.setImage(new Image(StoreUI.class.getResource("party_face_256_1.gif").toExternalForm()));
+        //   l12.setImage(new Image(StoreUI.class.getResource("party_face_256_1.gif").toExternalForm()));
         // l12.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/party_face_256_1.gif").toExternalForm()));
 
         L13.setFitHeight(76.0);
@@ -121,7 +121,7 @@ public class StoreUI extends BorderPane {
         L13.setId("01ced744ea38ab24bd06fcb916845d6d.gif");
         L13.setLayoutX(182.0);
         L13.setLayoutY(-30.0);
-    //    L13.setImage(new Image(StoreUI.class.getResource("01ced744ea38ab24bd06fcb916845d6d.gif").toExternalForm()));
+        //    L13.setImage(new Image(StoreUI.class.getResource("01ced744ea38ab24bd06fcb916845d6d.gif").toExternalForm()));
         //    L13.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/01ced744ea38ab24bd06fcb916845d6d.gif").toExternalForm()));
 
         L21.setFitHeight(74.0);
@@ -129,7 +129,7 @@ public class StoreUI extends BorderPane {
         L21.setId("7c56ac4ae590dd56095077e8c6de0642.gif");
         L21.setLayoutX(-19.0);
         L21.setLayoutY(46.0);
-     //   L21.setImage(new Image(StoreUI.class.getResource("7c56ac4ae590dd56095077e8c6de0642.gif").toExternalForm()));
+        //   L21.setImage(new Image(StoreUI.class.getResource("7c56ac4ae590dd56095077e8c6de0642.gif").toExternalForm()));
         //   L21.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/7c56ac4ae590dd56095077e8c6de0642.gif").toExternalForm()));
 
         L22.setFitHeight(76.0);
@@ -137,7 +137,7 @@ public class StoreUI extends BorderPane {
         L22.setId("3cb21150e8fe1f45c9a76b0d50303563.gif");
         L22.setLayoutX(76.0);
         L22.setLayoutY(44.0);
-    //    L22.setImage(new Image(StoreUI.class.getResource("3cb21150e8fe1f45c9a76b0d50303563.gif").toExternalForm()));
+        //    L22.setImage(new Image(StoreUI.class.getResource("3cb21150e8fe1f45c9a76b0d50303563.gif").toExternalForm()));
         //    L22.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/3cb21150e8fe1f45c9a76b0d50303563.gif").toExternalForm()));
 
         L23.setFitHeight(67.0);
@@ -145,8 +145,8 @@ public class StoreUI extends BorderPane {
         L23.setId("O0Lj.gif");
         L23.setLayoutX(182.0);
         L23.setLayoutY(44.0);
-    //    L23.setImage(new Image(StoreUI.class.getResource("O0Lj.gif").toExternalForm()));
-    //    L23.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/O0Lj.gif").toExternalForm()));
+        //    L23.setImage(new Image(StoreUI.class.getResource("O0Lj.gif").toExternalForm()));
+        //    L23.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/O0Lj.gif").toExternalForm()));
         separator.setLayoutX(-136.0);
         separator.setLayoutY(130.0);
         separator.setPrefWidth(572.0);
@@ -163,7 +163,7 @@ public class StoreUI extends BorderPane {
         L32.setId("6795255_preview-removebg-preview.png");
         L32.setLayoutX(74.0);
         L32.setLayoutY(145.0);
-    //    L32.setImage(new Image(StoreUI.class.getResource("6795255_preview-removebg-preview.png").toExternalForm()));
+        //    L32.setImage(new Image(StoreUI.class.getResource("6795255_preview-removebg-preview.png").toExternalForm()));
         //    L32.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/6795255_preview-removebg-preview.png").toExternalForm()));
 
         L33.setFitHeight(48.0);
@@ -171,7 +171,7 @@ public class StoreUI extends BorderPane {
         L33.setId("423543534-removebg-preview.png");
         L33.setLayoutX(188.0);
         L33.setLayoutY(147.0);
-       // L33.setImage(new Image(StoreUI.class.getResource("423543534-removebg-preview.png").toExternalForm()));
+        // L33.setImage(new Image(StoreUI.class.getResource("423543534-removebg-preview.png").toExternalForm()));
         //    L33.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/423543534-removebg-preview.png").toExternalForm()));
 
         label.setLayoutX(286.0);
@@ -184,8 +184,8 @@ public class StoreUI extends BorderPane {
         gold.setId("gold-coins-bag-golden-coin-wealth-big-cash-sack-vector-24251294-removebg-preview.png");
         gold.setLayoutX(217.0);
         gold.setLayoutY(212.0);
-    //    gold.setImage(new Image(StoreUI.class.getResource("goBack-coins-bag-golden-coin-wealth-big-cash-sack-vector-24251294-removebg-preview.png").toExternalForm()));
-    //    gold.setImage(new Image(getClass().getResource("New/StoreScene/src/storescene/gold-coins-bag-golden-coin-wealth-big-cash-sack-vector-24251294-removebg-preview.png").toExternalForm()));
+        //    gold.setImage(new Image(StoreUI.class.getResource("goBack-coins-bag-golden-coin-wealth-big-cash-sack-vector-24251294-removebg-preview.png").toExternalForm()));
+        //    gold.setImage(new Image(getClass().getResource("New/StoreScene/src/storescene/gold-coins-bag-golden-coin-wealth-big-cash-sack-vector-24251294-removebg-preview.png").toExternalForm()));
 
         //    coinsText.setFont(javafx.scene.text.Font.$x1);
         coinsText.setFont(new Font("System Bold Italic", 33.0));
@@ -223,7 +223,6 @@ public class StoreUI extends BorderPane {
         back.setText("");
         back.setId("btn1");
 
-        
         AnchorPane.setLeftAnchor(goBack, 20.0);
         AnchorPane.setTopAnchor(goBack, 14.0);
         goBack.setFitHeight(27.0);
@@ -255,7 +254,7 @@ public class StoreUI extends BorderPane {
 
     }
 
-   public BorderPane getParentNode() {
+    public BorderPane getParentNode() {
         return this;
     }
 

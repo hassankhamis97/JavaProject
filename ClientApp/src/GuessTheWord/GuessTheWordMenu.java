@@ -39,7 +39,7 @@ public class GuessTheWordMenu extends GuessTheWordMenuUI {
                 DataOutputStream dos;
                 dos = new DataOutputStream(SharedData.client.getOutputStream());
                 dos.writeUTF("GuesTheWord-random");
-               // dos.close();
+                // dos.close();
                 new OnlineWait();
 //                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
             } catch (IOException ex) {

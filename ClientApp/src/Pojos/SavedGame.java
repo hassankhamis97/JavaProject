@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Hassan Khamis
  */
 public class SavedGame {
+
     public int id;
     public ArrayList<Moves> moveLst;
     public int player1ID;

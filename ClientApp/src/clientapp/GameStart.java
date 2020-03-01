@@ -43,7 +43,7 @@ import jdk.nashorn.internal.ir.BreakNode;
  * @author hassan
  */
 public class GameStart extends GameUINew {
-    
+
     Scene gameStartScene;
     PrintStream ps;
     DataInputStream dis;
@@ -54,11 +54,11 @@ public class GameStart extends GameUINew {
     Alert alert;
     boolean isChatOpen = false;
     int chatTxtPosY = 21;
-    
+
     public GameStart() {
-        
+
     }
-    
+
     public GameStart(Socket player2SocketID) {
         //gameStartScene = new Scene(new BorderPane());
         // GameUI gb = new GameUI();
@@ -104,7 +104,7 @@ public class GameStart extends GameUINew {
 //                getChildren().add(profile_anchor);
 //                profile_anchor.getChildren().add(p.getParentNode());
             }
-            
+
         });
         Thread th = new Thread(new Runnable() {
             @Override
@@ -126,7 +126,7 @@ public class GameStart extends GameUINew {
                                                                 button.setText(data);
                                                         }
                                                 });*/
-                        
+
                         switch (msg[0]) {
                             case "0":
                                 status = msg[1];
@@ -136,7 +136,7 @@ public class GameStart extends GameUINew {
                                 Platform.runLater(new Runnable() {
                                     @Override
                                     public void run() {
-                                        
+
                                         if (msg[1].equals("X")) {
                                             imageBtn1.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
                                         } else {
@@ -145,7 +145,7 @@ public class GameStart extends GameUINew {
                                         button1.setDisable(true);
                                     }
                                 });
-                                
+
                                 break;
                             case "2":
                                 Platform.runLater(new Runnable() {
@@ -289,14 +289,14 @@ public class GameStart extends GameUINew {
 //                                        });
                                     }
                                 });
-                                
+
                                 break;
                             case "11": {
                                 System.out.println("Another Player Closed");
                                 if (alert != null) {
                                     alert.close();
                                 }
-                                
+
                             }
                             break;
                             case "msg":
@@ -315,7 +315,7 @@ public class GameStart extends GameUINew {
                                             txtChat1.setStyle("-fx-background-color:#4267b2;-fx-text-fill:#fff;");
                                             txtChat1.setEditable(false);
                                             chatAnch.getChildren().add(txtChat1);
-                                            
+
                                         } else {
                                             TextField txtChat1 = new TextField();
                                             txtChat1.setLayoutX(64.0);
@@ -335,12 +335,12 @@ public class GameStart extends GameUINew {
                                         //button.setDisable(true);
                                     }
                                 });
-                                
+
                                 break;
                         }
-                        
+
                     } catch (IOException ex) {
-break;
+                        break;
                     }
                 }
             }
@@ -348,7 +348,7 @@ break;
                         {
                                 
                         }*/
-            
+
         });
         th.start();
         button1.setOnAction(t -> {
@@ -363,12 +363,12 @@ break;
 
                 //button.setText("X");
             } catch (IOException ex) {
-               try {
-                dos.close();
+                try {
+                    dos.close();
 //            Logger.getLogger(GameStart.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex1) {
-                Logger.getLogger(GameStart.class.getName()).log(Level.SEVERE, null, ex1);
-            }
+                } catch (IOException ex1) {
+                    Logger.getLogger(GameStart.class.getName()).log(Level.SEVERE, null, ex1);
+                }
             }
         });
         button2.setOnAction(t -> {
@@ -505,9 +505,9 @@ break;
                 button7.setStyle("-fx-background-color:transparent;");
                 chatBtn.setStyle("-fx-background-color:transparent;");
                 chatAnch.setStyle(" -fx-background-color:#ddd;");
-                
+
             }
         });
     }
-    
+
 }

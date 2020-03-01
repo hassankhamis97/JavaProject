@@ -39,7 +39,7 @@ public class Connect4Menu extends GuessTheWordMenuUI {
                 DataOutputStream dos;
                 dos = new DataOutputStream(SharedData.client.getOutputStream());
                 dos.writeUTF("connect-random");
-               // dos.close();
+                // dos.close();
                 new OnlineWait();
             } catch (IOException ex) {
                 Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);

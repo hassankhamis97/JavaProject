@@ -13,9 +13,10 @@ import static javafx.scene.layout.Region.USE_PREF_SIZE;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 
-public  class MoreGamesMenuUI extends BorderPane {
-protected final AnchorPane anchor_friendList;
-protected final FlowPane flow_parent_friendList;
+public class MoreGamesMenuUI extends BorderPane {
+
+    protected final AnchorPane anchor_friendList;
+    protected final FlowPane flow_parent_friendList;
 //    protected final FlowPane flowContainsChilds_friend;
 //    protected final ImageView friend_image;
 //    protected final FlowPane flow_name_status_friend;
@@ -71,7 +72,7 @@ protected final FlowPane flow_parent_friendList;
         imageView1 = new ImageView();
         btnHelp = new Button();
         imageView2 = new ImageView();
-friendOpen_btn = new Button();
+        friendOpen_btn = new Button();
         imageView3 = new ImageView();
         setMaxHeight(USE_PREF_SIZE);
         setMaxWidth(USE_PREF_SIZE);
@@ -100,7 +101,6 @@ friendOpen_btn = new Button();
         anchorPane0.setPrefHeight(434.0);
         anchorPane0.setPrefWidth(361.0);
 
-        
         ConnFourBtn.setLayoutX(24.0);
         ConnFourBtn.setLayoutY(165.0);
         ConnFourBtn.setMnemonicParsing(false);
@@ -118,10 +118,6 @@ friendOpen_btn = new Button();
         checkTheWorldBtn.setText("Check The Word");
         checkTheWorldBtn.setFont(new Font(16.0));
 //        checkTheWorldBtn.setId("btn");
-
-    
-
-   
 
         AnchorPane.setTopAnchor(imageView, -55.0);
         imageView.setFitHeight(80.0);
@@ -146,8 +142,7 @@ friendOpen_btn = new Button();
         anchorPane3.setMinWidth(728.0);
         anchorPane3.setPrefHeight(48.0);
         anchorPane3.setPrefWidth(728.0);
-        
-        
+
         BorderPane.setAlignment(anchor_friendList, javafx.geometry.Pos.CENTER);
         anchor_friendList.setId("anchor_friendList");
         anchor_friendList.setMinWidth(189.0);
@@ -214,10 +209,9 @@ friendOpen_btn = new Button();
 //        btnAdd_image.setLayoutY(14.0);
 //        btnAdd_image.setImage(new Image(MainBase.class.getResource("addbtn.png").toExternalForm()));
 //        setLeft(anchor_friendList);
-
         AnchorPane.setLeftAnchor(btnStore, 20.0);
         AnchorPane.setTopAnchor(btnStore, 12.0);
-    //    btnStore.setFont(javafx.scene.text.Font.$x1);
+        //    btnStore.setFont(javafx.scene.text.Font.$x1);
         btnStore.setMnemonicParsing(false);
         btnStore.setPrefHeight(39.0);
         btnStore.setPrefWidth(47.0);
@@ -233,7 +227,7 @@ friendOpen_btn = new Button();
         //imageView0.setImage(new Image(getClass().getResource("Style/Shop_BTN.png").toExternalForm()));
 
         AnchorPane.setRightAnchor(btnSetting, 20.0);
-    //    btnSetting.setFont(javafx.scene.text.Font.$x1);
+        //    btnSetting.setFont(javafx.scene.text.Font.$x1);
         btnSetting.setLayoutY(14.0);
         btnSetting.setMnemonicParsing(false);
         btnSetting.setPrefHeight(39.0);
@@ -247,10 +241,10 @@ friendOpen_btn = new Button();
         imageView1.setId("Settings_BTN.png");
         imageView1.setLayoutY(14.0);
         imageView1.setImage(new Image(MainBase.class.getResource("Settings_BTN.png").toExternalForm()));
-       // imageView1.setImage(new Image(getClass().getResource("Style/Settings_BTN.png").toExternalForm()));
+        // imageView1.setImage(new Image(getClass().getResource("Style/Settings_BTN.png").toExternalForm()));
 
         AnchorPane.setRightAnchor(btnHelp, 75.0);
-     //   btnHelp.setFont(javafx.scene.text.Font.$x1);
+        //   btnHelp.setFont(javafx.scene.text.Font.$x1);
         btnHelp.setLayoutY(19.0);
         btnHelp.setMinHeight(21.0);
         btnHelp.setMnemonicParsing(false);
@@ -258,7 +252,7 @@ friendOpen_btn = new Button();
         btnHelp.setPrefWidth(45.0);
         btnHelp.setText("");
         btnHelp.setVisible(false);
-friendOpen_btn.setLayoutX(90.0);
+        friendOpen_btn.setLayoutX(90.0);
         friendOpen_btn.setLayoutY(24.0);
         friendOpen_btn.setMnemonicParsing(false);
         friendOpen_btn.setPrefHeight(30.0);
@@ -284,7 +278,7 @@ friendOpen_btn.setLayoutX(90.0);
         anchorPane0.getChildren().add(ConnFourBtn);
         anchorPane0.getChildren().add(button0);
         anchorPane0.getChildren().add(checkTheWorldBtn);
-        
+
         anchorPane0.getChildren().add(imageView);
         anchorPane3.getChildren().add(btnStore);
         anchorPane3.getChildren().add(imageView0);
@@ -292,7 +286,7 @@ friendOpen_btn.setLayoutX(90.0);
         anchorPane3.getChildren().add(imageView1);
         anchorPane3.getChildren().add(btnHelp);
         anchorPane3.getChildren().add(imageView2);
-        
+
 //        setLeft(anchor_friendList);
 //        flowContainsChilds_friend.getChildren().add(friend_image);
 //        flow_name_status_friend.getChildren().add(name_friendLbl);
@@ -304,16 +298,16 @@ friendOpen_btn.setLayoutX(90.0);
 //        flow_parent_friendList.getChildren().add(flowContainsChilds_friend);
         anchor_friendList.getChildren().add(flow_parent_friendList);
         anchorPane3.getChildren().add(imageView3);
-        
-currentScene = new Scene(this);
+
+        currentScene = new Scene(this);
     }
-      BorderPane getParentNode()
-    {
+
+    BorderPane getParentNode() {
         return this;
     }
-      Scene retScene()
-    {
-        
-            return currentScene;
+
+    Scene retScene() {
+
+        return currentScene;
     }
 }

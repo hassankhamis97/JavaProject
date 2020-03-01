@@ -46,9 +46,7 @@ public class SignUp extends SignUpUI {
     boolean flage = false;
     ResultSet rs;
     PreparedStatement stmt;
-    File file;   
-    
-    
+    File file;
 
     SignUp() {
         Platform.runLater(new Runnable() {
@@ -101,7 +99,7 @@ public class SignUp extends SignUpUI {
                 String uname = userName.getText();
                 String mail = email.getText();
                 String pass = password.getText();
-                String repass = repassword.getText();   
+                String repass = repassword.getText();
                 pass = "123456789aA&";
                 repass = "123456789aA&";
                 String email_regex = "^[a-z0-9]+(_{1}|.{1})+[a-z0-9]{1,}@{1}[a-z]{2,}[.][a-z]{2,5}$";
@@ -144,9 +142,9 @@ public class SignUp extends SignUpUI {
                             stmt.setInt(6, 1);
                             stmt.setString(7, file != null ? file.getName() : "");
                             stmt.executeUpdate();
-                            
+
                             if (file != null) {
-                               transferImageToServer(file);
+                                transferImageToServer(file);
                             }
                             showAlert(" YOUR ACCOUNT HAS BEEN CREATED SUCCESSFULLY ... ");
 
@@ -163,26 +161,25 @@ public class SignUp extends SignUpUI {
 
                 }
             }
-        });   
-        
-   imageView0.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        });
 
-     @Override
-     public void handle(MouseEvent event) {    
-        FileChooser fileChooser = new FileChooser();
+        imageView0.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
-            file = fileChooser.showOpenDialog(null);
-            
-            if (file != null) { 
-                try{
-                   imageView.setImage(new Image(file.toURI().toURL().toExternalForm()));
+            @Override
+            public void handle(MouseEvent event) {
+                FileChooser fileChooser = new FileChooser();
+
+                file = fileChooser.showOpenDialog(null);
+
+                if (file != null) {
+                    try {
+                        imageView.setImage(new Image(file.toURI().toURL().toExternalForm()));
+                    } catch (Exception ex) {
+                    }
                 }
-                catch(Exception ex) 
-                {}
+                event.consume();
             }
-            event.consume();
-           }
-});
+        });
 
         NavigationStack nsObj = new NavigationStack();
         nsObj.root = this;
@@ -211,17 +208,14 @@ public class SignUp extends SignUpUI {
         } else {
             System.out.println("canceled");
         }
-    }     
-    
-    private void transferImageToServer(File file)
-    {  
-        try{          
+    }
+
+    private void transferImageToServer(File file) {
+        try {
             Files.copy(file.toPath(),
-        (new File("\\\\DESKTOP-MFT4NF6\\Resources\\", file.getName())).toPath(), StandardCopyOption.REPLACE_EXISTING); 
-        }  
-        catch(IOException ex)
-        {
+                    (new File("\\\\DESKTOP-MFT4NF6\\Resources\\", file.getName())).toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
             showAlert("An error occured");
         }
-    }    
+    }
 }

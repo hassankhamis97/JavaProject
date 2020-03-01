@@ -1,6 +1,5 @@
 package Game;
 
-
 import java.lang.*;
 import javafx.geometry.*;
 import javafx.scene.Scene;
@@ -23,9 +22,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.*;
 
-
 public class GameUI extends AnchorPane {
-Scene currentScene;
+
+    Scene currentScene;
     protected final GridPane table;
     protected final Button button;
     protected final Button button0;
@@ -80,7 +79,8 @@ Scene currentScene;
     protected final Button chatBtn;
     protected final ImageView chatImage;
     protected final TextField chatNotificationTxt;
-protected final AnchorPane profile_anchor;
+    protected final AnchorPane profile_anchor;
+
     public GameUI() {
 
         table = new GridPane();
@@ -137,11 +137,11 @@ protected final AnchorPane profile_anchor;
         chatBtn = new Button();
         chatImage = new ImageView();
         chatNotificationTxt = new TextField();
-profile_anchor = new AnchorPane();
+        profile_anchor = new AnchorPane();
         setId("AnchorPane");
         setPrefHeight(502.0);
         setPrefWidth(583.0);
-profile_anchor.setId("profile_anchor");
+        profile_anchor.setId("profile_anchor");
         profile_anchor.setLayoutX(29.0);
         profile_anchor.setLayoutY(90.0);
         profile_anchor.setPrefHeight(326.0);
@@ -168,7 +168,7 @@ profile_anchor.setId("profile_anchor");
 
 //        GridPane.setColumnIndex(button0, 2);
 //        GridPane.setRowIndex(button0, 2);
-GridPane.setColumnIndex(button0, 1);
+        GridPane.setColumnIndex(button0, 1);
         button0.setId("btn");
         button0.setMaxHeight(Double.MAX_VALUE);
         button0.setMaxWidth(Double.MAX_VALUE);
@@ -180,7 +180,7 @@ GridPane.setColumnIndex(button0, 1);
 
 //        GridPane.setColumnIndex(button1, 1);
 //        GridPane.setRowIndex(button1, 2);
-GridPane.setColumnIndex(button1, 2);
+        GridPane.setColumnIndex(button1, 2);
         button1.setId("btn");
         button1.setMaxHeight(Double.MAX_VALUE);
         button1.setMaxWidth(Double.MAX_VALUE);
@@ -191,7 +191,7 @@ GridPane.setColumnIndex(button1, 2);
         button1.setVisible(true);
 
 //        GridPane.setRowIndex(button2, 2);
-GridPane.setRowIndex(button2, 1);
+        GridPane.setRowIndex(button2, 1);
         button2.setId("btn");
         button2.setMaxHeight(Double.MAX_VALUE);
         button2.setMaxWidth(Double.MAX_VALUE);
@@ -202,7 +202,7 @@ GridPane.setRowIndex(button2, 1);
         button2.setVisible(true);
 
 //        GridPane.setColumnIndex(button3, 2);
-GridPane.setColumnIndex(button3, 1);
+        GridPane.setColumnIndex(button3, 1);
         GridPane.setRowIndex(button3, 1);
         button3.setId("btn");
         button3.setMaxHeight(Double.MAX_VALUE);
@@ -214,7 +214,7 @@ GridPane.setColumnIndex(button3, 1);
         button3.setVisible(true);
 
 //        GridPane.setColumnIndex(button4, 1);
-GridPane.setColumnIndex(button4, 2);
+        GridPane.setColumnIndex(button4, 2);
         GridPane.setRowIndex(button4, 1);
         button4.setId("btn");
         button4.setMaxHeight(Double.MAX_VALUE);
@@ -226,7 +226,7 @@ GridPane.setColumnIndex(button4, 2);
         button4.setVisible(true);
 
 //        GridPane.setRowIndex(button5, 1);
-GridPane.setRowIndex(button5, 2);
+        GridPane.setRowIndex(button5, 2);
         button5.setId("btn");
         button5.setMaxHeight(Double.MAX_VALUE);
         button5.setMaxWidth(Double.MAX_VALUE);
@@ -265,8 +265,8 @@ GridPane.setRowIndex(button5, 2);
         label.setPickOnBounds(true);
         label.setPreserveRatio(true);
         label.setId("lab");
-        
-                GridPane.setColumnIndex(label0, 1);
+
+        GridPane.setColumnIndex(label0, 1);
         label0.setFitHeight(94.0);
         label0.setFitWidth(125.0);
         label0.setPreserveRatio(true);
@@ -351,7 +351,7 @@ GridPane.setRowIndex(button5, 2);
         oppPic_img.setFitWidth(72.0001220703125);
         oppPic_img.setId("pic-user-1.png");
 //        oppPic_img.setImage(new Image(GameUI.class.getResource("pic-user-1.png").toExternalForm()));
-     //   oppPic_img.setImage(new Image(getClass().getResource("file:/D:/ITI%20COURSES/Java%20Project/Style/pic-user-1.png").toExternalForm()));
+        //   oppPic_img.setImage(new Image(getClass().getResource("file:/D:/ITI%20COURSES/Java%20Project/Style/pic-user-1.png").toExternalForm()));
 
         AnchorPane.setLeftAnchor(label8, 224.0);
         AnchorPane.setTopAnchor(label8, 61.0);
@@ -366,11 +366,11 @@ GridPane.setRowIndex(button5, 2);
         myPic_img.setFitWidth(72.000244140625);
         myPic_img.setId("pic-user-1.png");
 //        myPic_img.setImage(new Image(GameUI.class.getResource("pic-user-1.png").toExternalForm()));
-      //  myPic_img.setImage(new Image(getClass().getResource("Style/pic-user-1.png").toExternalForm()));
+        //  myPic_img.setImage(new Image(getClass().getResource("Style/pic-user-1.png").toExternalForm()));
 
         AnchorPane.setRightAnchor(label9, 224.0);
         AnchorPane.setTopAnchor(label9, 64.0);
-    //    label9.setFont(javafx.scene.text.Font.$x1);
+        //    label9.setFont(javafx.scene.text.Font.$x1);
         label9.setFont(new Font("System Bold Italic", 20.0));
         label9.setText("0");
         label9.setTextFill(javafx.scene.paint.Color.WHITE);
@@ -381,7 +381,7 @@ GridPane.setRowIndex(button5, 2);
         imageView1.setFitWidth(90.0000991821289);
         imageView1.setId("coins.png");
         imageView1.setImage(new Image(GameUI.class.getResource("coins.png").toExternalForm()));
-     //   imageView1.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/coins.png").toExternalForm()));
+        //   imageView1.setImage(new Image(getClass().getResource("Style/Using%20Text%20and%20Text%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/coins.png").toExternalForm()));
 
         AnchorPane.setRightAnchor(imageView2, 61.0);
         AnchorPane.setTopAnchor(imageView2, 22.0);
@@ -389,9 +389,9 @@ GridPane.setRowIndex(button5, 2);
         imageView2.setFitWidth(58.0);
         imageView2.setId("Menu_BTN.png");
         imageView2.setImage(new Image(GameUI.class.getResource("Menu_BTN.png").toExternalForm()));
-     //   imageView2.setImage(new Image(getClass().getResource("file:/C:/Users/Marina-Sameh/Downloads/PNG/Buttons/BTNs/Menu_BTN.png").toExternalForm()));
+        //   imageView2.setImage(new Image(getClass().getResource("file:/C:/Users/Marina-Sameh/Downloads/PNG/Buttons/BTNs/Menu_BTN.png").toExternalForm()));
 
-     //   label10.setFont(javafx.scene.text.Font.$x1);
+        //   label10.setFont(javafx.scene.text.Font.$x1);
         label10.setLayoutX(43.0);
         label10.setLayoutY(58.0);
         label10.setText("0");
@@ -442,7 +442,7 @@ GridPane.setRowIndex(button5, 2);
         imageView3.setX(1.0);
         imageView3.setY(0.0);
         imageView3.setImage(new Image(GameUI.class.getResource("emoji.png").toExternalForm()));
-       // imageView3.setImage(new Image(getClass().getResource("Style/emoji.png").toExternalForm()));
+        // imageView3.setImage(new Image(getClass().getResource("Style/emoji.png").toExternalForm()));
         sticker.setGraphic(imageView3);
 
         send_btn.setDefaultButton(true);
@@ -478,19 +478,19 @@ GridPane.setRowIndex(button5, 2);
         imageView4.setFitWidth(57.9998779296875);
         imageView4.setId("smile.png");
         imageView4.setImage(new Image(GameUI.class.getResource("smile.png").toExternalForm()));
-     //   imageView4.setImage(new Image(getClass().getResource("Style/smile.png").toExternalForm()));
+        //   imageView4.setImage(new Image(getClass().getResource("Style/smile.png").toExternalForm()));
 
         imageView5.setFitHeight(35.999900817871094);
         imageView5.setFitWidth(57.9998779296875);
         imageView5.setId("love.png");
         imageView5.setImage(new Image(GameUI.class.getResource("love.png").toExternalForm()));
-    //    imageView5.setImage(new Image(getClass().getResource("Style/love.png").toExternalForm()));
+        //    imageView5.setImage(new Image(getClass().getResource("Style/love.png").toExternalForm()));
 
         imageView6.setFitHeight(35.999900817871094);
         imageView6.setFitWidth(57.9998779296875);
         imageView6.setId("LoveEmoji.png");
         imageView6.setImage(new Image(GameUI.class.getResource("LoveEmoji.png").toExternalForm()));
-     //   imageView6.setImage(new Image(getClass().getResource("Style/LoveEmoji.png").toExternalForm()));
+        //   imageView6.setImage(new Image(getClass().getResource("Style/LoveEmoji.png").toExternalForm()));
         borderPane.setCenter(chatAnch);
 
         AnchorPane.setBottomAnchor(chatBtn, 20.0);
@@ -506,12 +506,12 @@ GridPane.setRowIndex(button5, 2);
 
         AnchorPane.setBottomAnchor(chatImage, 20.0);
 //        AnchorPane.setRightAnchor(chatImage, 301.0);
- AnchorPane.setRightAnchor(chatImage, 20.0);
+        AnchorPane.setRightAnchor(chatImage, 20.0);
         chatImage.setFitHeight(28.0);
         chatImage.setFitWidth(32.00004495849862);
         chatImage.setId("Notifications_BTN.png");
         chatImage.setImage(new Image(GameUI.class.getResource("Notifications_BTN.png").toExternalForm()));
-    //    chatImage.setImage(new Image(getClass().getResource("file:/C:/Users/Marina-Sameh/Downloads/PNG/Buttons/BTNs/Notifications_BTN.png").toExternalForm()));
+        //    chatImage.setImage(new Image(getClass().getResource("file:/C:/Users/Marina-Sameh/Downloads/PNG/Buttons/BTNs/Notifications_BTN.png").toExternalForm()));
 
         AnchorPane.setBottomAnchor(chatNotificationTxt, 36.0);
 //        AnchorPane.setRightAnchor(chatNotificationTxt, 320.0);
@@ -519,7 +519,6 @@ GridPane.setRowIndex(button5, 2);
         chatNotificationTxt.setId("notificationChat");
         chatNotificationTxt.setPrefHeight(21.0);
         chatNotificationTxt.setPrefWidth(23.0);
-        
 
         table.getChildren().add(label);
         table.getChildren().add(label0);
@@ -571,11 +570,11 @@ GridPane.setRowIndex(button5, 2);
         getChildren().add(chatImage);
         getChildren().add(chatBtn);
         getChildren().add(chatNotificationTxt);
-currentScene = new Scene(this);
+        currentScene = new Scene(this);
     }
-    protected Scene retScene()
-    {
-        
-            return currentScene;
+
+    protected Scene retScene() {
+
+        return currentScene;
     }
 }

@@ -12,6 +12,7 @@ import java.time.LocalTime;
  * @author Hassan Khamis
  */
 public class Moves {
+
     public int playerID;
     public long delayTimeSec;
     public String moveType;
@@ -20,5 +21,5 @@ public class Moves {
     public String getMoveType() {
         return moveType;
     }
-    
+
 }

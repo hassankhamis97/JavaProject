@@ -81,12 +81,12 @@ public class Login extends LoginUI {
 
 //                                email_txt.setText("hassankhamis97@hotmail.com");
                 pass_txt.setText("123456aA&");
-                
+
                 if (!email_txt.getText().isEmpty() && !pass_txt.getText().isEmpty()) {
                     if (!Pattern.matches("^[a-z0-9]+(_{1}|.{1})+[a-z0-9]{1,}@{1}[a-z]{2,}[.][a-z]{2,5}$", email_txt.getText())) {
                         emailValid = false;
                         System.out.println("Please Enter valid email ex: java@java.com");
-                        
+
                     }
                     if (!Pattern.matches("^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*_-])[a-zA-Z0-9!@#$%^&*_-]{6,12}$", pass_txt.getText())) {
                         passValid = false;
@@ -97,17 +97,17 @@ public class Login extends LoginUI {
                         }
                     }
                     if (emailValid && passValid) {
-                       
+
                         con = db.openConnection();
                         db.getPlayerID(con, email_txt.getText(), pass_txt.getText());
                         db.closeConnection(con);
                         if (SharedData.playerID > 0) {
                             connectTOServer();
                         } else {
-                            
+
                             System.out.println("email or password donot match any thing in database");
                         }
-                        
+
                     }
                 } else {
                     if (email_txt.getText().isEmpty()) {
@@ -120,7 +120,7 @@ public class Login extends LoginUI {
                 new MainMenu();
                 Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
             }
-            
+
         });
 
 //                Main.showNewScene(getScene(),"/SignIn/login.css");
@@ -135,17 +135,17 @@ public class Login extends LoginUI {
         /*stage.setScene(scene);
                 stage.show();*/
     }
-    
+
     void connectTOServer() {
         try {
             int port;
             SharedData.client = new Socket("192.168.1.10", 5000);
             con = db.openConnection();
             port = SharedData.client.getLocalPort();
-            
+
             db.updatePortID(con, port);
             db.closeConnection(con);
-            
+
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -21,8 +21,9 @@ import javafx.scene.layout.RowConstraints;
 //import 0x99c2ffff;
 
 public class GameStyle {
-        Scene currentScene;
-        AnchorPane anchorPane;
+
+    Scene currentScene;
+    AnchorPane anchorPane;
     protected final GridPane gridPane;
     protected final Button button;
     protected final Button button0;
@@ -323,11 +324,10 @@ public class GameStyle {
         anchorPane.getChildren().add(button14);
         anchorPane.getChildren().add(button15);
         currentScene = new Scene(anchorPane);
-        
 
     }
-    Scene getScene()
-    {
-            return currentScene;
+
+    Scene getScene() {
+        return currentScene;
     }
 }

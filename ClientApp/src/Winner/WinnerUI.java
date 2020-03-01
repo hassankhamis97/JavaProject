@@ -11,7 +11,7 @@ public abstract class WinnerUI extends AnchorPane {
 
     protected final BorderPane imageBorderPanePick;
     protected final ImageView gifImage;
-     protected final Image gifImage_Img;
+    protected final Image gifImage_Img;
     protected final BorderPane borderPane;
     protected final AnchorPane anchorPane;
     protected final BorderPane mainBorder_pane;
@@ -53,7 +53,7 @@ public abstract class WinnerUI extends AnchorPane {
         imageBorderPanePick.setId("imageBorderPanePick");
         imageBorderPanePick.setPrefHeight(400.0);
         imageBorderPanePick.setPrefWidth(600.0);
-        
+
         BorderPane.setAlignment(gifImage, javafx.geometry.Pos.CENTER);
 //        gifImage.setFitHeight(399.0);
 //        gifImage.setFitWidth(601.0);

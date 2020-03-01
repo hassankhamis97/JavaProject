@@ -6,6 +6,7 @@
 package Computer;
 
 import Game.GameUI;
+import Pojos.Moves;
 
 import Stack.NavigationStack;
 import clientapp.SharedData;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 
@@ -21,8 +23,8 @@ import javafx.scene.Scene;
  *
  * @author hassan
  */
+public class PlayerVSComputer extends GameUI {
 
-public class PlayerVSComputer extends GameUI{
     Scene gameStartScene;
     ArrayList<GamePositionAIModel> positionLst;
     boolean isWaitAIResponse = false;
@@ -30,6 +32,7 @@ public class PlayerVSComputer extends GameUI{
     String checkLevel;
     //Change static methods in TicTacToe and use object
     TicTacTeo gameAI;
+    ArrayList<Moves> mvlst = new ArrayList<Moves>();
 
     public PlayerVSComputer(String str) {
 
@@ -38,7 +41,7 @@ public class PlayerVSComputer extends GameUI{
         positionLst = new ArrayList<>();
 //          GameBase gb = new GameBase();
         gameStartScene = getScene();
-loadCustomDesign();
+        loadCustomDesign();
         NavigationStack nsObj = new NavigationStack();
         nsObj.root = this;
         nsObj.pageName = "PlayerVSComputer";
@@ -291,7 +294,7 @@ loadCustomDesign();
 
     private int prepareGamePositionToSendToAI() {
         int index = -1;
-            /// call AI Method   
+        /// call AI Method   
 
         GamePositionAIModel toCalcIndex = new GamePositionAIModel();
 
@@ -356,18 +359,17 @@ loadCustomDesign();
                 break;
         }
     }
-    
-    
-        private void loadCustomDesign() {
+
+    private void loadCustomDesign() {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 setPrefHeight(SharedData.nsList.get(0).root.getHeight());
                 setPrefWidth(SharedData.nsList.get(0).root.getWidth());
-                setStyle("-fx-background-color:linear-gradient(#8ad9dc, #409cc7),\n" +
-                "  linear-gradient(#d6e2f9 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),\n" +
-                "   linear-gradient(#c6bef6, #4d94e6);\n" +
-                "    -fx-background-size: 100% 100%;");
+                setStyle("-fx-background-color:linear-gradient(#8ad9dc, #409cc7),\n"
+                        + "  linear-gradient(#d6e2f9 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),\n"
+                        + "   linear-gradient(#c6bef6, #4d94e6);\n"
+                        + "    -fx-background-size: 100% 100%;");
                 button.setStyle("-fx-background-color:transparent;");
                 button0.setStyle("-fx-background-color:transparent;");
                 button1.setStyle("-fx-background-color:transparent;");
@@ -383,4 +385,61 @@ loadCustomDesign();
             }
         });
     }
+
+    private void checkWinner(int playerNo) {
+        /*for (int i = 0; i < mvlst.size(); i++) {
+                        if(mv)
+                }*/
+        String filterType = playerNo == 1 ? "X" : "O";
+
+        String result = mvlst.stream().filter(s -> s.getMoveType().equals(filterType)).map(f -> f.blockNo).collect(Collectors.toList()).toString();
+        //List<String> result = mvlst.stream().filter(s-> s.getMoveType().equals("X")).toList();
+//                    mvlst.stream().filter((s) -> s.equals("X"))
+//                        .forEach(w-> System.out.println(w.));
+        //.forEach(System.out::println);
+
+        if (result.contains("1") && result.contains("2") && result.contains("3")
+                || result.contains("1") && result.contains("4") && result.contains("7")
+                || result.contains("1") && result.contains("5") && result.contains("9")
+                || result.contains("2") && result.contains("5") && result.contains("8")
+                || result.contains("3") && result.contains("6") && result.contains("9")
+                || result.contains("3") && result.contains("6") && result.contains("9")
+                || result.contains("3") && result.contains("5") && result.contains("7")
+                || result.contains("4") && result.contains("5") && result.contains("6")
+                || result.contains("7") && result.contains("8") && result.contains("9")) {
+//            try {
+            if (playerNo == 1) {
+                System.out.println("Player 1 win");
+//                    GameResult gresult = new GameResult();
+//                    gresult.player1ID = player1ID;
+//                    gresult.player2ID = player2ID;
+//                    gresult.WinnerID = player1ID;
+//                    gresult.GameLevelID = 1;
+//                    gresult.IsCompleted = 1;
+//                    saveGameAndMoves(gresult, mvlst);
+            } else {
+//                    dos2.writeUTF("10-winner");
+//                    dos1.writeUTF("10-loser");
+                System.out.println("Player 2 win");
+            }
+//                player1Ready = PlayerStatus.NotDecided;
+//                player2Ready = PlayerStatus.NotDecided;
+//            } catch (IOException ex) {
+//                Logger.getLogger(ServerGameHandler.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+        } else {
+            if (mvlst.size() == 10) {
+//                try {
+//                    dos1.writeUTF("10-draw");
+//                    dos2.writeUTF("10-draw");
+                System.out.println("draw");
+//                    player1Ready = PlayerStatus.NotDecided;
+//                    player2Ready = PlayerStatus.NotDecided;
+            }
+//            catch (IOException ex) {
+//                    Logger.getLogger(ServerGameHandler.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+        }
+    }
+
 }
