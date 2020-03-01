@@ -51,6 +51,7 @@ public class Login extends LoginUI {
         errorLabel.setLayoutY(310.0);
         errorLabel.setText("");
         errorLabel.setTextFill(Color.RED);
+        anchorPane0.getChildren().add(errorLabel);
         //LoginUI lui = new LoginUI();
 
         //label.
@@ -129,7 +130,7 @@ public class Login extends LoginUI {
                       //  System.out.println("password is required");
                     }
                 }
-                anchorPane0.getChildren().add(errorLabel);
+                
                 
                 
             }
