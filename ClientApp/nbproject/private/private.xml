@@ -3,20 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Administrator/Documents/GitHub/JavaProject/ClientApp/src/clientapp/Profile.java</file>
-            <file>file:/C:/Users/Administrator/Documents/GitHub/JavaProject/ClientApp/src/Profile/ProfileUI.java</file>
-            <file>file:/C:/Users/Administrator/Documents/GitHub/JavaProject/ClientApp/src/Pojos/PlayerProfile.java</file>
-            <file>file:/C:/Users/Administrator/Documents/GitHub/JavaProject/ClientApp/src/Database/Database.java</file>
-            <file>file:/E:/ITI_9_month/Java/FinalJavaproject/JavaProject/ClientApp/src/clientapp/Main.java</file>
-            <file>file:/E:/ITI_9_month/Java/FinalJavaproject/JavaProject/ClientApp/src/clientapp/Store.java</file>
-            <file>file:/E:/ITI_9_month/Java/FinalJavaproject/JavaProject/ClientApp/src/Database/Database.java</file>
-            <file>file:/E:/ITI_9_month/Java/FinalJavaproject/JavaProject/ClientApp/src/clientapp/Login.java</file>
-            <file>file:/E:/ITI_9_month/Java/FinalJavaproject/JavaProject/ClientApp/src/clientapp/MainMenu.java</file>
-            <file>file:/E:/ITI_9_month/Java/FinalJavaproject/JavaProject/ClientApp/src/clientapp/GameStart.java</file>
-            <file>file:/E:/ITI_9_month/Java/FinalJavaproject/JavaProject/ClientApp/src/clientapp/OnlineWait.java</file>
-            <file>file:/E:/ITI_9_month/Java/FinalJavaproject/JavaProject/ClientApp/src/clientapp/MenuMultiTic.java</file>
-            <file>file:/E:/ITI_9_month/Java/FinalJavaproject/JavaProject/ClientApp/src/Main/MainBase.java</file>
-            <file>file:/E:/ITI_9_month/Java/FinalJavaproject/JavaProject/ClientApp/src/Game/GameUI.java</file>
+            <file>file:/C:/Users/Administrator/Documents/GitHub/JavaProject/ClientApp/src/Computer/TicTacTeo.java</file>
+            <file>file:/C:/Users/Administrator/Documents/GitHub/JavaProject/ClientApp/src/Game/GameUINew.java</file>
+            <file>file:/C:/Users/Administrator/Documents/GitHub/JavaProject/ClientApp/src/clientapp/Levels.java</file>
+            <file>file:/C:/Users/Administrator/Documents/GitHub/JavaProject/ClientApp/src/Computer/PlayerVSComputer.java</file>
         </group>
     </open-files>
 </project-private>
