@@ -355,13 +355,7 @@ loadCustomDesign();
                 button7.setDisable(true);
                 break;
         }
- 
-    public  PlayerVSComputer()
-    {
-        
-        
-   
-       }
+    }
     
     
         private void loadCustomDesign() {
