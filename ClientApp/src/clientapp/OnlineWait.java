@@ -28,12 +28,12 @@ import javafx.scene.layout.Pane;
  * @author Hassan Khamis
  */
 public class OnlineWait extends OnlineWaitUI {
-
+DataOutputStream dos ;
     public OnlineWait() {
         //Main.showNewScene(getScene(),"/OnlineWaiting/on.css");
         cancel.setOnAction((ActionEvent event) -> {
             try {
-                DataOutputStream dos = new DataOutputStream(SharedData.client.getOutputStream());
+                dos = new DataOutputStream(SharedData.client.getOutputStream());
                 dos.writeUTF("back-IWantToBack");
             } catch (IOException ex) {
                 Logger.getLogger(OnlineWait.class.getName()).log(Level.SEVERE, null, ex);
@@ -66,11 +66,12 @@ public class OnlineWait extends OnlineWaitUI {
             @Override
             public void run() {
                 try {
-
                     DataInputStream dis = new DataInputStream(SharedData.client.getInputStream());
                     String msg = dis.readUTF();
 
                     if (msg.equals("startGame-tic")) {
+                        dos = new DataOutputStream(SharedData.client.getOutputStream());
+dos.writeUTF("fdsf-startGameNow");
                         new GameStart(SharedData.client);
                         Platform.runLater(new Runnable() {
                         @Override
@@ -79,6 +80,8 @@ public class OnlineWait extends OnlineWaitUI {
                         }
                     });
                     } else if (msg.equals("startGame-connect")) {
+//                        dos.writeUTF("startGameNow");
+
                         new Connect4.ConnectFour(SharedData.client);
                         Platform.runLater(new Runnable() {
                         @Override
@@ -87,6 +90,8 @@ public class OnlineWait extends OnlineWaitUI {
                         }
                     });
                     } else if (msg.equals("startGame-GuesTheWord")) {
+//                        dos.writeUTF("startGameNow");
+
                         new GuessTheWord(SharedData.client);
                         Platform.runLater(new Runnable() {
                         @Override
