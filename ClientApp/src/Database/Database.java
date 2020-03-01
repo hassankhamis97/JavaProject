@@ -142,6 +142,8 @@ public class Database {
             stmt.setInt(2, SharedData.playerID);
             ResultSet rs;
             rs = stmt.executeQuery();
+            int oldID = 0;
+            SavedGame saveGameObj = null;
             while (rs.next()) {
 
 //                while(rs.getInt("ID"))
@@ -150,12 +152,11 @@ public class Database {
 //                    playerID = rs.getInt("ID");
 //                    
 //                }
-                SavedGame saveGameObj = null;
-                int oldID = 0;
                 int currentID = rs.getInt("gm.GameID");
                 if (currentID != oldID) {
                     oldID = rs.getInt("gm.GameID");
                     saveGameObj = new SavedGame();
+                    saveGameObj.moveLst = new ArrayList<Moves>();
                     saveGameObj.id = rs.getInt("gm.GameID");
                     saveGameObj.player1ID = rs.getInt("Player1ID");
                     saveGameObj.player1Name = rs.getString("Player1Name");
@@ -170,6 +171,7 @@ public class Database {
                 moveObj.delayTimeSec = rs.getLong("gm.TimeToPlay");
                 moveObj.blockNo = rs.getString("gm.CellNo");
                 moveObj.moveType = rs.getString("gm.MoveType");
+                
                 saveGameObj.moveLst.add(moveObj);
                 savedGamesLst.add(saveGameObj);
 

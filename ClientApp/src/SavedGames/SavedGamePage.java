@@ -7,6 +7,7 @@ package SavedGames;
 
 //import com.mysql.fabric.xmlrpc.Client;
 import Game.GameUI;
+import Game.GameUINew;
 import Stack.NavigationStack;
 import clientapp.Loser;
 import clientapp.Main;
@@ -44,7 +45,7 @@ import Pojos.SavedGame;
  *
  * @author hassan
  */
-public class SavedGamePage extends GameUI {
+public class SavedGamePage extends GameUINew {
 
     Scene gameStartScene;
     PrintStream ps;
@@ -68,6 +69,11 @@ public class SavedGamePage extends GameUI {
         Thread th = new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(SavedGamePage.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 for (int i = 0; i < saveGameObj.moveLst.size(); i++) {
                     switch (saveGameObj.moveLst.get(i).blockNo) {
                         case "1": {
@@ -77,13 +83,20 @@ public class SavedGamePage extends GameUI {
                                 public void run() {
 
                                     if (moveType.equals("X")) {
-                                        label.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
+                                        imageBtn1.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
                                     } else {
-                                        label.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
+                                        imageBtn1.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
                                     }
                                 }
                             });
                         }
+                    {
+                        try {
+                            Thread.sleep(saveGameObj.moveLst.get(i).delayTimeSec);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(SavedGamePage.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                         break;
 
                         case "2": {
@@ -92,13 +105,20 @@ public class SavedGamePage extends GameUI {
                                 @Override
                                 public void run() {
                                     if (moveType.equals("X")) {
-                                        label0.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
+                                        imageBtn2.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
                                     } else {
-                                        label0.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
+                                        imageBtn2.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
                                     }
                                 }
                             });
                         }
+                    {
+                        try {
+                            Thread.sleep(saveGameObj.moveLst.get(i).delayTimeSec);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(SavedGamePage.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                         break;
 
                         case "3": {
@@ -107,13 +127,20 @@ public class SavedGamePage extends GameUI {
                                 @Override
                                 public void run() {
                                     if (moveType.equals("X")) {
-                                        label1.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
+                                        imageBtn3.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
                                     } else {
-                                        label1.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
+                                        imageBtn3.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
                                     }
                                 }
                             });
                         }
+                        {
+                        try {
+                            Thread.sleep(saveGameObj.moveLst.get(i).delayTimeSec);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(SavedGamePage.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                         break;
 
                         case "4": {
@@ -122,13 +149,20 @@ public class SavedGamePage extends GameUI {
                                 @Override
                                 public void run() {
                                     if (moveType.equals("X")) {
-                                        label2.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
+                                        imageBtn4.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
                                     } else {
-                                        label2.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
+                                        imageBtn4.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
                                     }
                                 }
                             });
                         }
+                        {
+                        try {
+                            Thread.sleep(saveGameObj.moveLst.get(i).delayTimeSec);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(SavedGamePage.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                         break;
 
                         case "5": {
@@ -137,13 +171,20 @@ public class SavedGamePage extends GameUI {
                                 @Override
                                 public void run() {
                                     if (moveType.equals("X")) {
-                                        label3.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
+                                        imageBtn5.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
                                     } else {
-                                        label3.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
+                                        imageBtn5.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
                                     }
                                 }
                             });
                         }
+                        {
+                        try {
+                            Thread.sleep(saveGameObj.moveLst.get(i).delayTimeSec);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(SavedGamePage.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                         break;
                         case "6": {
                             final String moveType = saveGameObj.moveLst.get(i).getMoveType();
@@ -151,13 +192,20 @@ public class SavedGamePage extends GameUI {
                                 @Override
                                 public void run() {
                                     if (moveType.equals("X")) {
-                                        label4.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
+                                        imageBtn6.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
                                     } else {
-                                        label4.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
+                                        imageBtn6.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
                                     }
                                 }
                             });
                         }
+                        {
+                        try {
+                            Thread.sleep(saveGameObj.moveLst.get(i).delayTimeSec);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(SavedGamePage.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                         break;
                         case "7": {
                             final String moveType = saveGameObj.moveLst.get(i).getMoveType();
@@ -165,13 +213,20 @@ public class SavedGamePage extends GameUI {
                                 @Override
                                 public void run() {
                                     if (moveType.equals("X")) {
-                                        label5.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
+                                        imageBtn7.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
                                     } else {
-                                        label5.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
+                                        imageBtn7.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
                                     }
                                 }
                             });
                         }
+                        {
+                        try {
+                            Thread.sleep(saveGameObj.moveLst.get(i).delayTimeSec);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(SavedGamePage.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                         break;
                         case "8": {
                             final String moveType = saveGameObj.moveLst.get(i).getMoveType();
@@ -179,13 +234,20 @@ public class SavedGamePage extends GameUI {
                                 @Override
                                 public void run() {
                                     if (moveType.equals("X")) {
-                                        label6.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
+                                        imageBtn8.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
                                     } else {
-                                        label6.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
+                                        imageBtn8.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
                                     }
                                 }
                             });
                         }
+                        {
+                        try {
+                            Thread.sleep(saveGameObj.moveLst.get(i).delayTimeSec);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(SavedGamePage.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                         break;
                         case "9": {
                             final String moveType = saveGameObj.moveLst.get(i).getMoveType();
@@ -193,13 +255,20 @@ public class SavedGamePage extends GameUI {
                                 @Override
                                 public void run() {
                                     if (moveType.equals("X")) {
-                                        label7.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
+                                        imageBtn9.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
                                     } else {
-                                        label7.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
+                                        imageBtn9.setImage(new Image(GameUI.class.getResource("/Game/o.png").toExternalForm()));
                                     }
                                 }
                             });
                         }
+                        {
+                        try {
+                            Thread.sleep(saveGameObj.moveLst.get(i).delayTimeSec);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(SavedGamePage.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                         break;
 
                     }
@@ -208,6 +277,7 @@ public class SavedGamePage extends GameUI {
             }
         });
         th.start();
+        
 
     }
 
@@ -221,8 +291,8 @@ public class SavedGamePage extends GameUI {
                         + "            linear-gradient(#d6e2f9 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),\n"
                         + "            linear-gradient(#c6bef6, #4d94e6);\n"
                         + "    -fx-background-size: 100% 100%;");
-                button.setStyle("-fx-background-color:transparent;");
-                button0.setStyle("-fx-background-color:transparent;");
+                button8.setStyle("-fx-background-color:transparent;");
+                button9.setStyle("-fx-background-color:transparent;");
                 button1.setStyle("-fx-background-color:transparent;");
                 button2.setStyle("-fx-background-color:transparent;");
                 button3.setStyle("-fx-background-color:transparent;");
