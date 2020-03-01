@@ -69,7 +69,7 @@ public class MoreGamesMenu extends MoreGamesMenuUI {
 //            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             ConnFourBtn.setOnAction((ActionEvent event) -> {
-                new Connect4Menu();
+                new Connect4New.Connect4Menu();
                 Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
             });
             checkTheWorldBtn.setOnAction((ActionEvent event) -> {

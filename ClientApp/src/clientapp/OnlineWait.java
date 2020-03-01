@@ -32,7 +32,7 @@ public class OnlineWait extends OnlineWaitUI {
     DataOutputStream dos;
 
     public OnlineWait() {
-        Main.showNewScene(getScene(),"/OnlineWaiting/on.css");
+        Main.showNewScene(getScene(), "/OnlineWaiting/on.css");
         cancel.setOnAction((ActionEvent event) -> {
             try {
                 dos = new DataOutputStream(SharedData.client.getOutputStream());
@@ -81,16 +81,17 @@ public class OnlineWait extends OnlineWaitUI {
                                 Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
                             }
                         });
-                    } else if (msg.equals("startGame-connect")) {
+                    } else if (msg.equals("startGame-connect")) { 
 //                        dos.writeUTF("startGameNow");
+                        dos.writeUTF("fdsf-startGameNow");
 
-                        new Connect4.ConnectFour();
-//                        Platform.runLater(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
-//                        }
-          //          });
+                        //  new Connect4.ConnectFour();
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                new Connect4New.ConnectFour(SharedData.client);
+                            }
+                        });
                     } else if (msg.equals("startGame-GuesTheWord")) {
 //                        dos.writeUTF("startGameNow");
 
