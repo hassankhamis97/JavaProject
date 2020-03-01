@@ -74,9 +74,9 @@ public class MoreGamesMenu extends MoreGamesMenuUI {
             });
             checkTheWorldBtn.setOnAction((ActionEvent event) -> {
                 
-                    new GuessTheWordMenu();
-                    Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size()-2).root);
-               
+//                    new GuessTheWord();
+//                    Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size()-2).root);
+//               
             });
 
             anchorPane3.getChildren().add(friendOpen_btn);

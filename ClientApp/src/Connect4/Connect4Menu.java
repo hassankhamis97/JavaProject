@@ -6,6 +6,7 @@
 package Connect4;
 
 import Stack.NavigationStack;
+import clientapp.Levels;
 import clientapp.Main;
 import clientapp.MainMenu;
 import clientapp.OnlineWait;
@@ -33,7 +34,7 @@ public class Connect4Menu extends GuessTheWordMenuUI {
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
         Main.showNewScene(this);
-        button0.setOnAction((ActionEvent event) -> {
+        playOnlineBtn.setOnAction((ActionEvent event) -> {
 //            new ConnectFour();
             try {
                 DataOutputStream dos;
@@ -41,6 +42,7 @@ public class Connect4Menu extends GuessTheWordMenuUI {
                 dos.writeUTF("connect-random");
                // dos.close();
                 new OnlineWait();
+                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
             } catch (IOException ex) {
                 Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
