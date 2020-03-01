@@ -6,6 +6,7 @@
 package Database;
 
 import Pojos.Moves;
+import Pojos.PlayerProfile;
 import Pojos.SavedGame;
 import clientapp.SharedData;
 import clientapp.Store;
@@ -47,6 +48,32 @@ public class Database {
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public PlayerProfile getPlayerData(Connection con) {
+
+        PlayerProfile playerProfile = null;
+        try {
+            PreparedStatement stmt;
+            ResultSet rs;
+            stmt = con.prepareStatement("SELECT LevelID, TotalTime, TotalScore, NoOfWin, TotalGames, Coins FROM statistics "
+                    + "where ID = (SELECT statID FROM player where ID = ?)");
+            stmt.setInt(1, SharedData.playerID);
+            rs = stmt.executeQuery();
+
+            playerProfile.ID = SharedData.playerID;
+            playerProfile.LevelID = rs.getInt("LevelID");
+            playerProfile.TotalTime = rs.getInt("TotalTime");
+            playerProfile.TotalScore = rs.getInt("TotalScore");
+            playerProfile.NoOfWins = rs.getInt("NoOfWin");
+            playerProfile.TotalGames = rs.getInt("TotalGames");
+            playerProfile.Coins = rs.getInt("Coins");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return playerProfile;
     }
 
     public void updatePortID(Connection con, int port) {
@@ -178,10 +205,10 @@ public class Database {
             ResultSet rs;
 
 //create player_Emoji table in your database
-                stmt = con.prepareStatement("INSERT INTO player_emoji (Player_ID,Emoji_ID) VALUES(?,?)");
+            stmt = con.prepareStatement("INSERT INTO player_emoji (Player_ID,Emoji_ID) VALUES(?,?)");
             stmt.setInt(1, SharedData.playerID);
             stmt.setString(2, emojiName);
-         
+
             done = true;
             stmt.executeUpdate();
 
@@ -228,7 +255,7 @@ public class Database {
 
     }
 
-    public boolean updatePlayerCoins( Connection con,boolean done) {
+    public boolean updatePlayerCoins(Connection con, boolean done) {
         PreparedStatement stmt;
         ResultSet rs;
 

@@ -13,35 +13,56 @@ import java.util.Scanner;
  * @author Salah Kamal
  */
 public class TicTacTeo {
-    
 
-     static GamePositionAIModel findRandomMove(ArrayList<GamePositionAIModel> b) {
+    static GamePositionAIModel findRandomMove(ArrayList<GamePositionAIModel> b) {
         ArrayList<GamePositionAIModel> remainMoves = new ArrayList<>();
-        for(int i = 0; i<9; i++){
-            if(b.get(i).PositionTxt.isEmpty()){
+        for (int i = 0; i < 9; i++) {
+            if (b.get(i).PositionTxt.isEmpty()) {
                 remainMoves.add(b.get(i));
             }
-                
+
         }
-        int i = (int)(Math.random() * remainMoves.size());
+        int i = (int) (Math.random() * remainMoves.size());
         return remainMoves.get(i);
     }
-/*
-    static class Move {
+    /*
+     static class Move {
 
-        public String PositionTxt;
-        public int PositionIndex;
+     public String PositionTxt;
+     public int PositionIndex;
 
-        public Move(String x, int y) {
-            PositionIndex = y;
-            PositionTxt = x;
+     public Move(String x, int y) {
+     PositionIndex = y;
+     PositionTxt = x;
+     }
+
+     public Move() {
+
+     }
+     }
+     */
+
+    static GamePositionAIModel findMidMove(ArrayList<GamePositionAIModel> b) {
+        ArrayList<GamePositionAIModel> remainMoves = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            if (b.get(i).PositionTxt.isEmpty()) {
+                remainMoves.add(b.get(i));
+            }
+
         }
 
-        public Move() {
+        if (remainMoves.size() >= 7) {
 
+            return findBestMove(b);
+
+        } else {
+
+            return findRandomMove(b);
         }
+
     }
-*/
+
+    ///
     static Boolean isMovesLeft(ArrayList<GamePositionAIModel> board) {
         for (int i = 0; i < 9; i++) {
             if (board.get(i).PositionTxt.equals("")) {
@@ -200,7 +221,7 @@ public class TicTacTeo {
     // move for the player 
 
     static GamePositionAIModel findBestMove(ArrayList<GamePositionAIModel> board) {
-        
+
         System.out.println("I am inside best move");
         int bestVal = -1000;
         GamePositionAIModel bestMove = new GamePositionAIModel();
@@ -242,19 +263,19 @@ public class TicTacTeo {
     public static void main(String[] args) {
 
         ArrayList<GamePositionAIModel> b = new ArrayList<>();
-        b.add(new GamePositionAIModel("o", 0));
+        b.add(new GamePositionAIModel("", 0));
         b.add(new GamePositionAIModel("o", 1));
-        b.add(new GamePositionAIModel("", 2));
-        b.add(new GamePositionAIModel("x", 3));
-        b.add(new GamePositionAIModel("", 4));
-        b.add(new GamePositionAIModel("", 5));
+        b.add(new GamePositionAIModel("x", 2));
+        b.add(new GamePositionAIModel("", 3));
+        b.add(new GamePositionAIModel("x", 4));
+        b.add(new GamePositionAIModel("o", 5));
         b.add(new GamePositionAIModel("x", 6));
         b.add(new GamePositionAIModel("", 7));
         b.add(new GamePositionAIModel("o", 8));
 
         Scanner scan = new Scanner(System.in);
         boolean f = true;
-        System.out.print("Enter 1 for Easy ,3 for Hard:");
+        System.out.print("Enter 1 for Easy, 2 for Medium ,3 for Hard :");
         int x = scan.nextInt();
         if (x == 3) {
             GamePositionAIModel bestMove = findBestMove(b);
@@ -264,15 +285,10 @@ public class TicTacTeo {
             GamePositionAIModel bestMove = findRandomMove(b);
             System.out.println("index= " + bestMove.PositionIndex);
             System.out.println("txt= " + bestMove.PositionTxt);
-        } else if (x == 2){
-            GamePositionAIModel bestMove ;
-            if(f){
-                bestMove = findBestMove(b);
-                f = !f;
-            }else{
-                bestMove = findRandomMove(b);
-                f = !f;
-            }
+        } else if (x == 2) {
+
+            GamePositionAIModel bestMove = findMidMove(b);
+
             System.out.println("index= " + bestMove.PositionIndex);
             System.out.println("txt= " + bestMove.PositionTxt);
         }
