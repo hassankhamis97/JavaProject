@@ -10,29 +10,29 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 
-public abstract class LevelsBase extends BorderPane {
+public abstract class LevelsUI extends BorderPane {
 
     protected final AnchorPane anchorPane;
     protected final BorderPane borderPane;
     protected final AnchorPane anchorPane0;
     protected final Label label;
-    protected final Button button;
-    protected final Button button0;
-    protected final Button button1;
+    protected final Button easyBtn;
+    protected final Button mediumBtn;
+    protected final Button hardBtn;
     protected final AnchorPane anchorPane1;
     protected final AnchorPane anchorPane2;
     protected final AnchorPane anchorPane3;
     protected final Button back;
 
-    public LevelsBase() {
+    public LevelsUI() {
 
         anchorPane = new AnchorPane();
         borderPane = new BorderPane();
         anchorPane0 = new AnchorPane();
         label = new Label();
-        button = new Button();
-        button0 = new Button();
-        button1 = new Button();
+        easyBtn = new Button();
+        mediumBtn = new Button();
+        hardBtn = new Button();
         anchorPane1 = new AnchorPane();
         anchorPane2 = new AnchorPane();
         anchorPane3 = new AnchorPane();
@@ -70,35 +70,37 @@ public abstract class LevelsBase extends BorderPane {
         label.setTextFill(javafx.scene.paint.Color.valueOf("#dfdfdf"));
         label.setFont(new Font("System Bold Italic", 70.0));
 
-        button.setLayoutX(-33.0);
-        button.setLayoutY(77.0);
-        button.setMnemonicParsing(false);
-        button.setPrefHeight(52.0);
-        button.setPrefWidth(366.0);
-        button.setText("Easy");
-        button.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        button.setFont(new Font(20.0));
+        easyBtn.setLayoutX(-33.0);
+        easyBtn.setLayoutY(77.0);
+        easyBtn.setMnemonicParsing(false);
+        easyBtn.setPrefHeight(52.0);
+        easyBtn.setPrefWidth(366.0);
+        easyBtn.setText("Easy");
+        easyBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        easyBtn.setFont(new Font(20.0));
+        easyBtn.setId("btn");
 
-      //  button0.setFont(javafx.scene.text.Font.$x1);
-        button0.setLayoutX(-33.0);
-        button0.setLayoutY(153.0);
-        button0.setMnemonicParsing(false);
-        button0.setPrefHeight(55.0);
-        button0.setPrefWidth(366.0);
-        button0.setText("Medium");
-        button0.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-
-        button1.setDisable(false);
-        button1.setFocusTraversable(true);
-      //  button1.setFont(javafx.scene.text.Font.$x1);
-        button1.setLayoutX(-33.0);
-        button1.setLayoutY(231.0);
-        button1.setMnemonicParsing(false);
-        button1.setPrefHeight(55.0);
-        button1.setPrefWidth(366.0);
-        button1.setText("Hard");
-        button1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        button1.setVisible(true);
+      //  mediumBtn.setFont(javafx.scene.text.Font.$x1);
+        mediumBtn.setLayoutX(-33.0);
+        mediumBtn.setLayoutY(153.0);
+        mediumBtn.setMnemonicParsing(false);
+        mediumBtn.setPrefHeight(55.0);
+        mediumBtn.setPrefWidth(366.0);
+        mediumBtn.setText("Medium");
+        mediumBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+          mediumBtn.setId("btn");
+        hardBtn.setDisable(false);
+        hardBtn.setFocusTraversable(true);
+      //  hardBtn.setFont(javafx.scene.text.Font.$x1);
+        hardBtn.setLayoutX(-33.0);
+        hardBtn.setLayoutY(231.0);
+        hardBtn.setMnemonicParsing(false);
+        hardBtn.setPrefHeight(55.0);
+        hardBtn.setPrefWidth(366.0);
+        hardBtn.setText("Hard");
+        hardBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        hardBtn.setVisible(true);
+        hardBtn.setId("btn");
         borderPane.setCenter(anchorPane0);
         setCenter(borderPane);
 
@@ -124,9 +126,9 @@ public abstract class LevelsBase extends BorderPane {
         setTop(anchorPane3);
 
         anchorPane0.getChildren().add(label);
-        anchorPane0.getChildren().add(button);
-        anchorPane0.getChildren().add(button0);
-        anchorPane0.getChildren().add(button1);
+        anchorPane0.getChildren().add(easyBtn);
+        anchorPane0.getChildren().add(mediumBtn);
+        anchorPane0.getChildren().add(hardBtn);
         anchorPane3.getChildren().add(back);
 
     }

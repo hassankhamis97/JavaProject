@@ -149,7 +149,8 @@ public class MainMenu extends MainBase {
         });
         
         onePlayer.setOnAction((ActionEvent event) -> {
-            
+               new Levels();
+                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
         });
         
         twoPlayer.setOnAction((ActionEvent event) -> {
