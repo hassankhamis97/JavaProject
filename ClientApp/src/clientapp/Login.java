@@ -139,7 +139,8 @@ public class Login extends LoginUI {
     void connectTOServer() {
         try {
             int port;
-            SharedData.client = new Socket("192.168.1.10", 5000);
+//            SharedData.client = new Socket("192.168.1.10", 5000);
+SharedData.client = new Socket("172.16.4.147", 5000);
             con = db.openConnection();
             port = SharedData.client.getLocalPort();
 
