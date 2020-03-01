@@ -22,6 +22,7 @@ public class SignUpUI extends BorderPane {
     protected final Label label0;
     protected final Label label1;
     protected final Label label2;
+    
     protected final TextField userName;
     protected final TextField email;
     protected final PasswordField password;
@@ -58,7 +59,7 @@ public class SignUpUI extends BorderPane {
         anchorPane2 = new AnchorPane();
         anchorPane3 = new AnchorPane();
         imageView1 = new ImageView();
-
+        
         setMaxHeight(USE_PREF_SIZE);
         setMaxWidth(USE_PREF_SIZE);
         setMinHeight(USE_PREF_SIZE);
@@ -128,7 +129,9 @@ public class SignUpUI extends BorderPane {
         signUp_btn.setMnemonicParsing(false);
         signUp_btn.setPrefWidth(91.0);
         signUp_btn.setText("Submit");
-
+        
+        
+        
         goToLogin_btn.setLayoutX(200.0);
         goToLogin_btn.setLayoutY(249.0);
         goToLogin_btn.setMnemonicParsing(false);
@@ -200,6 +203,7 @@ public class SignUpUI extends BorderPane {
         anchorPane0.getChildren().add(button1);
         anchorPane0.getChildren().add(imageView0);
         anchorPane3.getChildren().add(imageView1);
+        
 
     }
 
