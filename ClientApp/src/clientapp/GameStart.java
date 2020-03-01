@@ -43,7 +43,7 @@ import jdk.nashorn.internal.ir.BreakNode;
  * @author hassan
  */
 public class GameStart extends GameUINew {
-
+   boolean flage = false;
     Scene gameStartScene;
     PrintStream ps;
     DataInputStream dis;
@@ -136,7 +136,6 @@ public class GameStart extends GameUINew {
                                 Platform.runLater(new Runnable() {
                                     @Override
                                     public void run() {
-
                                         if (msg[1].equals("X")) {
                                             imageBtn1.setImage(new Image(GameUI.class.getResource("/Game/x.png").toExternalForm()));
                                         } else {
@@ -258,9 +257,11 @@ public class GameStart extends GameUINew {
                                     @Override
                                     public void run() {
                                         if (msg[1].equals("loser")) {
+                                            flage=true;
                                             new Loser();
                                             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
                                         } else {
+                                            flage =true ;
                                             new Winner();
                                             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
                                         }
