@@ -27,7 +27,7 @@ public class GuessTheWordMenu extends GuessTheWordMenuUI {
     public GuessTheWordMenu() {
 //        Main.showNewScene(retScene(), "/Connect4/main.css");
         NavigationStack nsObj = new NavigationStack();
-        nsObj.root = this;
+//        nsObj.root = this;
         nsObj.pageName = "GuessTheWordMenu";
         nsObj.cssStyle = "/Connect4/main.css";
         nsObj.isNew = true;

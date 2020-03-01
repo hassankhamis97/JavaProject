@@ -21,6 +21,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -73,18 +74,18 @@ public class Main extends Application {
 //       new MainMenu();
     }
 
-//    public static void showNewScene(Scene scene, String cssFile) {
-////            getCSS(scene);
-//        //scene.getStylesheets().addAll(getClass().getResource("reg.css").toExternalForm());
-//
-//        scene.getStylesheets().addAll(Main.class.getResource(cssFile).toExternalForm());
-//       
-//        
-//
-//
-//        myStage.setScene(scene);
-//        myStage.show();
-//    }
+    public static void showNewScene(Scene scene, String cssFile) {
+//            getCSS(scene);
+        //scene.getStylesheets().addAll(getClass().getResource("reg.css").toExternalForm());
+
+        scene.getStylesheets().addAll(Main.class.getResource(cssFile).toExternalForm());
+       
+        
+
+
+         myStage.setScene(scene);
+        myStage.show();
+    }
     public static void showNewScene(Pane myOldRoot) {
 
         NavigationStack ns = SharedData.nsList.get(SharedData.nsList.size() - 1);
@@ -120,7 +121,7 @@ public class Main extends Application {
 
         //Login l=new Login("fd");
         if (!ns.pageName.equals("Login")) {
-            SharedData.nsList.get(0).root.getChildren().add(newRoot);
+                SharedData.nsList.get(0).root.getChildren().add(newRoot);
         }
         Timeline timeline = new Timeline();
          KeyValue kv = new KeyValue(newRoot.translateYProperty(), 0, Interpolator.EASE_OUT);

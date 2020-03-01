@@ -6,7 +6,6 @@
 package Connect4;
 
 import Stack.NavigationStack;
-import clientapp.Levels;
 import clientapp.Main;
 import clientapp.MainMenu;
 import clientapp.OnlineWait;
@@ -26,14 +25,14 @@ import javafx.event.EventHandler;
 public class Connect4Menu extends GuessTheWordMenuUI {
 
     public Connect4Menu() {
-//        Main.showNewScene(retScene(), "/Connect4/main.css");
-        NavigationStack nsObj = new NavigationStack();
-        nsObj.root = this;
-        nsObj.pageName = "Connect4Menu";
-        nsObj.cssStyle = "/Connect4/main.css";
-        nsObj.isNew = true;
-        SharedData.nsList.add(nsObj);
-        Main.showNewScene(this);
+        Main.showNewScene(retScene(), "/Connect4/main.css");
+//        NavigationStack nsObj = new NavigationStack();
+//        nsObj.root = this;
+//        nsObj.pageName = "Connect4Menu";
+//        nsObj.cssStyle = "/Connect4/main.css";
+//        nsObj.isNew = true;
+//        SharedData.nsList.add(nsObj);
+//        Main.showNewScene(this);
         playOnlineBtn.setOnAction((ActionEvent event) -> {
 //            new ConnectFour();
             try {
@@ -42,7 +41,6 @@ public class Connect4Menu extends GuessTheWordMenuUI {
                 dos.writeUTF("connect-random");
                // dos.close();
                 new OnlineWait();
-                Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
             } catch (IOException ex) {
                 Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
