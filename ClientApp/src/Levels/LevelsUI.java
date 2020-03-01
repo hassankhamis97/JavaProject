@@ -10,7 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 
-public abstract class LevelsUI extends BorderPane {
+public  class LevelsUI extends BorderPane {
 
     protected final AnchorPane anchorPane;
     protected final BorderPane borderPane;

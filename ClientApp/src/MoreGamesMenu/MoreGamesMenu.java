@@ -68,11 +68,11 @@ public class MoreGamesMenu extends MoreGamesMenuUI {
         } catch (IOException ex) {
 //            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            button.setOnAction((ActionEvent event) -> {
+            ConnFourBtn.setOnAction((ActionEvent event) -> {
                 new Connect4Menu();
                 Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size()-2).root);
             });
-            button1.setOnAction((ActionEvent event) -> {
+            checkTheWorldBtn.setOnAction((ActionEvent event) -> {
                 
                     new GuessTheWordMenu();
                     Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size()-2).root);
@@ -132,7 +132,7 @@ public class MoreGamesMenu extends MoreGamesMenuUI {
                         + "            linear-gradient(#d6e2f9 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),\n"
                         + "            linear-gradient(#c6bef6, #4d94e6);\n"
                         + "    -fx-background-size: 100% 100%;");
-                button.setStyle("-background-color:\n"
+                ConnFourBtn.setStyle("-background-color:\n"
                         + "            #ffffff,\n"
                         + "            rgba(0,0,0,0.05),\n"
                         + "             linear-gradient(#13e0e7, #409cc7),\n"
@@ -148,7 +148,7 @@ public class MoreGamesMenu extends MoreGamesMenuUI {
                         + "    -fx-font-size: 18px;\n"
                         + "    -fx-text-fill: #311c09;\n"
                         + "    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);");
-                button1.setStyle("-background-color:\n"
+                checkTheWorldBtn.setStyle("-background-color:\n"
                         + "            #ffffff,\n"
                         + "            rgba(0,0,0,0.05),\n"
                         + "             linear-gradient(#13e0e7, #409cc7),\n"

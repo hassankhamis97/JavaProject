@@ -29,9 +29,9 @@ protected final FlowPane flow_parent_friendList;
     protected final AnchorPane anchorPane;
     protected final BorderPane borderPane;
     protected final AnchorPane anchorPane0;
-    protected final Button button;
+    protected final Button ConnFourBtn;
     protected final Button button0;
-    protected final Button button1;
+    protected final Button checkTheWorldBtn;
     protected final ImageView imageView;
     protected final AnchorPane anchorPane1;
     protected final AnchorPane anchorPane2;
@@ -58,9 +58,9 @@ protected final FlowPane flow_parent_friendList;
         anchorPane = new AnchorPane();
         borderPane = new BorderPane();
         anchorPane0 = new AnchorPane();
-        button = new Button();
+        ConnFourBtn = new Button();
         button0 = new Button();
-        button1 = new Button();
+        checkTheWorldBtn = new Button();
         imageView = new ImageView();
         anchorPane1 = new AnchorPane();
         anchorPane2 = new AnchorPane();
@@ -100,23 +100,24 @@ friendOpen_btn = new Button();
         anchorPane0.setPrefHeight(434.0);
         anchorPane0.setPrefWidth(361.0);
 
-        button.setLayoutX(24.0);
-        button.setLayoutY(165.0);
-        button.setMnemonicParsing(false);
-        button.setPrefHeight(30.0);
-        button.setPrefWidth(300.0);
-        button.setText("Connect Four");
-        button.setFont(new Font(16.0));
-//        button.setId("btn");
+        
+        ConnFourBtn.setLayoutX(24.0);
+        ConnFourBtn.setLayoutY(165.0);
+        ConnFourBtn.setMnemonicParsing(false);
+        ConnFourBtn.setPrefHeight(30.0);
+        ConnFourBtn.setPrefWidth(300.0);
+        ConnFourBtn.setText("Connect Four");
+        ConnFourBtn.setFont(new Font(16.0));
+//        ConnFourBtn.setId("btn");
 
-        button1.setLayoutX(24.0);
-        button1.setLayoutY(244.0);
-        button1.setMnemonicParsing(false);
-        button1.setPrefHeight(30.0);
-        button1.setPrefWidth(300.0);
-        button1.setText("Check The Word");
-        button1.setFont(new Font(16.0));
-//        button1.setId("btn");
+        checkTheWorldBtn.setLayoutX(24.0);
+        checkTheWorldBtn.setLayoutY(244.0);
+        checkTheWorldBtn.setMnemonicParsing(false);
+        checkTheWorldBtn.setPrefHeight(30.0);
+        checkTheWorldBtn.setPrefWidth(300.0);
+        checkTheWorldBtn.setText("Check The Word");
+        checkTheWorldBtn.setFont(new Font(16.0));
+//        checkTheWorldBtn.setId("btn");
 
     
 
@@ -280,9 +281,9 @@ friendOpen_btn.setLayoutX(90.0);
         //imageView2.setImage(new Image(getClass().getResource("Style/FAQ_BTN.png").toExternalForm()));
         setTop(anchorPane3);
 
-        anchorPane0.getChildren().add(button);
+        anchorPane0.getChildren().add(ConnFourBtn);
         anchorPane0.getChildren().add(button0);
-        anchorPane0.getChildren().add(button1);
+        anchorPane0.getChildren().add(checkTheWorldBtn);
         
         anchorPane0.getChildren().add(imageView);
         anchorPane3.getChildren().add(btnStore);
