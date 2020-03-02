@@ -36,7 +36,7 @@ public class Database {
 
             Class.forName("com.mysql.jdbc.Driver");
 //            con = DriverManager.getConnection("jdbc:mysql://192.168.1.10:3306/javaproject", "root", "root");
-            con = DriverManager.getConnection("jdbc:mysql://172.16.4.147:3306/javaproject", "root", "root");
+            con = DriverManager.getConnection("jdbc:mysql://192.168.1.10:3306/javaproject", "root", "root");
         } catch (ClassNotFoundException ex) {
             con = null;
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -120,7 +120,28 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+   public  void updateWinnerCoins(Connection con){
+        
+          ResultSet rs;
+            PreparedStatement stmt;
+        try {
+          
+                    stmt = con.prepareStatement("UPDATE statistics  SET Coins =?  where ID =(select StatID from player where ID =?");
+                    SharedData.Coins+=10;
+                    stmt.setInt(1, SharedData.Coins);
+                    stmt.setInt(2, SharedData.playerID);
+                    /* example override value *///
+                    
+                    stmt.executeUpdate();
+                   boolean b =true;
+                    onButtonAlert("updated successfully ", b);
+                  //  SharedData.con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public ResultSet getOnlineFriends(Connection con) {
         ResultSet rs;
         try {

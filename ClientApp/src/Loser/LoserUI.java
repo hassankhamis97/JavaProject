@@ -1,5 +1,6 @@
 package Loser;
 
+import Winner.WinnerUI;
 import java.lang.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -36,7 +37,7 @@ public class LoserUI extends BorderPane {
         anchorPane1 = new AnchorPane();
         anchorPane2 = new AnchorPane();
         anchorPane3 = new AnchorPane();
-
+ //imageView = new Image(LoserUI.class.getResource("defeated.gif").toExternalForm());
         setMaxHeight(USE_PREF_SIZE);
         setMaxWidth(USE_PREF_SIZE);
         setMinHeight(USE_PREF_SIZE);

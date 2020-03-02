@@ -148,7 +148,6 @@ public class LoginUI extends StackPane {
         imageView1.setId("logo1.png");
         imageView1.setImage(new Image(LoginUI.class.getResource("/Resources/logo_1.png").toExternalForm()));
         borderPane.setTop(anchorPane3);
-
         anchorPane0.getChildren().add(imageView);
         anchorPane0.getChildren().add(imageView0);
         anchorPane0.getChildren().add(email_txt);

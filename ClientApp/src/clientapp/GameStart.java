@@ -6,6 +6,7 @@
 package clientapp;
 
 //import com.mysql.fabric.xmlrpc.Client;
+import Database.Database;
 import Game.GameUI;
 import Game.GameUINew;
 import Stack.NavigationStack;
@@ -25,6 +26,7 @@ import java.util.logging.Logger;
 import javafx.scene.Scene;
 import java.net.Socket;
 import java.nio.channels.SocketChannel;
+import java.sql.Connection;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -44,7 +46,8 @@ import jdk.nashorn.internal.ir.BreakNode;
  * @author hassan
  */
 public class GameStart extends GameUINew {
-   boolean flage = false;
+
+    boolean flage = false;
     Scene gameStartScene;
     PrintStream ps;
     DataInputStream dis;
@@ -71,8 +74,8 @@ public class GameStart extends GameUINew {
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
         setRightAnchor(btnChat, 20.0);
-                setRightAnchor(chatBtn, 20.0);
-                setRightAnchor(chatNotificationTxt, 40.0);
+        setRightAnchor(chatBtn, 20.0);
+        setRightAnchor(chatNotificationTxt, 40.0);
 //        Main.showNewScene(this);
 //        gameStartScene = retScene();
         try {
@@ -261,8 +264,7 @@ public class GameStart extends GameUINew {
                                     @Override
                                     public void run() {
                                         if (msg[1].equals("loser")) {
-                                                                                        GameStart.this.resetGame("winner");
-GameStart.this.resetGame("loser");
+                                            GameStart.this.resetGame("loser");
                                             new Loser();
                                             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
                                         } else {
@@ -518,8 +520,24 @@ GameStart.this.resetGame("loser");
         });
     }
 
-    private void resetGame(String winner) {
-        imageBtn1 = new ImageView();
+    private void resetGame(String checker) {
+        if(checker.equals("winner")){
+       Database db = new Database();
+       Connection con = db.openConnection();
+       db.updateWinnerCoins(con);
+       db.closeConnection(con);
+        }
+     
+        imageBtn1 = new ImageView();  
+        imageBtn2 = new ImageView();  
+        imageBtn3 = new ImageView();
+        imageBtn4 = new ImageView();
+        imageBtn5 = new ImageView();
+        imageBtn6 = new ImageView();
+        imageBtn7 = new ImageView();
+        imageBtn8 = new ImageView();
+        imageBtn9 = new ImageView();
+
     }
 
 }

@@ -28,23 +28,11 @@ public class Loser extends LoserUI {
 //        Main.showNewScene(this);
 
      playAgainBtn.setOnAction((event) -> {
-//          System.out.println("back ------> ");
-//            Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
-//            
-//               SharedData.nsList.remove(SharedData.nsList.size() - 1);
-//                SharedData.nsList.remove(SharedData.nsList.size() - 1);
-//            SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
-//            Main.showNewScene(myOldRoot);
-            
-   System.out.println("back ------> ");
-            Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
-            SharedData.nsList.remove(SharedData.nsList.size() - 1); 
-            SharedData.nsList.remove(SharedData.nsList.size() - 1);
-//            SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
-//            Main.showNewScene(myOldRoot);
-            
-             new GameStart();
-            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+           System.out.println("back ------> ");
+           Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
+           SharedData.nsList.remove(SharedData.nsList.size() - 1);
+           SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
+           Main.showNewScene(myOldRoot);
      });
      
      
@@ -63,6 +51,7 @@ public class Loser extends LoserUI {
 
     private void loadCustomDesign() {
         Platform.runLater(new Runnable() {
+            
             @Override
             public void run() {
                 setPrefHeight(SharedData.nsList.get(0).root.getHeight());
