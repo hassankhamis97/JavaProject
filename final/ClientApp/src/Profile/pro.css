@@ -1,0 +1,11 @@
+#pane{
+    /*-fx-background-image:url("pic5.jpg");*/
+    -fx-background-color:linear-gradient(#8ad9dc, #409cc7),
+        linear-gradient(#d6e2f9 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),
+        linear-gradient(#c6bef6, #4d94e6);
+    -fx-background-size: 100% 100%;
+
+}
+#btn{
+    -fx-background-color: transparent;
+}

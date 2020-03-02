@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="watchvideo.WatchSavedController">
+    <bottom>
+        <AnchorPane prefHeight="90.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+    </bottom>
+    <center>
+        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="255.0" prefWidth="338.0" BorderPane.alignment="CENTER">
+            <center>
+                <AnchorPane fx:id="ListContainer_anchor" prefHeight="254.0" prefWidth="337.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane fx:id="MainItem_anchor" layoutX="0.0" layoutY="14.0" minHeight="71.0" prefHeight="71.0" prefWidth="308.0">
+                            <children>
+                                <Label fx:id="time_Lbl" layoutX="104.0" layoutY="36.0" prefWidth="40.0" text="Time">
+                                    <font>
+                                        <Font size="14.0" fx:id="x1" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="Date_Lbl" font="$x1" layoutX="48.0" layoutY="36.0" prefWidth="40.0" text="Date" />
+                                <Button fx:id="watch_btn" layoutX="220.0" layoutY="10.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" text="Watch" />
+                                <Label fx:id="opponentName_Lbl" font="$x1" layoutX="20.0" layoutY="17.0" text="Opponent Player" />
+                            </children>
+                        </AnchorPane>
+                        <ImageView id="Play_BTN.png" fitHeight="48.0" fitWidth="76.0" layoutX="112.0" AnchorPane.topAnchor="-60.0">
+                            <image>
+                                <Image preserveRatio="true" smooth="true" url="file:/C:/Users/Marina-Sameh/Downloads/PNG/Buttons/BTNs/Play_BTN.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                    <BorderPane.margin>
+                        <Insets />
+                    </BorderPane.margin>
+                </AnchorPane>
+            </center>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+        </BorderPane>
+    </center>
+    <left>
+        <AnchorPane prefHeight="220.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+    </left>
+    <right>
+        <AnchorPane prefHeight="257.9999000000025" prefWidth="150.0001220703125" BorderPane.alignment="CENTER" />
+    </right>
+    <top>
+        <AnchorPane minHeight="60.0" prefHeight="71.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="backBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.999908447265625" text="" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+                <ImageView id="Backward_BTN.png" fitHeight="36.0" fitWidth="54.999900000002526" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+                    <image>
+                        <Image preserveRatio="true" smooth="true" url="file:/C:/Users/Marina-Sameh/Downloads/PNG/Rating/Backward_BTN.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </top>
+</BorderPane>
