@@ -34,6 +34,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import static javafx.scene.layout.AnchorPane.setRightAnchor;
 import jdk.nashorn.internal.ir.BreakNode;
@@ -69,6 +70,9 @@ public class GameStart extends GameUINew {
         nsObj.cssStyle = "/Game/game.css";
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
+        setRightAnchor(btnChat, 20.0);
+                setRightAnchor(chatBtn, 20.0);
+                setRightAnchor(chatNotificationTxt, 40.0);
 //        Main.showNewScene(this);
 //        gameStartScene = retScene();
         try {
@@ -258,9 +262,12 @@ public class GameStart extends GameUINew {
                                     @Override
                                     public void run() {
                                         if (msg[1].equals("loser")) {
+                                                                                        GameStart.this.resetGame("winner");
+
                                             new Loser();
                                             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
                                         } else {
+                                            GameStart.this.resetGame("winner");
                                             new Winner();
                                             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
                                         }
@@ -445,8 +452,8 @@ public class GameStart extends GameUINew {
         });
         send_btn.setOnAction(t -> {
             try {
-                if (!chatNotificationTxt.getText().isEmpty()) {
-                    dos.writeUTF("msg-" + chatNotificationTxt.getText());
+                if (!chatMsg_txt.getText().isEmpty()) {
+                    dos.writeUTF("msg-" + chatMsg_txt.getText());
                 }
             } catch (IOException ex) {
                 Logger.getLogger(GameStart.class.getName()).log(Level.SEVERE, null, ex);
@@ -455,12 +462,14 @@ public class GameStart extends GameUINew {
         btnChat.setOnAction((ActionEvent event) -> {
             isChatOpen = !isChatOpen;
             if (isChatOpen) {
+                setRight(anchorPane2);
                 setRightAnchor(btnChat, 300.0);
                 setRightAnchor(chatBtn, 301.0);
                 setRightAnchor(chatNotificationTxt, 320.0);
                 getChildren().add(borderPane);
             } else {
-                setRightAnchor(chatBtn, 20.0);
+                setRight(null);
+                setRightAnchor(btnChat, 20.0);
                 setRightAnchor(chatBtn, 20.0);
                 setRightAnchor(chatNotificationTxt, 40.0);
                 getChildren().remove(borderPane);
@@ -508,6 +517,10 @@ public class GameStart extends GameUINew {
 
             }
         });
+    }
+
+    private void resetGame(String winner) {
+        imageBtn1 = new ImageView();
     }
 
 }

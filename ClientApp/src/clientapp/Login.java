@@ -81,14 +81,14 @@ public class Login extends LoginUI {
 //                email_txt.setText("mahmoud93@gmail.com");
 ////              '
 //
-//        email_txt.setText("hassankhamis97@hotmail.com");
+        email_txt.setText("hassankhamis97@hotmail.com");
 //                pass_txt.setText("asd123M@");
 //                email_txt.setText("ccc@ccc.com");
 //                email_txt.setText("bbb@bbb.com");
 //                email_txt.setText("aaa@aaa.com");
 
                                // email_txt.setText("hassankhamis97@hotmail.com");
-              //  pass_txt.setText("123456aA&");
+                pass_txt.setText("123456aA&");
 
                 if (!email_txt.getText().isEmpty() && !pass_txt.getText().isEmpty()) {
                     if (!Pattern.matches("^[a-z0-9]+(_{1}|.{1})+[a-z0-9]{1,}@{1}[a-z]{2,}[.][a-z]{2,5}$", email_txt.getText())) {
