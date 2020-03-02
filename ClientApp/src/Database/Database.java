@@ -129,7 +129,7 @@ public class Database {
             PreparedStatement stmt;
         try {
           
-                    stmt = con.prepareStatement("UPDATE statistics  SET Coins =?  where ID =(select StatID from player where ID =?");
+                    stmt = con.prepareStatement("UPDATE statistics  SET Coins =?  where ID =(select StatID from player where ID =?)");
                     SharedData.Coins+=10;
                     stmt.setInt(1, SharedData.Coins);
                     stmt.setInt(2, SharedData.playerID);

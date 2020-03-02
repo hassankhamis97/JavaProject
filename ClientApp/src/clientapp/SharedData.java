@@ -23,6 +23,7 @@ public class SharedData {
     public static Connection con;
     public static Socket client;
     public static int Coins;
+    
     public static List<NavigationStack> nsList = new ArrayList<>();
 //        static DataInputStream dis;
 //        static DataOutputStream dos;

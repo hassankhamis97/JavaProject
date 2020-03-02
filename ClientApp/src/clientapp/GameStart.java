@@ -59,6 +59,7 @@ public class GameStart extends GameUINew {
     boolean isChatOpen = false;
     int chatTxtPosY = 21;
 
+
     public GameStart() {
 
     }
@@ -264,10 +265,14 @@ public class GameStart extends GameUINew {
                                     @Override
                                     public void run() {
                                         if (msg[1].equals("loser")) {
+                                            player1Score.setText(msg[2]);
+                                            player2Score.setText(msg[3]);
                                             new Loser();
                                             GameStart.this.resetGame("loser");
                                             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
                                         } else {
+                                            player1Score.setText(msg[2]);
+                                            player2Score.setText(msg[3]);
                                             new Winner();
                                             GameStart.this.resetGame("winner");
                                             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
@@ -513,7 +518,7 @@ public class GameStart extends GameUINew {
                 button5.setStyle("-fx-background-color:transparent;");
                 button6.setStyle("-fx-background-color:transparent;");
                 button7.setStyle("-fx-background-color:transparent;");
-                chatBtn.setStyle("-fx-background-color:transparent;");
+                btnChat.setStyle("-fx-background-color:transparent;");
                 chatAnch.setStyle(" -fx-background-color:#ddd;");
 
             }
@@ -537,6 +542,15 @@ public class GameStart extends GameUINew {
         imageBtn7.setImage(null);
         imageBtn8.setImage(null);
         imageBtn9.setImage(null);
+button1.setDisable(false);
+button2.setDisable(false);
+button3.setDisable(false);
+button4.setDisable(false);
+button5.setDisable(false);
+button6.setDisable(false);
+button7.setDisable(false);
+button8.setDisable(false);
+button9.setDisable(false);
 
     }
 

@@ -470,7 +470,7 @@ public class PlayerVSComputerv2 extends GameUINew {
                 button1.setStyle("-fx-background-color:transparent;");
                 button2.setStyle("-fx-background-color:transparent;");
                 button3.setStyle("-fx-background-color:transparent;");
-                button2.setStyle("-fx-background-color:transparent;");
+                button6.setStyle("-fx-background-color:transparent;");
                 button5.setStyle("-fx-background-color:transparent;");
                 button4.setStyle("-fx-background-color:transparent;");
                 button7.setStyle("-fx-background-color:transparent;");

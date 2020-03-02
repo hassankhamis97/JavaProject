@@ -387,7 +387,7 @@ public class MenuMultiTic extends MenuMultiTicUI {
                         + "    -fx-font-size: 18px;\n"
                         + "    -fx-text-fill: #311c09;\n"
                         + "    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);");
-
+friendOpen_btn.setStyle("-fx-background-color:transparent");
                 flow_parent_friendList.setStyle("-fx-background-color:#ddd;");
 
             }

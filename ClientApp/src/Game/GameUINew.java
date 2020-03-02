@@ -439,7 +439,7 @@ public class GameUINew extends BorderPane {
         btnImojiImg.setId("emoji.png");
         btnImojiImg.setX(1.0);
         btnImojiImg.setY(0.0);
-        imageView1.setImage(new Image(GameUINew.class.getResource("emoji.png").toExternalForm()));
+        btnImojiImg.setImage(new Image(GameUINew.class.getResource("emoji.png").toExternalForm()));
 
         btnEmoji.setGraphic(btnImojiImg);
 
@@ -581,8 +581,8 @@ public class GameUINew extends BorderPane {
         separator.setEffect(lighting);
         setTop(anchorPane4);
 
-        anchorPane.getChildren().add(btnChat);
         anchorPane.getChildren().add(chatBtn);
+        anchorPane.getChildren().add(btnChat);
         anchorPane.getChildren().add(chatNotificationTxt);
         anchorPane0.getChildren().add(imageView);
         gridPane.getColumnConstraints().add(columnConstraints);
