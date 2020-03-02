@@ -18,8 +18,8 @@ public class LoserUI extends BorderPane {
     protected final AnchorPane anchorPane;
     protected final BorderPane borderPane;
     protected final AnchorPane anchorPane0;
-    protected final Button button;
-    protected final Button button0;
+    protected final Button playAgainBtn;
+    protected final Button mainMenuBtn;
     protected final ImageView imageView;
     protected final AnchorPane anchorPane1;
     protected final AnchorPane anchorPane2;
@@ -30,8 +30,8 @@ public class LoserUI extends BorderPane {
         anchorPane = new AnchorPane();
         borderPane = new BorderPane();
         anchorPane0 = new AnchorPane();
-        button = new Button();
-        button0 = new Button();
+        playAgainBtn = new Button();
+        mainMenuBtn = new Button();
         imageView = new ImageView();
         anchorPane1 = new AnchorPane();
         anchorPane2 = new AnchorPane();
@@ -60,21 +60,21 @@ public class LoserUI extends BorderPane {
         anchorPane0.setPrefHeight(200.0);
         anchorPane0.setPrefWidth(200.0);
 
-        button.setLayoutX(39.0);
-        button.setLayoutY(246.0);
-        button.setMnemonicParsing(false);
-        button.setPrefHeight(31.0);
-        button.setPrefWidth(114.0);
-        button.setText("Play Again");
-        button.setId("btn");
+        playAgainBtn.setLayoutX(39.0);
+        playAgainBtn.setLayoutY(246.0);
+        playAgainBtn.setMnemonicParsing(false);
+        playAgainBtn.setPrefHeight(31.0);
+        playAgainBtn.setPrefWidth(114.0);
+        playAgainBtn.setText("Play Again");
+        playAgainBtn.setId("btn");
 
-        button0.setLayoutX(280.0);
-        button0.setLayoutY(246.0);
-        button0.setMnemonicParsing(false);
-        button0.setPrefHeight(31.0);
-        button0.setPrefWidth(113.0);
-        button0.setText("Main Menu");
-        button0.setId("btn");
+        mainMenuBtn.setLayoutX(280.0);
+        mainMenuBtn.setLayoutY(246.0);
+        mainMenuBtn.setMnemonicParsing(false);
+        mainMenuBtn.setPrefHeight(31.0);
+        mainMenuBtn.setPrefWidth(113.0);
+        mainMenuBtn.setText("Main Menu");
+        mainMenuBtn.setId("btn");
 
         imageView.setId("lose.png");
         imageView.setLayoutX(0.0);
@@ -99,8 +99,8 @@ public class LoserUI extends BorderPane {
         anchorPane3.setPrefWidth(600.0);
         setTop(anchorPane3);
 
-        anchorPane0.getChildren().add(button);
-        anchorPane0.getChildren().add(button0);
+        anchorPane0.getChildren().add(playAgainBtn);
+        anchorPane0.getChildren().add(mainMenuBtn);
         anchorPane0.getChildren().add(imageView);
         currentScene = new Scene(this);
     }

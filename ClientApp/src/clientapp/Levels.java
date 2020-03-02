@@ -6,6 +6,7 @@
 package clientapp;
 
 import Computer.PlayerVSComputer;
+import Computer.PlayerVSComputerv2;
 import Levels.LevelsUI;
 import Stack.NavigationStack;
 import javafx.application.Platform;
@@ -35,16 +36,16 @@ public class Levels extends LevelsUI {
         });
 
         easyBtn.setOnAction((event) -> {
-            new PlayerVSComputer("easy");
+            new PlayerVSComputerv2("easy");
             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
         });
 
         mediumBtn.setOnAction((event) -> {
-            new PlayerVSComputer("medium");
+            new PlayerVSComputerv2("medium");
             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
         });
         hardBtn.setOnAction((event) -> {
-            new PlayerVSComputer("hard");
+            new PlayerVSComputerv2("hard");
             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
         });
 

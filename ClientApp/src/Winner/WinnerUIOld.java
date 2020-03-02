@@ -18,9 +18,9 @@ public class WinnerUIOld extends BorderPane {
     protected final AnchorPane anchorPane;
     protected final BorderPane borderPane;
     protected final AnchorPane anchorPane0;
-    protected final Button button;
+    protected final Button playAgainBtn;
     protected final ImageView imageView;
-    protected final Button button0;
+    protected final Button mainMenuBtn;
     protected final AnchorPane anchorPane1;
     protected final AnchorPane anchorPane2;
     protected final AnchorPane anchorPane3;
@@ -30,9 +30,9 @@ public class WinnerUIOld extends BorderPane {
         anchorPane = new AnchorPane();
         borderPane = new BorderPane();
         anchorPane0 = new AnchorPane();
-        button = new Button();
+        playAgainBtn = new Button();
         imageView = new ImageView();
-        button0 = new Button();
+        mainMenuBtn = new Button();
         anchorPane1 = new AnchorPane();
         anchorPane2 = new AnchorPane();
         anchorPane3 = new AnchorPane();
@@ -61,14 +61,14 @@ public class WinnerUIOld extends BorderPane {
         anchorPane0.setPrefHeight(200.0);
         anchorPane0.setPrefWidth(200.0);
 
-        button.setLayoutX(39.0);
-        button.setLayoutY(246.0);
-        button.setMnemonicParsing(false);
-        button.setPrefHeight(31.0);
-        button.setPrefWidth(114.0);
-        button.setText("Play Again");
-        button.setFont(new Font(16.0));
-        button.setId("btn");
+        playAgainBtn.setLayoutX(39.0);
+        playAgainBtn.setLayoutY(246.0);
+        playAgainBtn.setMnemonicParsing(false);
+        playAgainBtn.setPrefHeight(31.0);
+        playAgainBtn.setPrefWidth(114.0);
+        playAgainBtn.setText("Play Again");
+        playAgainBtn.setFont(new Font(16.0));
+        playAgainBtn.setId("btn");
 
         imageView.setFitHeight(64.0);
         imageView.setFitWidth(407.0);
@@ -78,15 +78,15 @@ public class WinnerUIOld extends BorderPane {
         imageView.setImage(new Image(WinnerUIOld.class.getResource("Header.png").toExternalForm()));
         //  imageView.setImage(new Image(getClass().getResource("file:/C:/Users/Marina-Sameh/Downloads/PNG/You_Win/Header.png").toExternalForm()));
 
-        //    button0.setFont(javafx.scene.text.Font.$x1);
-        button0.setFont(new Font(16.0));
-        button0.setLayoutX(279.0);
-        button0.setLayoutY(245.0);
-        button0.setMnemonicParsing(false);
-        button0.setPrefHeight(31.0001220703125);
-        button0.setPrefWidth(114.0);
-        button0.setText("Main Menu");
-        button0.setId("btn");
+        //    mainMenuBtn.setFont(javafx.scene.text.Font.$x1);
+        mainMenuBtn.setFont(new Font(16.0));
+        mainMenuBtn.setLayoutX(279.0);
+        mainMenuBtn.setLayoutY(245.0);
+        mainMenuBtn.setMnemonicParsing(false);
+        mainMenuBtn.setPrefHeight(31.0001220703125);
+        mainMenuBtn.setPrefWidth(114.0);
+        mainMenuBtn.setText("Main Menu");
+        mainMenuBtn.setId("btn");
         borderPane.setCenter(anchorPane0);
         setCenter(borderPane);
 
@@ -105,9 +105,9 @@ public class WinnerUIOld extends BorderPane {
         anchorPane3.setPrefWidth(600.0);
         setTop(anchorPane3);
 
-        anchorPane0.getChildren().add(button);
+        anchorPane0.getChildren().add(playAgainBtn);
         anchorPane0.getChildren().add(imageView);
-        anchorPane0.getChildren().add(button0);
+        anchorPane0.getChildren().add(mainMenuBtn);
         currentScene = new Scene(this);
     }
 
