@@ -81,7 +81,7 @@ public class Login extends LoginUI {
                 boolean emailValid = true;
                 boolean passValid = true;
               //  Media musicFile = new Media("/Resources/f1.mp3");
-                String path = "\\f1.mp3";
+                String path = "src//clientapp//f1.mp3";
                 Media m = new Media(new File(path).toURI().toString());
                 mediaplayer = new MediaPlayer(m);
                 mediaplayer.setVolume(1);
