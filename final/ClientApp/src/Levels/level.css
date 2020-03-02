@@ -1,0 +1,84 @@
+#pane{
+    /*-fx-background-image:url("pic5.jpg");*/
+    -fx-background-color:linear-gradient(#8ad9dc, #409cc7),
+        linear-gradient(#d6e2f9 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),
+        linear-gradient(#c6bef6, #4d94e6);
+    -fx-background-size: 100% 100%;
+
+}
+
+/*#es {
+    -fx-background-color:
+            linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
+            linear-gradient(#020b02, #3a3a3a),
+            linear-gradient(#b9b9b9 0%, #c2c2c2 20%, #afafaf 80%, #c8c8c8 100%),
+            linear-gradient(#f5f5f5 0%, #dbdbdb 50%, #cacaca 51%, #d7d7d7 100%);
+    -fx-background-insets: 0,1,4,5;
+    -fx-background-radius: 9,8,5,4;
+    -fx-padding: 15 30 15 30;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+}*/
+#btn{
+    -fx-background-color:
+        #ffffff,
+        rgba(0,0,0,0.05),
+        linear-gradient(#13e0e7, #409cc7),
+        linear-gradient(#7caaff 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),
+        linear-gradient(#c6bef6, #e4e9ee);
+    /*            linear-gradient(#be8adc, #7a40c7),
+                linear-gradient(#e0d6f9 0%, #f4bceb 20%, #a45de6 80%, #8945e2 100%),
+                linear-gradient(#f6bed8, #ae4de6);*/
+    -fx-background-insets: 0,9 9 8 9,9,10,11;
+    -fx-background-radius: 50;
+    -fx-padding: 15 30 15 30;
+    -fx-font-family: "Helvetica Bold";
+    -fx-font-size: 24px;
+    -fx-text-fill: #311c09;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);
+}
+
+/*#btn{
+    -fx-background-color:
+            #ecebe9,
+            rgba(0,0,0,0.05),
+            linear-gradient(#8adcb0, #5bc740),
+            linear-gradient(#d6f9ed 0%, #bcf4e3 20%, #5de6a1 80%, #6ae245 100%),
+            linear-gradient(#bef6df, #52e64d);
+    -fx-background-insets: 0,9 9 8 9,9,10,11;
+    -fx-background-radius: 50;
+    -fx-padding: 15 30 15 30;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
+    -fx-text-fill: #311c09;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);
+}*/
+
+/*#hd{
+    
+    -fx-background-color:
+            linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
+            linear-gradient(#020b02, #3a3a3a),
+            linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #343534 80%, #242424 100%),
+            linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%),
+            linear-gradient(#777777 0%, #606060 50%, #505250 51%, #2a2b2a 100%);
+    -fx-background-insets: 0,1,4,5,6;
+    -fx-background-radius: 9,8,5,4,3;
+    -fx-padding: 15 30 15 30;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+}*/
+
+#lev{
+    -fx-text-fill:#ffffff;
+    /*-fx-text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;*/
+    -fx-text-shadow: 2px 2px 4px blue;
+    /*         -fx-text-stroke: 1px #000000;*/
+
+}

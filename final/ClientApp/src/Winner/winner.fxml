@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane id="imageBorderPanePick" fx:id="imageBorderPanePick" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <ImageView id="gifImage" fx:id="gifImage" fitHeight="399.0" fitWidth="601.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                    <image>
+                        <Image url="@win.gif" />
+                    </image>
+                </ImageView>
+            </center>
+        </BorderPane>
+        <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <bottom>
+                <AnchorPane prefHeight="90.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+            </bottom>
+            <center>
+                <BorderPane id="mainBorder_pane" fx:id="mainBorder_pane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="260.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                    <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <Button id="playAgain_Btn" fx:id="playAgain_Btn" layoutX="39.0" layoutY="246.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="114.0" text="Play Again">
+                                    <font>
+                                        <Font size="16.0" fx:id="x1" />
+                                    </font>
+                                </Button>
+                                <ImageView id="Header_image" fx:id="Header_image" fitHeight="64.0" fitWidth="407.0" layoutX="0.0" layoutY="113.0">
+                                    <image>
+                                        <Image preserveRatio="true" smooth="true" url="file:/C:/Users/Marina-Sameh/Downloads/PNG/You_Win/Header.png" />
+                                    </image>
+                                </ImageView>
+                                <Button id="mainMenu_Btn" fx:id="mainMenu_Btn" font="$x1" layoutX="279.0" layoutY="245.0" mnemonicParsing="false" prefHeight="31.0001220703125" prefWidth="114.0" text="Main Menu" />
+                            </children>
+                        </AnchorPane>
+                    </center>
+                </BorderPane>
+            </center>
+            <left>
+                <AnchorPane prefHeight="220.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+            </left>
+            <right>
+                <AnchorPane prefHeight="220.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+            </right>
+            <top>
+                <AnchorPane prefHeight="52.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+            </top>
+        </BorderPane>
+    </children>
+</AnchorPane>

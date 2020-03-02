@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="714.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+    <bottom>
+        <AnchorPane prefHeight="90.00009999999747" prefWidth="600.0" BorderPane.alignment="CENTER" />
+    </bottom>
+    <center>
+        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="260.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+            <center>
+                <AnchorPane minWidth="361.0" prefHeight="434.0" prefWidth="361.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button layoutX="24.0" layoutY="165.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" text="Two Player">
+                            <font>
+                                <Font size="16.0" fx:id="x1" />
+                            </font>
+                        </Button>
+                        <Button font="$x1" layoutX="24.0" layoutY="249.0" minHeight="23.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" text="Play Online" />
+                        <Button font="$x1" layoutX="24.0" layoutY="329.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" text="Saved Games" />
+                        <Button font="$x1" layoutX="24.0" layoutY="86.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" text="One Player" />
+                        <Button font="$x1" layoutX="24.0" layoutY="404.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="300.0" text="More Games" />
+                        <ImageView id="logo.png" fitHeight="80.0" fitWidth="420.0" layoutX="-36.0" AnchorPane.topAnchor="-55.0">
+                            <image>
+                                <Image url="@Style/logo.png" preserveRatio="true" smooth="true" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </center>
+    <left>
+        <AnchorPane minWidth="189.0" prefHeight="480.0" prefWidth="189.0" BorderPane.alignment="CENTER">
+            <children>
+                <FlowPane layoutX="20.0" layoutY="58.0" prefHeight="513.0" prefWidth="239.0">
+                    <children>
+                        <FlowPane prefHeight="82.0" prefWidth="194.0">
+                            <children>
+                                <ImageView fitHeight="51.749925000001895" fitWidth="68.99990000000253" pickOnBounds="true" preserveRatio="true" />
+                                <FlowPane minWidth="53.0" orientation="VERTICAL" prefHeight="52.0" prefWidth="62.0">
+                                    <children>
+                                        <Label alignment="CENTER" prefHeight="27.0" prefWidth="56.0" text="Name" textAlignment="LEFT">
+                                            <font>
+                                                <Font name="System Bold" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Label alignment="CENTER" prefHeight="22.0" prefWidth="60.0" text="Status">
+                                            <font>
+                                                <Font name="System Italic" size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </FlowPane>
+                                <AnchorPane prefHeight="52.0" prefWidth="51.0">
+                                    <children>
+                                        <Button alignment="BOTTOM_CENTER" layoutX="7.0" layoutY="14.0" minHeight="22.0" minWidth="16.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="37.999900000002526" text="" textAlignment="CENTER">
+                                            <font>
+                                                <Font name="System Bold Italic" size="16.0" />
+                                            </font>
+                                        </Button>
+                                        <ImageView id="Add-Icon.png" fitHeight="39.000107629392005" fitWidth="49.0" layoutX="2.0" layoutY="6.0">
+                                            <image>
+                                                <Image url="@Style/Add-Icon.png" preserveRatio="true" smooth="true" />
+                                            </image>
+                                        </ImageView>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </FlowPane>
+                    </children>
+                </FlowPane>
+            </children>
+        </AnchorPane>
+    </left>
+    <right>
+        <AnchorPane prefHeight="220.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+    </right>
+    <top>
+        <AnchorPane minWidth="728.0" prefHeight="48.0" prefWidth="728.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="btnStore" font="$x1" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" text="" visible="false" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="12.0" />
+                <ImageView id="Shop_BTN.png" fitHeight="39.0" fitWidth="53.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="23.0">
+                    <image>
+                        <Image url="@Style/Shop_BTN.png" preserveRatio="true" smooth="true" />
+                    </image>
+                </ImageView>
+                <Button fx:id="btnSetting" font="$x1" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" text="" visible="false" AnchorPane.rightAnchor="20.0" />
+                <ImageView id="Settings_BTN.png" fitHeight="39.0" fitWidth="46.999900817871094" layoutY="23.0" AnchorPane.rightAnchor="20.0">
+                    <image>
+                        <Image url="@Style/Settings_BTN.png" preserveRatio="true" smooth="true" />
+                    </image>
+                </ImageView>
+                <Button fx:id="btnHelp" font="$x1" layoutY="19.0" minHeight="21.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="45.0" text="" visible="false" AnchorPane.rightAnchor="75.0" />
+                <ImageView id="FAQ_BTN.png" fitHeight="39.00000762939453" fitWidth="46.999977111816406" layoutY="24.0" AnchorPane.rightAnchor="75.0">
+                    <image>
+                        <Image url="@Style/FAQ_BTN.png" preserveRatio="true" smooth="true" />
+                    </image>
+                </ImageView>
+                <Button layoutX="90.0" layoutY="24.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="47.0" text="" />
+                <ImageView id="friend.png" fitHeight="36.00000762939453" fitWidth="53.00000762939453" layoutX="87.0" layoutY="25.0">
+                    <image>
+                        <Image url="@Style/friend.png" preserveRatio="true" smooth="true" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </top>
+</BorderPane>

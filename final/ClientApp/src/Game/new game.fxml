@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?scenebuilder-background-color 0xcce0ffff?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+  <bottom>
+    <AnchorPane prefHeight="90.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <children>
+        <Button id="openChat" fx:id="btnChat" mnemonicParsing="false" prefHeight="27.0" prefWidth="32.0" text="" visible="true" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="284.0" AnchorPane.topAnchor="56.0" />
+        <ImageView id="Notifications_BTN.png" fx:id="chatBtn" fitHeight="28.0" fitWidth="32.00004495849862" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="284.0" AnchorPane.topAnchor="56.0">
+          <image>
+            <Image preserveRatio="true" smooth="true" url="file:/C:/Users/Marina-Sameh/Downloads/PNG/Buttons/BTNs/Notifications_BTN.png" />
+          </image>
+        </ImageView>
+        <TextField id="notificationChat" prefHeight="21.0" prefWidth="23.0" AnchorPane.bottomAnchor="23.5" AnchorPane.rightAnchor="306.0" AnchorPane.topAnchor="45.5" />
+      </children>
+    </AnchorPane>
+  </bottom>
+  <center>
+    <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="260.0" prefWidth="478.0" BorderPane.alignment="CENTER">
+      <center>
+        <AnchorPane minWidth="373.0" prefHeight="260.0" prefWidth="396.0" BorderPane.alignment="CENTER">
+          <children>
+            <ImageView id="SU2wI.png" fitHeight="493.0" fitWidth="445.0" layoutX="-10.0" layoutY="-17.0">
+              <image>
+                <Image url="@../../../SU2wI.png" />
+              </image>
+            </ImageView>
+            <GridPane focusTraversable="false" gridLinesVisible="false" layoutY="20.0" pickOnBounds="false" prefHeight="390.0" prefWidth="405.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="140.0" minHeight="140.0" percentHeight="0.0" prefHeight="140.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+                     <children>
+                        <ImageView id="imageBtn1" fx:id="imageBtn1" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView id="imageBtn2" fx:id="imageBtn2" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                        <ImageView id="imageBtn3" fx:id="imageBtn3" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                        <ImageView id="imageBtn4" fx:id="imageBtn4" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                        <ImageView id="imageBtn5" fx:id="imageBtn5" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ImageView id="imageBtn6" fx:id="imageBtn6" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ImageView id="imageBtn7" fx:id="imageBtn7" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                        <ImageView id="imageBtn8" fx:id="imageBtn8" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ImageView id="imageBtn9" fx:id="imageBtn9" fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button id="button1" fx:id="button1" minHeight="140.0" minWidth="140.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" text="" />
+                  <Button id="button2" fx:id="button2" minHeight="140.0" minWidth="140.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" text="" GridPane.columnIndex="1" />
+                  <Button id="button3" fx:id="button3" minHeight="140.0" minWidth="140.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" text="" GridPane.columnIndex="2" />
+                  <Button id="button4" fx:id="button4" minHeight="140.0" minWidth="140.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" text="" GridPane.rowIndex="1" />
+                  <Button id="button5" fx:id="button5" minHeight="140.0" minWidth="140.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button id="button6" fx:id="button6" minHeight="140.0" minWidth="140.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" text="" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button id="button7" fx:id="button7" minHeight="140.0" minWidth="140.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" text="" GridPane.rowIndex="2" />
+                  <Button id="button8" fx:id="button8" minHeight="140.0" minWidth="140.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="button9" minHeight="140.0" minWidth="140.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" text="" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                     </children>
+            </GridPane>
+          </children>
+        </AnchorPane>
+      </center>
+    </BorderPane>
+  </center>
+  <left>
+    <AnchorPane prefHeight="220.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+  </left>
+  <right>
+    <AnchorPane prefHeight="220.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+      <children>
+        <AnchorPane layoutX="-120.0" prefHeight="526.0" prefWidth="270.0" AnchorPane.bottomAnchor="-100.0" AnchorPane.topAnchor="-79.0">
+          <children>
+            <BorderPane minWidth="90.00009155273438" prefHeight="526.0000999999975" prefWidth="269.0" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
+              <bottom>
+                <FlowPane hgap="15.0" prefHeight="36.0" prefWidth="291.0" vgap="0.0">
+                  <children>
+                    <TextField fx:id="chatMsg_txt" prefHeight="33.0" prefWidth="138.0" />
+                    <Button id="sticker" fx:id="btnEmoji" mnemonicParsing="false" prefHeight="33.0" prefWidth="43.000099999997474" text="" visible="true">
+                      <graphic>
+                        <ImageView id="emoji.png" fx:id="btnImojiImg" fitHeight="27.0" fitWidth="23.0" x="1.0" y="0.0">
+                          <image>
+                            <Image preserveRatio="true" smooth="true" url="file:/D:/ITI%20COURSES/Java%20Project/Style/emoji.png" />
+                          </image>
+                        </ImageView>
+                      </graphic>
+                    </Button>
+                    <Button id="benSend" fx:id="send_btn" defaultButton="true" mnemonicParsing="false" prefHeight="33.0" prefWidth="49.999900000002526" text="Send" />
+                  </children>
+                </FlowPane>
+              </bottom>
+              <left>
+                <ScrollPane prefHeight="495.0" prefWidth="269.0">
+                  <content>
+                    <AnchorPane id="chat" fx:id="chatAnch" minWidth="4.0" prefHeight="481.0" prefWidth="269.0">
+                      <children>
+                        <ImageView id="pic" fx:id="chatOpponentImg" fitHeight="50.0" fitWidth="50.0" layoutX="11.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label layoutX="64.0" layoutY="21.0" prefHeight="36.0" prefWidth="169.0" text="fvnsdbvjklmfvnjk" />
+                        <FlowPane fx:id="imojiMenu" layoutX="7.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0">
+                          <children>
+                            <ImageView id="smile.png" fitHeight="35.999900000002526" fitWidth="57.9998779296875">
+                              <image>
+                                <Image preserveRatio="true" smooth="true" url="file:/D:/ITI%20COURSES/Java%20Project/Style/smile.png" />
+                              </image>
+                            </ImageView>
+                            <ImageView id="love.png" fitHeight="35.999900817871094" fitWidth="57.9998779296875">
+                              <image>
+                                <Image preserveRatio="true" smooth="true" url="file:/D:/ITI%20COURSES/Java%20Project/Style/love.png" />
+                              </image>
+                            </ImageView>
+                            <ImageView id="LoveEmoji.png" fitHeight="35.999900817871094" fitWidth="57.9998779296875">
+                              <image>
+                                <Image preserveRatio="true" smooth="true" url="file:/D:/ITI%20COURSES/Java%20Project/Style/LoveEmoji.png" />
+                              </image>
+                            </ImageView>
+                          </children>
+                        </FlowPane>
+                      </children>
+                    </AnchorPane>
+                  </content>
+                </ScrollPane>
+              </left>
+            </BorderPane>
+          </children>
+        </AnchorPane>
+      </children>
+    </AnchorPane>
+  </right>
+  <top>
+    <AnchorPane minHeight="79.0" prefHeight="79.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <children>
+        <ImageView id="pic-user-1.png" fx:id="player1_Img" fitHeight="56.99999237060547" fitWidth="72.000244140625" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="7.0">
+          <image>
+            <Image url="@../../../pic-user-1.png" />
+          </image>
+        </ImageView>
+        <ImageView id="coins.png" fitHeight="67.0" fitWidth="90.0000991821289" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="0.0">
+          <image>
+            <Image url="@../../../coins.png" />
+          </image>
+        </ImageView>
+        <Label id="coinScore" fx:id="coinScoreLbl" text="0" textFill="WHITE" AnchorPane.bottomAnchor="-5.0" AnchorPane.leftAnchor="47.0">
+          <font>
+            <Font name="System Bold Italic" size="20.0" fx:id="x1" />
+          </font>
+        </Label>
+        <ImageView id="pic-user-1.png" fx:id="player2_Img" fitHeight="56.99999237060547" fitWidth="72.000244140625" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="7.0">
+          <image>
+            <Image url="@../../../pic-user-1.png" />
+          </image>
+        </ImageView>
+        <Label fx:id="player1Score" font="$x1" prefHeight="33.0" text="0" textFill="WHITE" AnchorPane.leftAnchor="190.0" AnchorPane.topAnchor="50.0" />
+        <Label fx:id="player2Score" font="$x1" prefHeight="33.0" text="0" textFill="WHITE" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="50.0" />
+        <MenuButton id="settings" fx:id="btnMenue" focusTraversable="true" mnemonicParsing="false" opacity="1.0" prefHeight="33.0" prefWidth="75.0" text="" visible="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="27.0">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Main Menu" />
+            <MenuItem mnemonicParsing="false" text="Reset" />
+            <MenuItem mnemonicParsing="false" text="Save Game" />
+          </items>
+        </MenuButton>
+        <ImageView id="Menu_BTN.png" fitHeight="36.0" fitWidth="58.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="26.0">
+          <image>
+            <Image url="file:/C:/Users/Marina-Sameh/Downloads/PNG/Buttons/BTNs/Menu_BTN.png" />
+          </image>
+        </ImageView>
+        <Separator focusTraversable="true" orientation="VERTICAL" prefHeight="50.0" prefWidth="23.0" AnchorPane.leftAnchor="289.0" AnchorPane.rightAnchor="288.0" AnchorPane.topAnchor="19.0">
+          <effect>
+            <Lighting>
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant color="BLACK" />
+              </light>
+            </Lighting>
+          </effect>
+        </Separator>
+      </children>
+    </AnchorPane>
+  </top>
+</BorderPane>
