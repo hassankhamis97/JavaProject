@@ -1,116 +1,145 @@
 package Loser;
 
-import Winner.WinnerUI;
-import java.lang.*;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.*;
-import javafx.scene.layout.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.text.*;
+import static javafx.scene.layout.Region.USE_PREF_SIZE;
 import javafx.scene.text.Font;
 
-public class LoserUI extends BorderPane {
+public abstract class LoserUI extends AnchorPane {
 
-    Scene currentScene;
-    protected final AnchorPane anchorPane;
+    protected final BorderPane imageBorderPanePick;
+    protected final ImageView gifImage;
+    protected final Image gifImage_Img;
     protected final BorderPane borderPane;
+    protected final AnchorPane anchorPane;
+    protected final BorderPane mainBorder_pane;
     protected final AnchorPane anchorPane0;
-    protected final Button playAgainBtn;
-    protected final Button mainMenuBtn;
-    protected final ImageView imageView;
+    protected final Button playAgain_Btn;
+    protected final ImageView Header_image;
+    protected final Button mainMenu_Btn;
     protected final AnchorPane anchorPane1;
     protected final AnchorPane anchorPane2;
     protected final AnchorPane anchorPane3;
 
     public LoserUI() {
 
-        anchorPane = new AnchorPane();
+        imageBorderPanePick = new BorderPane();
+        gifImage = new ImageView();
+        gifImage_Img = new Image(LoserUI.class.getResource("defeated.gif").toExternalForm());
         borderPane = new BorderPane();
+        anchorPane = new AnchorPane();
+        mainBorder_pane = new BorderPane();
         anchorPane0 = new AnchorPane();
-        playAgainBtn = new Button();
-        mainMenuBtn = new Button();
-        imageView = new ImageView();
+        playAgain_Btn = new Button();
+        Header_image = new ImageView();
+        mainMenu_Btn = new Button();
         anchorPane1 = new AnchorPane();
         anchorPane2 = new AnchorPane();
         anchorPane3 = new AnchorPane();
- //imageView = new Image(LoserUI.class.getResource("defeated.gif").toExternalForm());
+
         setMaxHeight(USE_PREF_SIZE);
         setMaxWidth(USE_PREF_SIZE);
         setMinHeight(USE_PREF_SIZE);
         setMinWidth(USE_PREF_SIZE);
         setPrefHeight(400.0);
         setPrefWidth(600.0);
-        setId("pane");
+
+        AnchorPane.setBottomAnchor(imageBorderPanePick, 0.0);
+        AnchorPane.setLeftAnchor(imageBorderPanePick, 0.0);
+        AnchorPane.setRightAnchor(imageBorderPanePick, 0.0);
+        AnchorPane.setTopAnchor(imageBorderPanePick, 0.0);
+        imageBorderPanePick.setId("imageBorderPanePick");
+        imageBorderPanePick.setPrefHeight(400.0);
+        imageBorderPanePick.setPrefWidth(600.0);
+
+        BorderPane.setAlignment(gifImage, javafx.geometry.Pos.CENTER);
+//        gifImage.setFitHeight(399.0);
+//        gifImage.setFitWidth(601.0);
+        gifImage.setId("gifImage");
+        gifImage.setPickOnBounds(true);
+        gifImage.setPreserveRatio(true);
+        gifImage.setImage(gifImage_Img);
+        imageBorderPanePick.setCenter(gifImage);
+
+        AnchorPane.setBottomAnchor(borderPane, 0.0);
+        AnchorPane.setLeftAnchor(borderPane, 0.0);
+        AnchorPane.setRightAnchor(borderPane, 0.0);
+        AnchorPane.setTopAnchor(borderPane, 0.0);
+        borderPane.setLayoutX(10.0);
+        borderPane.setLayoutY(10.0);
+        borderPane.setMaxHeight(USE_PREF_SIZE);
+        borderPane.setMaxWidth(USE_PREF_SIZE);
+        borderPane.setMinHeight(USE_PREF_SIZE);
+        borderPane.setMinWidth(USE_PREF_SIZE);
+        borderPane.setPrefHeight(400.0);
+        borderPane.setPrefWidth(600.0);
 
         BorderPane.setAlignment(anchorPane, javafx.geometry.Pos.CENTER);
         anchorPane.setPrefHeight(90.0);
         anchorPane.setPrefWidth(600.0);
-        setBottom(anchorPane);
+        borderPane.setBottom(anchorPane);
 
-        BorderPane.setAlignment(borderPane, javafx.geometry.Pos.CENTER);
-        borderPane.setMaxHeight(USE_PREF_SIZE);
-        borderPane.setMaxWidth(USE_PREF_SIZE);
-        borderPane.setPrefHeight(260.0);
-        borderPane.setPrefWidth(300.0);
+        BorderPane.setAlignment(mainBorder_pane, javafx.geometry.Pos.CENTER);
+        mainBorder_pane.setId("mainBorder_pane");
+        mainBorder_pane.setMaxHeight(USE_PREF_SIZE);
+        mainBorder_pane.setMaxWidth(USE_PREF_SIZE);
+        mainBorder_pane.setPrefHeight(260.0);
+        mainBorder_pane.setPrefWidth(300.0);
 
         BorderPane.setAlignment(anchorPane0, javafx.geometry.Pos.CENTER);
         anchorPane0.setPrefHeight(200.0);
         anchorPane0.setPrefWidth(200.0);
 
-        playAgainBtn.setLayoutX(39.0);
-        playAgainBtn.setLayoutY(246.0);
-        playAgainBtn.setMnemonicParsing(false);
-        playAgainBtn.setPrefHeight(31.0);
-        playAgainBtn.setPrefWidth(114.0);
-        playAgainBtn.setText("Play Again");
-        playAgainBtn.setId("btn");
+        playAgain_Btn.setId("playAgain_Btn");
+        playAgain_Btn.setLayoutX(39.0);
+        playAgain_Btn.setLayoutY(246.0);
+        playAgain_Btn.setMnemonicParsing(false);
+        playAgain_Btn.setPrefHeight(31.0);
+        playAgain_Btn.setPrefWidth(114.0);
+        playAgain_Btn.setText("Play Again");
+        playAgain_Btn.setFont(new Font(16.0));
 
-        mainMenuBtn.setLayoutX(280.0);
-        mainMenuBtn.setLayoutY(246.0);
-        mainMenuBtn.setMnemonicParsing(false);
-        mainMenuBtn.setPrefHeight(31.0);
-        mainMenuBtn.setPrefWidth(113.0);
-        mainMenuBtn.setText("Main Menu");
-        mainMenuBtn.setId("btn");
+        Header_image.setFitHeight(64.0);
+        Header_image.setFitWidth(407.0);
+        Header_image.setId("Header_image");
+        Header_image.setLayoutX(0.0);
+        Header_image.setLayoutY(113.0);
+//        Header_image.setImage(new Image(LoserUI.class.getResource("Header.png").toExternalForm()));
 
-        imageView.setId("lose.png");
-        imageView.setLayoutX(0.0);
-        imageView.setLayoutY(102.0);
-//        imageView.setImage(new Image(LoserUI.class.getResource("lose.png").toExternalForm()));
-        //    imageView.setImage(new Image(getClass().getResource("Style/lose.png").toExternalForm()));
-        borderPane.setCenter(anchorPane0);
-        setCenter(borderPane);
+//        mainMenu_Btn.setFont(javafx.scene.text.Font.$x1);
+        mainMenu_Btn.setId("mainMenu_Btn");
+        mainMenu_Btn.setLayoutX(279.0);
+        mainMenu_Btn.setLayoutY(245.0);
+        mainMenu_Btn.setMnemonicParsing(false);
+        mainMenu_Btn.setPrefHeight(31.0001220703125);
+        mainMenu_Btn.setPrefWidth(114.0);
+        mainMenu_Btn.setText("Main Menu");
+        mainBorder_pane.setCenter(anchorPane0);
+        borderPane.setCenter(mainBorder_pane);
 
         BorderPane.setAlignment(anchorPane1, javafx.geometry.Pos.CENTER);
         anchorPane1.setPrefHeight(220.0);
         anchorPane1.setPrefWidth(150.0);
-        setLeft(anchorPane1);
+        borderPane.setLeft(anchorPane1);
 
         BorderPane.setAlignment(anchorPane2, javafx.geometry.Pos.CENTER);
         anchorPane2.setPrefHeight(220.0);
         anchorPane2.setPrefWidth(150.0);
-        setRight(anchorPane2);
+        borderPane.setRight(anchorPane2);
 
         BorderPane.setAlignment(anchorPane3, javafx.geometry.Pos.CENTER);
         anchorPane3.setPrefHeight(52.0);
         anchorPane3.setPrefWidth(600.0);
-        setTop(anchorPane3);
+        borderPane.setTop(anchorPane3);
 
-        anchorPane0.getChildren().add(playAgainBtn);
-        anchorPane0.getChildren().add(mainMenuBtn);
-        anchorPane0.getChildren().add(imageView);
-        currentScene = new Scene(this);
-    }
+        getChildren().add(imageBorderPanePick);
+        anchorPane0.getChildren().add(playAgain_Btn);
+        anchorPane0.getChildren().add(Header_image);
+        anchorPane0.getChildren().add(mainMenu_Btn);
+        getChildren().add(borderPane);
 
-    BorderPane getParentNode() {
-        return this;
-    }
-
-    protected Scene retScene() {
-        return currentScene;
     }
 }

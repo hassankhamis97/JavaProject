@@ -8,6 +8,10 @@ package clientapp;
 import Stack.NavigationStack;
 import Winner.WinnerUI;
 import Winner.WinnerUIOld;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.image.Image;
@@ -36,11 +40,18 @@ public class Winner extends WinnerUI {
 //        Main.showNewScene(this);
 
         playAgain_Btn.setOnAction((event) -> {
+            try {
             System.out.println("back ------> ");
             Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
             SharedData.nsList.remove(SharedData.nsList.size() - 1);
             SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
             Main.showNewScene(myOldRoot);
+            DataOutputStream dos = new DataOutputStream(SharedData.client.getOutputStream());
+            
+                dos.writeUTF("ready");
+            } catch (IOException ex) {
+                Logger.getLogger(Winner.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         });
 

@@ -7,7 +7,20 @@ package clientapp;
 
 import Loser.LoserUI;
 import Stack.NavigationStack;
+import Winner.WinnerUI;
+import Winner.WinnerUIOld;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 
 /**
@@ -18,50 +31,56 @@ public class Loser extends LoserUI {
 
     public Loser() {
         loadCustomDesign();
-        //Main.showNewScene(retScene(),"/Loser/lose.css");
+//        Main.showNewScene(retScene(), "/Winner/win.css");
         NavigationStack nsObj = new NavigationStack();
         nsObj.root = this;
-        nsObj.pageName = "Loser";
-//        nsObj.cssStyle = "/Loser/lose.css";
+        nsObj.pageName = "Winner";
+        nsObj.cssStyle = "/Winner/win.css";
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
 //        Main.showNewScene(this);
 
-     playAgainBtn.setOnAction((event) -> {
-           System.out.println("back ------> ");
-           Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
-           SharedData.nsList.remove(SharedData.nsList.size() - 1);
-           SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
-           Main.showNewScene(myOldRoot);
-     });
-     
-     
-     mainMenuBtn.setOnAction((event) -> {
-          System.out.println("back ------> ");
+        playAgain_Btn.setOnAction((event) -> {
+            try{
+            System.out.println("back ------> ");
             Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
             SharedData.nsList.remove(SharedData.nsList.size() - 1);
-             SharedData.nsList.remove(SharedData.nsList.size() - 1);
-                SharedData.nsList.remove(SharedData.nsList.size() - 1);
             SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
             Main.showNewScene(myOldRoot);
-     });
-     
+            DataOutputStream dos = new DataOutputStream(SharedData.client.getOutputStream());
+            
+                dos.writeUTF("ready");
+            } catch (IOException ex) {
+                Logger.getLogger(Winner.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+
+        mainMenu_Btn.setOnAction((event) -> {
+            System.out.println("back ------> ");
+            Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
+            SharedData.nsList.remove(SharedData.nsList.size() - 1);
+            SharedData.nsList.remove(SharedData.nsList.size() - 1);
+            SharedData.nsList.remove(SharedData.nsList.size() - 1);
+            SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
+            Main.showNewScene(myOldRoot);
+        });
 
     }
 
     private void loadCustomDesign() {
         Platform.runLater(new Runnable() {
-            
             @Override
             public void run() {
                 setPrefHeight(SharedData.nsList.get(0).root.getHeight());
                 setPrefWidth(SharedData.nsList.get(0).root.getWidth());
-                setStyle("-fx-background-image:url(\"game_over.jpg\");\n"
-                        + "    -fx-background-size: 100% 100%;");
-
-//SharedData.nsList.get(SharedData.nsList.size()-2).root.setStyle("-fx-background-image:url(\"//Game//LoveEmoji.png\");\n" +
+                gifImage.setFitHeight(SharedData.nsList.get(0).root.getHeight());
+                gifImage.setFitWidth(SharedData.nsList.get(0).root.getWidth());
+//                setStyle("-fx-background-color:#000;");
+//                setBackground(new Background(new BackgroundImage(new Image("game_over.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
+//                setStyle("-fx-background-image:url(\"win.gif\");\n" +
 //"    -fx-background-size: 100% 100%;");
-                playAgainBtn.setStyle("-fx-background-color:\n"
+                playAgain_Btn.setStyle("-fx-background-color:\n"
                         + "            rgba(0,0,0,0.08),\n"
                         + "            linear-gradient(#13e0e7, #409cc7),\n"
                         + "            linear-gradient(#7caaff 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),\n"
@@ -70,7 +89,7 @@ public class Loser extends LoserUI {
                         + "    -fx-background-radius: 30;\n"
                         + "    -fx-text-fill: #242d35;\n"
                         + "    -fx-font-size: 16px;");
-                mainMenuBtn.setStyle("-fx-background-color:\n"
+                mainMenu_Btn.setStyle("-fx-background-color:\n"
                         + "            rgba(0,0,0,0.08),\n"
                         + "            linear-gradient(#13e0e7, #409cc7),\n"
                         + "            linear-gradient(#7caaff 0%, #bcc0f4 20%, #5d91e6 80%, #457ce2 100%),\n"
@@ -83,5 +102,15 @@ public class Loser extends LoserUI {
             }
         });
     }
+    ChangeListener<Number> stageSizeListener = (observable, oldValue, newValue)
+            -> {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                gifImage.setFitHeight(SharedData.nsList.get(0).root.getHeight());
+                gifImage.setFitWidth(SharedData.nsList.get(0).root.getWidth());
 
+            }
+        });
+    };
 }

@@ -40,7 +40,9 @@ public class Login extends LoginUI {
     Database db;
     Connection con;
     Label errorLabel;
-    MediaPlayer mediaplayer;
+    static MediaPlayer mediaplayer;
+     static String path = "src//clientapp//f2.mp3";
+                static Media m = new Media(new File(path).toURI().toString());
     /*FlowPane flow;
         Button login_btn;
         TextField email_txt;
@@ -48,6 +50,9 @@ public class Login extends LoginUI {
         Scene loginScene;
         Label label;*/
     public Login() {
+        mediaplayer = new MediaPlayer(m);
+                mediaplayer.setVolume(1);
+                mediaplayer.play();
         db = new Database();
         errorLabel = new Label();
         errorLabel.setLayoutX(110.0);
@@ -81,11 +86,9 @@ public class Login extends LoginUI {
                 boolean emailValid = true;
                 boolean passValid = true;
               //  Media musicFile = new Media("/Resources/f1.mp3");
-                String path = "src//clientapp//f1.mp3";
-                Media m = new Media(new File(path).toURI().toString());
-                mediaplayer = new MediaPlayer(m);
-                mediaplayer.setVolume(1);
-                mediaplayer.play();
+//                static String path = "src//clientapp//f2.mp3";
+//                static Media m = new Media(new File(path).toURI().toString());
+                
 //                email_txt.setText("mahmoud93@gmail.com");
 ////              '
 //
@@ -162,8 +165,8 @@ public class Login extends LoginUI {
     void connectTOServer() {
         try {
             int port;
-            SharedData.client = new Socket("192.168.1.10", 5000);
-SharedData.client = new Socket("192.168.1.10", 5000);
+//            SharedData.client = new Socket("192.168.1.10", 5000);
+SharedData.client = new Socket("172.16.4.147", 5000);
 
             con = db.openConnection();
             port = SharedData.client.getLocalPort();

@@ -264,12 +264,12 @@ public class GameStart extends GameUINew {
                                     @Override
                                     public void run() {
                                         if (msg[1].equals("loser")) {
-                                            GameStart.this.resetGame("loser");
                                             new Loser();
+                                            GameStart.this.resetGame("loser");
                                             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
                                         } else {
-                                            GameStart.this.resetGame("winner");
                                             new Winner();
+                                            GameStart.this.resetGame("winner");
                                             Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
                                         }
 //                                        alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -467,13 +467,13 @@ public class GameStart extends GameUINew {
                 setRightAnchor(btnChat, 300.0);
                 setRightAnchor(chatBtn, 301.0);
                 setRightAnchor(chatNotificationTxt, 320.0);
-                getChildren().add(borderPane);
+//                getChildren().add(borderPane);
             } else {
                 setRight(null);
                 setRightAnchor(btnChat, 20.0);
                 setRightAnchor(chatBtn, 20.0);
                 setRightAnchor(chatNotificationTxt, 40.0);
-                getChildren().remove(borderPane);
+//                getChildren().remove(borderPane);
             }
         });
 //        chatBtn.setOnMouseClicked((MouseEvent event) -> {
@@ -527,16 +527,16 @@ public class GameStart extends GameUINew {
        db.updateWinnerCoins(con);
        db.closeConnection(con);
         }
-     
-        imageBtn1 = new ImageView();  
-        imageBtn2 = new ImageView();  
-        imageBtn3 = new ImageView();
-        imageBtn4 = new ImageView();
-        imageBtn5 = new ImageView();
-        imageBtn6 = new ImageView();
-        imageBtn7 = new ImageView();
-        imageBtn8 = new ImageView();
-        imageBtn9 = new ImageView();
+     imageBtn1.setImage(null);
+//        imageBtn1 = new ImageView();  
+        imageBtn2.setImage(null); 
+        imageBtn3.setImage(null);
+        imageBtn4.setImage(null);
+        imageBtn5.setImage(null);
+        imageBtn6.setImage(null);
+        imageBtn7.setImage(null);
+        imageBtn8.setImage(null);
+        imageBtn9.setImage(null);
 
     }
 
