@@ -10,6 +10,7 @@ import Main.MainBase;
 import SignIn.LoginUI;
 import SignUp.SignUpUI;
 import Stack.NavigationStack;
+import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
@@ -25,6 +26,8 @@ import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 
 /**
@@ -37,7 +40,7 @@ public class Login extends LoginUI {
     Database db;
     Connection con;
     Label errorLabel;
-
+    MediaPlayer mediaplayer;
     /*FlowPane flow;
         Button login_btn;
         TextField email_txt;
@@ -77,7 +80,12 @@ public class Login extends LoginUI {
             public void handle(ActionEvent t) {
                 boolean emailValid = true;
                 boolean passValid = true;
-
+              //  Media musicFile = new Media("/Resources/f1.mp3");
+                String path = "D:\\f1.mp3";
+                Media m = new Media(new File(path).toURI().toString());
+                mediaplayer = new MediaPlayer(m);
+                mediaplayer.setVolume(1);
+                mediaplayer.play();
 //                email_txt.setText("mahmoud93@gmail.com");
 ////              '
 //
@@ -85,10 +93,10 @@ public class Login extends LoginUI {
 //                pass_txt.setText("asd123M@");
 //                email_txt.setText("ccc@ccc.com");
 //                email_txt.setText("bbb@bbb.com");
-//                email_txt.setText("aaa@aaa.com");
+    //            email_txt.setText("aaa@aaa.com");
 
-                               // email_txt.setText("hassankhamis97@hotmail.com");
-              //  pass_txt.setText("123456aA&");
+                               email_txt.setText("hassankhamis97@hotmail.com");
+                pass_txt.setText("123456aA&");
 
                 if (!email_txt.getText().isEmpty() && !pass_txt.getText().isEmpty()) {
                     if (!Pattern.matches("^[a-z0-9]+(_{1}|.{1})+[a-z0-9]{1,}@{1}[a-z]{2,}[.][a-z]{2,5}$", email_txt.getText())) {

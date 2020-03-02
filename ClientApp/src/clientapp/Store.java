@@ -194,12 +194,16 @@ public class Store extends StoreUI {
     private void buyEmoji(boolean high_price, String emojiName) {
         Connection con = db.openConnection();
         if (high_price && SharedData.Coins >= 15) {
-            SharedData.Coins -= 15;
+            
 
-            db.addNewEmoji(con, emojiName);
-            ///  updatePlayerCoins();
-            db.updatePlayerCoins(con, done);
+            boolean st = db.addNewEmoji(con, emojiName);
+            if(st){
+                SharedData.Coins -= 15;
+                db.updatePlayerCoins(con, done);
             db.onButtonAlert(" Operation done Successfully ^_^", done);
+            }
+            ///  updatePlayerCoins();
+            
 
 //           try {
 //               stmt = SharedData.con.prepareStatement("INSERT INTO statistics (ID,COINS) VALUES(?,?) Player where id = ?");
@@ -214,9 +218,13 @@ public class Store extends StoreUI {
 //               Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
 //           }
         } else if (!(high_price) && SharedData.Coins >= 5) {
-            SharedData.Coins -= 5;
-            db.addNewEmoji(con, emojiName);
-            db.updatePlayerCoins(con, done);
+            
+            boolean st = db.addNewEmoji(con, emojiName);
+            if(st){
+                SharedData.Coins -= 5;
+                db.updatePlayerCoins(con, done);
+            }
+            
 //           try {
 //               stmt = SharedData.con.prepareStatement("INSERT INTO statistics (ID,COINS) VALUES(?,?) Player where id = ?");
 //               stmt.setInt(1, SharedData.playerID);

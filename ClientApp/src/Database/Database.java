@@ -238,8 +238,12 @@ public class Database {
         try {
             PreparedStatement stmt;
             ResultSet rs;
-
-//create player_Emoji table in your database
+            stmt = con.prepareStatement("Select * from player_emoji where player_id = ? and Emoji_id = ?;");
+            stmt.setInt(1, SharedData.playerID);
+            stmt.setString(2, emojiName);
+            rs = stmt.executeQuery();
+            if(!rs.next()){
+            //create player_Emoji table in your database
             stmt = con.prepareStatement("INSERT INTO player_emoji (Player_ID,Emoji_ID) VALUES(?,?)");
             stmt.setInt(1, SharedData.playerID);
             stmt.setString(2, emojiName);
@@ -248,6 +252,7 @@ public class Database {
             stmt.executeUpdate();
 
             onButtonAlert("the Emoji has been added successfully to your store", done);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -295,15 +300,15 @@ public class Database {
         ResultSet rs;
 
         try {
-            stmt = con.prepareStatement("UPDATE statistics  SET Coins =?  where ID =(select StatID from player where ID =?");
+            stmt = con.prepareStatement("UPDATE statistics SET Coins =? where ID =(select StatID from player where ID =?);");
             stmt.setInt(1, SharedData.Coins);
             stmt.setInt(2, SharedData.playerID);
             /* example override value *///
 
             stmt.executeUpdate();
             done = true;
-            onButtonAlert("the Emoji has been added successfully to your store", done);
-            SharedData.con.close();
+//            onButtonAlert("the Emoji has been added successfully to your store", done);
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
         }
