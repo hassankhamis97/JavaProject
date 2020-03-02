@@ -34,30 +34,25 @@ public class Winner extends WinnerUI {
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
 //        Main.showNewScene(this);
-       
-playAgain_Btn.setOnAction((event) -> {
-          System.out.println("back ------> ");
-      //      Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
-            SharedData.nsList.remove(SharedData.nsList.size() - 1);
-//             SharedData.nsList.remove(SharedData.nsList.size() - 1);
-//           SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
-       //    Main.showNewScene(myOldRoot);
-            
-//             new GameStart();
-//            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
-            
-     });
-        
-    mainMenu_Btn.setOnAction((event) -> {
-          System.out.println("back ------> ");
+
+        playAgain_Btn.setOnAction((event) -> {
+            System.out.println("back ------> ");
             Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
             SharedData.nsList.remove(SharedData.nsList.size() - 1);
-             SharedData.nsList.remove(SharedData.nsList.size() - 1);
-               SharedData.nsList.remove(SharedData.nsList.size() - 1);
             SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
             Main.showNewScene(myOldRoot);
-     });
-     
+
+        });
+
+        mainMenu_Btn.setOnAction((event) -> {
+            System.out.println("back ------> ");
+            Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
+            SharedData.nsList.remove(SharedData.nsList.size() - 1);
+            SharedData.nsList.remove(SharedData.nsList.size() - 1);
+            SharedData.nsList.remove(SharedData.nsList.size() - 1);
+            SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
+            Main.showNewScene(myOldRoot);
+        });
 
     }
 
