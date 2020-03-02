@@ -62,8 +62,19 @@ public class GuessTheWord extends GuessTheWordUI {
                     String[] divided = data.split("-");
                     if (divided[0].equals("InitLetter")) {
 
-                        // divided[1];
+                        Platform.runLater(new Runnable(){
+
+                            @Override
+                            public void run() {
+                                
                         drawDashes(divided[1]);
+                                
+                            }
+                            
+                            
+                            
+                        });
+                        // divided[1];
                         receivedWord = divided[1];
 
                     } else {
