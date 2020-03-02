@@ -16,6 +16,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Pane;
 
 /**
  *
@@ -33,6 +34,31 @@ public class Winner extends WinnerUI {
         nsObj.isNew = true;
         SharedData.nsList.add(nsObj);
 //        Main.showNewScene(this);
+       
+playAgain_Btn.setOnAction((event) -> {
+          System.out.println("back ------> ");
+      //      Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
+            SharedData.nsList.remove(SharedData.nsList.size() - 1);
+//             SharedData.nsList.remove(SharedData.nsList.size() - 1);
+//           SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
+       //    Main.showNewScene(myOldRoot);
+            
+//             new GameStart();
+//            Main.showNewScene(SharedData.nsList.get(SharedData.nsList.size() - 2).root);
+            
+     });
+        
+    mainMenu_Btn.setOnAction((event) -> {
+          System.out.println("back ------> ");
+            Pane myOldRoot = SharedData.nsList.get(SharedData.nsList.size() - 1).root;
+            SharedData.nsList.remove(SharedData.nsList.size() - 1);
+             SharedData.nsList.remove(SharedData.nsList.size() - 1);
+               SharedData.nsList.remove(SharedData.nsList.size() - 1);
+            SharedData.nsList.get(SharedData.nsList.size() - 1).isNew = false;
+            Main.showNewScene(myOldRoot);
+     });
+     
+
     }
 
     private void loadCustomDesign() {

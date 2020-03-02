@@ -89,13 +89,14 @@ public class Login extends LoginUI {
 //                email_txt.setText("mahmoud93@gmail.com");
 ////              '
 //
-//        email_txt.setText("hassankhamis97@hotmail.com");
+        email_txt.setText("hassankhamis97@hotmail.com");
 //                pass_txt.setText("asd123M@");
 //                email_txt.setText("ccc@ccc.com");
 //                email_txt.setText("bbb@bbb.com");
     //            email_txt.setText("aaa@aaa.com");
 
-                               email_txt.setText("hassankhamis97@hotmail.com");
+                               //email_txt.setText("hassankhamis97@hotmail.com");
+
                 pass_txt.setText("123456aA&");
 
                 if (!email_txt.getText().isEmpty() && !pass_txt.getText().isEmpty()) {
@@ -161,8 +162,8 @@ public class Login extends LoginUI {
     void connectTOServer() {
         try {
             int port;
-//            SharedData.client = new Socket("192.168.1.10", 5000);
-SharedData.client = new Socket("172.16.4.147", 5000);
+            SharedData.client = new Socket("192.168.1.10", 5000);
+//SharedData.client = new Socket("172.16.4.147", 5000);
             con = db.openConnection();
             port = SharedData.client.getLocalPort();
 

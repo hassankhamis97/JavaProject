@@ -35,8 +35,8 @@ public class Database {
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
-//            con = DriverManager.getConnection("jdbc:mysql://192.168.1.10:3306/javaproject", "root", "root");
-            con = DriverManager.getConnection("jdbc:mysql://172.16.4.147:3306/javaproject", "root", "root");
+            con = DriverManager.getConnection("jdbc:mysql://192.168.1.10:3306/javaproject", "root", "root");
+//            con = DriverManager.getConnection("jdbc:mysql://172.16.4.147:3306/javaproject", "root", "root");
         } catch (ClassNotFoundException ex) {
             con = null;
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
